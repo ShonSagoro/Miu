@@ -14,10 +14,10 @@ function MiuCode() {
     monaco.editor.defineTheme("miucode", {
       base: 'vs-dark',
       inherit: true,
-      rules: [
-      ],
+      rules: [],
       colors: {
-        'editor.background': '#0f172a'
+        'editor.background': '#0f172a',
+        "editor.lineHighlightBackground": "#FFFFFF0F",
       }
     });
 
@@ -26,6 +26,8 @@ function MiuCode() {
   const options= {
     readOnly: false,
     minimap: { enabled: false },
+    acceptSuggestionOnEnter: "off",
+    quickSuggestions: false, 
   }
 
   const handleChange=(e)=>{
