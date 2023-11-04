@@ -97,9 +97,9 @@ function MiuDoc() {
         <br />
 
         <div className="w-full pl-8">
-          {ExamplesCodes.map((example) => {
+          {ExamplesCodes.map((example, index) => {
             return (
-              <CodeCard title={example.title} content={example.content} />
+              <CodeCard title={example.title} content={example.content} index={index}/>
             );
           })}
         </div>
