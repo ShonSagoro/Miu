@@ -1,7 +1,9 @@
-export default function App() {
+import MiuHome from './pages/MiuHome';
+
+function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <MiuHome/>
   )
 }
+
+export default App
