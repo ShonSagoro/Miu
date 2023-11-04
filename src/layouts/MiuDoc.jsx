@@ -13,15 +13,15 @@ function MiuDoc() {
         },
         {
           subtitle: "Funcion con parametros",
-          code: "fn Suma(x:int) {\n\tx+=1;\n}",
+          code: `fn Suma(x:int) {\n\tx+=1;\n}`,
         },
         {
           subtitle: "Funcion con retorno (opcion 1)",
-          code: "fn Suma()->int {\n\t10+1\n}",
+          code: `fn Suma()->int {\n\t10+1\n}`,
         },
         {
           subtitle: "Funcion con retorno (opcion 2)",
-          code: "fn Suma()->int {\n\treturn 10+1;\n}",
+          code: `fn Suma()->int {\n\treturn 10+1;\n}`,
         },
       ],
     },
@@ -39,7 +39,7 @@ function MiuDoc() {
       content: [
         {
           subtitle: "",
-          code: "fn SaySomethin10Times(){\n\tfor i in 1..10{\n\t\tfmt.Print('Hola, mundo!');\n\t}\n}",
+          code: `fn SaySomethin10Times(){\n\tfor i in 1..10{\n\t\tfmt.Print("Hola, mundo!");\n\t}\n}`,
         },
       ],
     },
@@ -48,11 +48,11 @@ function MiuDoc() {
       content: [
         {
           subtitle: "Metodo tradicional",
-          code: "fn ValidateX(x:int){\n\tif x>10 {\n\t\tfmt.print(‘x > 10’);\n\t}else if x<10{\n\t\tfmt.print(‘x < 10’);\n\t}else{\n\t\tfmt.print(‘x == 10’);\n\t}\n}",
+          code: `fn ValidateX(x:int){\n\tif x>10 {\n\t\tfmt.print("x > 10");\n\t}else if x<10{\n\t\tfmt.print("x < 10");\n\t}else{\n\t\tfmt.print("x == 10");\n\t}\n}`,
         },
         {
           subtitle: "Metodo Ternario",
-          code: "fn ValidateX(x:int){\n\tx>10?{\n\t\tfmt.print(‘x > 10’);\n\t}: x<10 ?{\n\t\tfmt.print(‘x < 10’);\n\t}:{\n\t\tfmt.print(‘x == 10’);\n\t}\n}",
+          code: `fn ValidateX(x:int){\n\tx>10?{\n\t\tfmt.print("x > 10");\n\t}: x<10 ?{\n\t\tfmt.print("x > 10");\n\t}:{\n\t\tfmt.print("x == 10");\n\t}\n}`,
         },
       ],
     },
@@ -61,7 +61,7 @@ function MiuDoc() {
       content: [
         {
           subtitle: "",
-          code: "fn ExampleCallFunction() {\n\tfmt.Print('Hola, mundo!');\n}",
+          code: `fn ExampleCallFunction() {\n\tfmt.Print("Hola, mundo!");\n}`,
         },
       ],
     },
@@ -70,7 +70,7 @@ function MiuDoc() {
       content: [
         {
           subtitle: "",
-          code: "use std::fmt;\n\nfn Module() {\n\tfmt.Print('Hola, mundo!');\n}",
+          code: `use std::fmt;\n\nfn Module() {\n\tfmt.Print("Hola, mundo!");\n}`,
         },
       ],
     },
