@@ -1,15 +1,16 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import { UseCheck } from "../context/CheckProvider";
 
 function MiuCode() {
-  const { checkGrammar, console } = UseCheck();
+  const { checkGrammar} = UseCheck();
 
+  const [message, setMessage] = useState("Write and check your miu Code");
   const editorRef = useRef(null);
   const [code, setCode] = useState(
     `fn Main() {\n\tfmt.Print("Hola, mundo!");\n}`
-  );
-
+    );
+ 
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
   }
@@ -38,7 +39,9 @@ function MiuCode() {
   };
 
   const handleCLick = async () => {
-     await checkGrammar(code);
+     let messageInfo=await checkGrammar(code);
+     setMessage(messageInfo)
+     console.log("ayuda")
   };
 
   return (
@@ -63,7 +66,7 @@ function MiuCode() {
           </button>
         </div>
         <div className=" px-2 text-slate-200">
-          <h1>{`> ${console}`}</h1>
+          <h1>{`> ${message}`}</h1>
         </div>
       </div>
     </div>

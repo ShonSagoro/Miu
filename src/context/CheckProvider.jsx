@@ -1,73 +1,52 @@
 import React, { useMemo, useState } from "react";
+import functionCheck from "../data/states.js"
 
 import CheckContext from "./CheckContext";
 
 const CheckProvider = ({ children }) => {
-  const [console, setConsole] = useState("Write and check your miu Code");
-  // * cero o mas
-  // + uno o mas
-  const mapCheck = [];
-
-  const functionCheck = {
-    "init": [
-      {
-        rule: /^fn$/,
-        error: "Error: Debes iniciar con una funcion o modulo",
-        nextCheck: "fn",
-      },
-      {
-        rule: /^use$/,
-        error: "Error: Debes iniciar con una funcion o modulo",
-        nextCheck: "use",
-      },
-    ],
-    "fn": [
-      {
-        rule: /^fn [A-Z][a-z|A-Z|0-9]*\((?:[a-zA-Z]+:[\s]*?(int|char|string|float))?\)(?:[\s]*->[\s]*?(int|char|string|float))?[\s]*\{$/,
-        error: "Error: en la escritura de la funcion",
-        nextCheck: "content",
-      },
-      {
-        rule: /^fn [A-Z][a-z|A-Z|0-9]*\((?:[a-zA-Z]+:[\s]*?(int|char|string|float))?\)(?:[\s]*->[\s]*?(int|char|string|float))?[\s]*(?:->[\s]*?(int|char|string|float))?[\s]*\{$/,
-        error: "Error: en la escritura de la funcion",
-        nextCheck: "content-return",
-      },
-    ],
-    content: [{}],
-    "content-return": [{}],
-    "fnf": [
-      {
-        rule: /^\}/,
-        error: "Error: No se cerro la funcion",
-        nextCheck: "content",
-      },
-    ],
-  };
-
+  
+  
   async function checkGrammar(code) {
-    const codeLines = code.split("\n");
-    let state = "fn";
+    const subChecks=["init", "content", "content-return"]
+    const codeLines = code.split("\n"); //hace un array con los saltos de linea, y quita los saltos de linea vacios ( es decir esto ->[1]=="")
+    let state = "init";
     console.log(codeLines);
 
-    // for (let line of codeLines) {
-    //   let lineClean = line.replace(/[\r\n\t]/gm, "");
-    //   state = validatePiece(state, lineClean);
-    // }
-    setConsole("Codigo bien escrito...");
+    for (let i=0; i<codeLines.length; i++) {
+      console.log(state);
+
+      const checkError=state?.split(":")
+      if (checkError!= undefined && checkError[0]=="Error") {
+        console.log("Error me fuirse, linea: "+ i);
+        return state
+      }
+      
+      if (!/^\s*$/.test(codeLines[i])) {
+        let lineClean = codeLines[i].replace(/[\r\n\t]/gm, ""); //limpia las tabulaciones
+        console.log(lineClean);
+        if(subChecks.includes(state)) {
+          i--;
+        }
+        state = validatePiece(state, lineClean);
+      }
+      
+      console.log(state);
+    }
+    return "Codigo bien escrito..."
   }
 
   const validatePiece = (currentState, code) => {
     if (currentState !== undefined) {
-      if (
-        functionCheck[currentState] &&
-        functionCheck[currentState].length > 0
-      ) {
+      if (functionCheck[currentState] &&functionCheck[currentState].length > 0) {
         for (const checkState of functionCheck[currentState]) {
+          console.log("Rule: "+ checkState.rule);
           if (checkState.rule.test(code)) {
-            return "OK";
-          }
-        }
-        return functionCheck[currentState][0].error;
+            console.log("Rule eNTRE: "+ checkState.rule);
+            return checkState.nextCheck;
+            }
+          } 
+          console.log("Error")
+          return functionCheck[currentState][0].error;
       }
     }
   };
@@ -75,8 +54,6 @@ const CheckProvider = ({ children }) => {
   const value = useMemo(() => {
     return {
       checkGrammar,
-      console,
-      setConsole,
     };
   }, []);
 
