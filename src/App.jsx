@@ -1,8 +1,12 @@
 import MiuHome from './pages/MiuHome';
+import CheckProvider from "./context/CheckProvider";
+
 
 function App() {
   return (
-    <MiuHome/>
+    <CheckProvider>
+      <MiuHome/>
+    </CheckProvider>
   )
 }
 

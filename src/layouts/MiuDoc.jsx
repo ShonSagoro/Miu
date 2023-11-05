@@ -78,7 +78,7 @@ function MiuDoc() {
 
   return (
     <>
-      <div className="overflow-y-auto bg-slate-700 text-white w-1/2 h-full flex flex-col items-center content-center p-10 ">
+      <div className="border border-transparent border-r-white overflow-y-auto bg-slate-700 text-white w-1/2 h-full flex flex-col items-center content-center p-10 ">
         <img src={logo} className="h-1/5 w-auto mb-10"></img>
         <h1 className="text-4xl mb-20">MIU Language</h1>
         <p>

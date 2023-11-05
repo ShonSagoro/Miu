@@ -19,8 +19,8 @@ function CodeSnippet(props) {
   };
 
   return (
-    <div className="bg-slate-900 flex flex-col w-5/6 mb-6">
-      <div className="flex flex-row justify-end">
+    <div className="bg-slate-900 flex flex-col w-full mb-6">
+      <div className="flex flex-row justify-end mb-2">
         <button className="bg-gray-800 p-2" onClick={handleCopyClick}>{isCopied ? "Copiado" : "Copiar código"}</button>
       </div>
       <pre className="pl-6 pr-6 pb-6">
