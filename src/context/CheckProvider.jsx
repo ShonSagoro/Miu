@@ -18,7 +18,7 @@ const CheckProvider = ({ children }) => {
       const checkError=state?.split(":")
       if (checkError!= undefined && checkError[0]=="Error") {
         console.log("Error me fuirse, linea: "+ i);
-        return state
+        return state + ", linea del error: "+i;
       }
       
       if (!/^\s*$/.test(codeLines[i])) {
