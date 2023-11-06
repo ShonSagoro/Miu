@@ -1,6 +1,31 @@
-  // * cero o mas
-  // + uno o mas
+/*
+⠀⠀⠀⠀⢀⡴⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠃⣀⠀⠀⣄⡀⠀⠀⠰⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣦⡀⠙⢷⣄⠀⠀⠀⠀⠀⢀⣀⣤⣴⣶⣾⣿⣿⣿⡿⠿⠷⢶⣾⣦⣐⠶⠤⠄⣀⣲⡀⠀⠀⠀⠀⠀⢻⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢀⡖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡇⠀⡟⠀⠀⠈⢷⡀⠀⠀⠘⠶⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣛⢶⣄⡙⢷⣤⣤⣴⣿⣿⣿⣿⣿⣿⣿⡟⠉⠀⠀⠀⠀⠈⣷⡈⠻⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣠⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⠇⢠⡇⠀⠀⠀⠈⣷⣄⠀⠀⠀⠘⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢻⡎⠛⢾⣿⣶⣿⣿⠟⠋⠙⠻⢿⡿⠿⠋⠀⠀⠀⠀⠀⠀⠀⣿⣷⣤⠈⠛⢧⣄⠀⠀⠀⠀⠀⠀⠀⠀⠘⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⢠⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣷⣾⠃⠀⠀⠀⡀⢹⣿⣦⡀⠀⠀⠈⢻⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⡄⢨⣿⡟⠉⠿⢿⣷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⢃⡿⠀⠀⠀⠉⠷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢠⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⢰⠀⠀⠻⣿⡿⡆⠀⠀⠀⡇⠀⢿⡏⠻⣆⠀⠀⠀⠹⣦⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⡈⠉⢿⡀⠀⠀⠈⠉⠉⠃⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠋⣾⠃⠀⠀⠀⠀⠀⠙⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣶⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣾⠃⠀⠀⠀⠀⠀⠀⠀⣶⡇⢸⡇⢸⡇⠀⠀⣻⣿⡖⠀⠀⢰⡇⠀⣸⣷⠀⠈⠳⣦⡀⠀⠈⢳⣄⠀⠀⠀⠀⠀⠀⠀⠘⢷⡀⠈⢷⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡴⠟⠁⣿⠃⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⢯⡙⠳⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⡟⠀⠀⠀⠀⠀⠀⠀⠠⣿⡇⠀⠇⠸⠇⠀⠀⢸⣿⣷⠀⠀⡿⠀⠀⢸⣿⡄⠀⠀⠈⠻⣦⣄⡀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀⠙⠿⣿⣷⣶⣦⣤⣶⠶⠚⠛⠛⠉⠀⣠⡾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣽⣦⡀⠙⠛⢶⣤⡀⠀⠀⠀⠀⠀
+⠁⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠁⠀⠀⠀⢸⡏⢻⣇⣼⠃⠀⠀⠸⣿⡇⠀⣀⣤⣶⣤⣽⡿⠶⣤⣙⣷⣀⠀⠀⠀⠀⠀⠸⣧⠀⠀⠀⠈⠛⠛⠛⠛⠃⠀⠀⠀⣀⣤⠾⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣿⣦⡀⠀⠈⠙⠳⢦⡀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠀⠀⠀⠀⠀⢸⡇⠠⣿⣇⠀⠀⠀⠀⣿⣣⣶⣿⣿⡿⠛⠿⣄⠀⠀⠉⠛⠿⢶⣄⠀⠀⠀⠀⠙⣧⣀⣀⣀⣀⣀⣀⣀⣤⣤⠶⠞⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠻⣿⣿⣿⣦⣄⠀⠀⠀⠈⠒⠂
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⠀⠀⠀⠀⠀⠀⣸⡇⠰⢿⣿⡄⠀⢀⣴⣿⣿⣿⡿⠋⠀⠀⠀⠙⢷⡄⠀⠀⠀⠀⠉⣿⠶⣤⣄⡀⠈⣯⡉⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣹⡃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣿⣿⣷⣄⠀⠀⠀⠀
+⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡀⠀⠀⠀⠀⠀⣾⡟⠁⠀⠻⣇⢰⣿⣿⣿⡿⠋⠀⠀⠀⠀⠀⠀⠈⣷⠀⠀⠀⠀⢰⡏⠀⠀⠈⠙⠛⠺⠷⣤⠀⠀⠀⢀⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣽⣿⣧⡝⠻⢦⣄⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀⠀⠀⣠⣿⡇⠀⠀⠀⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⡆⠀⠀⢀⡿⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣀⣴⠟⠛⠋⠛⢷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠇⠙⢷⡄⠀⠀⠀⠀⠀⠀⠀⠠⣤⡀⠀⠀⠈⠙⠻⣧⡄⠀⠉⠓⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡇⠀⢀⣴⠏⢸⡇⠀⢀⣾⣿⣿⣿⡏⢻⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⡇⠀⢀⣾⠁⠀⠀⠀⠀⠀⢠⣶⠟⠿⠿⠋⠁⠀⠀⠀⠀⠘⣿⣷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡏⠀⠀⠀⠻⣦⡀⠀⠀⠀⠀⠀⠀⠘⢿⡄⠀⠀⠀⠀⠘⢿⣦⡀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣴⠟⠁⠀⢈⣧⠀⣿⣿⣿⣿⡿⠀⣿⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⠇⠀⣾⠁⠀⠀⠀⠀⠀⣀⣼⠏⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠹⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠃⠀⠀⠀⠐⢹⣷⡴⠀⠀⠀⠀⠀⠀⠈⣿⡄⠀⠀⠀⠀⠈⠻⣍⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡴⠛⢧⡀⠀⠀⠈⣿⣿⣿⣿⣿⡿⠁⢠⡏⠀⠀⠀⠀⠀⣠⣾⣿⡿⠃⢀⣼⠃⠀⠀⢀⣾⣿⡿⠛⠉⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠁⠀⢀⣼⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡏⠀⠀⠀⠀⠀⠀⠘⢻⣄⠀⠀⠀⠀⠀⠀⢼⣿⣄⠀⠀⠀⠀⠀⠙⣧⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠘⢷⡀⠀⣴⣿⣿⠛⠋⠁⠀⠀⠸⠇⠀⠀⠀⠀⣸⣿⠟⠉⠀⣠⠞⠁⠀⠀⠀⠸⣿⣿⡄⠀⠀⠀⠀⠀⢀⣀⣤⡾⠛⠁⠀⣴⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⣹⣦⠀⠀⠀⠀⠀⠀⣿⣿⢷⣄⠀⠀⠀⠀⠈⠻
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢿⣄⣹⣿⣿⣷⠀⠀⠀⠀⠀⠀⠀⢀⣰⣿⠿⠋⠀⣠⡾⠋⠀⠀⠀⠀⠀⠀⢹⣟⣁⣤⡶⠶⠞⠛⠛⠉⠁⠀⠀⠀⢠⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠘⣷⡀⠀⠀⠀⠀⠀⢿⡄⠉⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢰⡄⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⡁⢹⠈⢷⣀⠀⣀⣀⣤⡶⠟⠋⠁⢀⣤⠾⠋⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡿⠙⠀⠀⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡀⠀⠀⠀⠀⠸⣇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣾⣇⠈⢿⣿⠟⠛⠁⠀⣠⣤⠾⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣷⠀⠀⠀⠀⠀⠀⢀⣠⠶⠛⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⡿⠷⠚⠛⠛⠛⠻⢷⣴⡀⠀⠀⠀⠀⠀⠀⠈⢻⡄⠀⠀⠀⠀⣿⠚⠛⠉⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠘⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠀⠀⠻⣆⠶⠞⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠶⠶⠶⢿⣤⠴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡴⠖⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣶⡖⠀⢶⣦⠀⢀⣠⣴⠿⣆⠀⠀⠀⢿⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠠⣤⡸⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣾⢟⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣷⡿⠳⠾⠛⠉⠀⠀⠹⣆⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠙⢿⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢧⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠁⠁⠈⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠋⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠈⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⡿⠁⠀⠀⠀⠀⠀⠈⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⡀⠀⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠀⠀⠀⠀⠀⢽⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⢷⠀⡇⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢧⠀⠀⠀⠀⠀⠀⠀⠈⠃⠀⠀⠀⠀⠀⠀⠀⠘⢷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠓⢀⣀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠃⠘⣷⡇⠀⠀⠀⠀⠀⠀
 
+*/
 const operatorAddition= new RegExp(`\\|\\||\\&\\&`)
 const mathOperator = new RegExp(`[+|*|\/|-]`);
 const putOperator = new RegExp(`[+*/-]=`);
@@ -14,44 +39,27 @@ const valueInt = /\d+/;
 const variable=/[a-z][a-zA-Z0-9]*/;
 const ifValue= new RegExp(`${variable.source}|${callFuncVal.source}|${callFunc.source}|${valueInt.source}|${valueFloat.source}|${valueString.source}|${valueChar.source}`)
 const NegativeValue= new RegExp(`${callFuncVal.source}|${callFunc.source}|${variable.source}`)
-
 const negativeAffirmation=new RegExp(`!(${NegativeValue.source})`)
 const operatorAffirmation=new RegExp(`(${ifValue.source})[\\s]*(${operator.source})[\\s]*(${ifValue.source})`)
 const affirmations=new RegExp(`${negativeAffirmation.source}|${operatorAffirmation.source}`)
-
 const combinedAffirmations = new RegExp(`(${affirmations.source})(\\s*(?:(${operatorAddition.source})\\s*)(${affirmations.source}))*`);
-
 const ifRegex = new RegExp(`if\\s+${combinedAffirmations.source}\\s*\\{\\s*`);
-
 const elseIfRegex = new RegExp(`}(?:\\s*else\\s*if\\s+${combinedAffirmations.source}\\s*\\{\\s*|\\s*else\\s*if\\s+${combinedAffirmations.source}\\s*\\{\\s*)`);
-
 const ifRegexT = new RegExp(`${combinedAffirmations.source}\\s*\\?\\s*\\{\\s*`);
 const elseIfRegexT = new RegExp(`}\\s*:\\s*${combinedAffirmations.source}\\s*\\?\\s*\\{\\s*`);
-
 const forRangeInt= new RegExp(`${valueInt.source}\\.\\.${valueInt.source}`)
-
 const forRange= new RegExp(`${forRangeInt.source}|${callFuncVal.source}|${callFunc.source}`)
-
 const forRegex = new RegExp(`for\\s+${variable.source}\\s+in\\s+(${forRange.source})\\s*\\{\\s*`);
-
 const returnValue= new RegExp(`${variable.source}|${callFuncVal.source}|${callFunc.source}|${valueInt.source}|${valueFloat.source}|${valueString.source}|${valueChar.source}`);
-
-
-
 const possibleNewValues= new RegExp(`${variable.source}|${valueInt.source}|${valueString}|${valueFloat.source}|${valueInt.source}|${callFunc.source}|${callFuncVal.source}`)
 const newDefineSimpleValue=new RegExp(`${variable.source}${putOperator.source}\\s*(${possibleNewValues.source})`)
-
 const newDefineExtendValue=new RegExp(`${variable.source}=\\s*(${possibleNewValues.source})(?:(${mathOperator.source})\\s*(${possibleNewValues.source}))*`)
 const newValue= new RegExp(`${newDefineSimpleValue}|${newDefineExtendValue}`);
 // const newVariable= new RegExp(`(${newValue});`);
 const newVariable = new RegExp(`${variable.source}\\s*${putOperator.source}\\s*${possibleNewValues.source}`);
-
-// const mathExpressionRegex = new RegExp(`(${newValue.source})\\s*(${mathOperator.source})\\s*(${returnCombinedValue.source})\\s*`);
-const possibleReturn= new RegExp(`${newValue.source}|${combinedAffirmations.source}|${returnValue.source}`);
-
-
-
-
+const returnCombinedValue =  new RegExp(`${variable.source}|${callFuncVal.source}|${callFunc.source}|${valueInt.source}|${valueFloat.source}`);
+const mathExpressionRegex = new RegExp(`(${newValue.source})\\s*(${mathOperator.source})\\s*(${returnCombinedValue.source})\\s*`);
+const possibleReturn= new RegExp(`${newVariable.source}|${combinedAffirmations.source}|${returnValue.source}|${mathExpressionRegex.source}`);
 const returnSimpleRegex = new RegExp(`(${possibleReturn.source})`);
 const returnRegex = new RegExp(`return\\s+${returnSimpleRegex.source};`);
 
@@ -80,16 +88,6 @@ const functionCheck = {
         nextCheck: "if",
       },
       {
-        rule: new RegExp(`^${combinedAffirmations.source}\\s*\\?\\s*\\{\\s*$`),
-        error: "Error: parce que algo salio mal",
-        nextCheck: "if-t",
-      },
-      {
-        rule: new RegExp(`^${newVariable.source}$`),
-        error: "Error: parce que algo salio mal",
-        nextCheck: "nv", //list
-      },
-      {
         rule: /^[a-z][a-zA-Z0-9]*[\s]*=/,
         error: "Error: parce que algo salio mal",
         nextCheck: "val", //list
@@ -114,6 +112,16 @@ const functionCheck = {
         error: "Error: parce que algo salio mal",
         nextCheck: "fn-f", //list
       },
+      {
+        rule: new RegExp(`^${combinedAffirmations.source}\\s*\\?\\s*\\{\\s*$`),
+        error: "Error: parce que algo salio mal",
+        nextCheck: "if-t",
+      },
+      {
+        rule: new RegExp(`^${newVariable.source}$`),
+        error: "Error: parce que algo salio mal",
+        nextCheck: "nv", //list
+      }
     ],
     "content-r": [
       {
@@ -127,19 +135,14 @@ const functionCheck = {
         nextCheck: "if-t-r",
       },
       {
-        rule: new RegExp(`^${returnRegex.source}$`),
-         error: "Error: parce que algo salio mal",
-        nextCheck: "fn-f-r", //list
-      },
-      {
         rule: new RegExp(`^${returnSimpleRegex.source}$`),
          error: "Error: parce que algo salio mal",
         nextCheck: "fn-f-r", //list
       },
       {
-        rule: new RegExp(`^${newVariable.source}$`),
-        error: "Error: parce que algo salio mal",
-        nextCheck: "nv-r", //list
+        rule: new RegExp(`^${returnRegex.source}$`),
+         error: "Error: parce que algo salio mal",
+        nextCheck: "fn-f-r", //list
       },
       {
         rule: /^[a-z][a-zA-Z0-9]*[\s]*=/,
@@ -160,6 +163,11 @@ const functionCheck = {
         rule: /^[a-z][a-zA-Z0-9]*\./,
          error: "Error: parce que algo salio mal",
         nextCheck: "fn-call-r", //list
+      },
+      {
+        rule: new RegExp(`^${newVariable.source}$`),
+        error: "Error: parce que algo salio mal",
+        nextCheck: "nv-r", //list
       }
     ],
     "fn": [
@@ -520,6 +528,5 @@ const functionCheck = {
           }
         ],
   };
-
 
 export default functionCheck;

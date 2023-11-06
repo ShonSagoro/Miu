@@ -17,11 +17,11 @@ function MiuDoc() {
         },
         {
           subtitle: "Funcion con retorno (opcion 1)",
-          code: `fn Suma()->int {\n\t10+1\n}`,
+          code: `fn Suma()->int {\n\t10==1\n}`,
         },
         {
           subtitle: "Funcion con retorno (opcion 2)",
-          code: `fn Suma()->int {\n\treturn 10+1;\n}`,
+          code: `fn Suma()->int {\n\treturn 10==1;\n}`,
         },
       ],
     },
@@ -30,7 +30,7 @@ function MiuDoc() {
       content: [
         {
           subtitle: "",
-          code: `fn Suma()->int {\n\tlet i=0;\n\tlet j:int=0;\n\treturn i+j;\n}`,
+          code: `fn Suma()->int {\n\tlet i=0;\n\tlet j:int=0;\n\treturn i==j;\n}`,
         },
       ],
     },
