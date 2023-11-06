@@ -15,19 +15,20 @@ const CheckProvider = ({ children }) => {
     for (let i=0; i<codeLines.length; i++) {
       console.log(state);
 
-      const checkError=state?.split(":")
-      if (checkError!= undefined && checkError[0]=="Error") {
-        console.log("Error me fuirse, linea: "+ i);
-        return state + ", linea del error: "+i;
-      }
       
       if (!/^\s*$/.test(codeLines[i])) {
         let lineClean = codeLines[i].replace(/[\r\n\t]/gm, ""); //limpia las tabulaciones
-        console.log(lineClean);
+        console.log("CHECANDO: "+lineClean);
         if(subChecks.includes(state)) {
           i--;
         }
         state = validatePiece(state, lineClean);
+      }
+      
+      const checkError=state?.split(":")
+      if (checkError!= undefined && checkError[0]=="Error") {
+        console.log("Error me fuirse, linea: "+ (i+1));
+        return state + ", linea del error: "+(i+1);
       }
       
       console.log(state);
@@ -41,6 +42,7 @@ const CheckProvider = ({ children }) => {
         for (const checkState of functionCheck[currentState]) {
           console.log("Rule: "+ checkState.rule);
           if (checkState.rule.test(code)) {
+            console.log("state eNTRE: "+ currentState);
             console.log("Rule eNTRE: "+ checkState.rule);
             return checkState.nextCheck;
             }
