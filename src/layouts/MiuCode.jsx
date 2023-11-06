@@ -8,7 +8,7 @@ function MiuCode() {
   const [message, setMessage] = useState("Write and check your miu Code");
   const editorRef = useRef(null);
   const [code, setCode] = useState(
-    `fn ValidateX(x:int){\n\tif x>10 {\n\t}else if x<10{\n\t}else{\n\t}\n}`
+    `fn Main() {\n\tfmt.Print("Hola, mundo!");\n}`
     );
  
   function handleEditorDidMount(editor, monaco) {
