@@ -35,7 +35,7 @@ const forRegex = new RegExp(`for\\s+${variable.source}\\s+in\\s+${forRange.sourc
 
 const returnValue= new RegExp(`${variable.source}|${callFuncVal.source}|${callFunc.source}|${valueInt.source}|${valueFloat.source}|${valueString.source}|${valueChar.source}`);
 const returnCombinedValue= new RegExp(`${variable.source}|${valueInt.source}|${valueFloat.source}|${valueString.source}|${valueChar.source}`);
-const mathExpressionRegex = new RegExp(`${mathOperator.source}\\s*(${returnCombinedValue})+(?:\\s*${mathOperator.source}\\s*(${returnCombinedValue}))*`);
+const mathExpressionRegex = new RegExp(`(${returnCombinedValue})+${mathOperator.source}\\s*(${returnCombinedValue})+(?:\\s*${mathOperator.source}\\s*(${returnCombinedValue}))*`);
 
 const possibleReturn= new RegExp(`(${combinedAffirmations.source})||${mathExpressionRegex.source}||${returnValue.source}`);
 
@@ -149,7 +149,7 @@ const functionCheck = {
         {
           rule: /^fn [A-Z][a-zA-Z0-9]*\((?:[a-zA-Z]+:[\s]*?(int|char|string|float))?\)[\s]*->[\s]*(int|char|string|float)\s*\{$/,
           error: "Error: en la escritura de la funcion",
-          nextCheck: "content-return",
+          nextCheck: "content-r",
         },
       ],
     "use":[
@@ -171,6 +171,21 @@ const functionCheck = {
         rule:new RegExp(`^${elseIfRegexT.source}$`),
         error: "Error: en la escritura del if else ternario",
         nextCheck: "else-t",
+      },
+      {
+        rule:new RegExp(`^${callFunc.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
+      },
+      {
+        rule:new RegExp(`^${callFuncVal.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
+      },
+      {
+        rule:new RegExp(`^${mathExpressionRegex.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
       },
       {
         rule: /^\}\s*:\s*\{$/,
@@ -196,6 +211,21 @@ const functionCheck = {
         nextCheck: "else",
       },
       {
+        rule:new RegExp(`^${callFunc.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
+      },
+      {
+        rule:new RegExp(`^${callFuncVal.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
+      },
+      {
+        rule:new RegExp(`^${mathExpressionRegex.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
+      },
+      {
         rule: /^\}\s*else\s*\{$/,
         error: "Error: en la escritura del else",
         nextCheck: "else-f",
@@ -208,6 +238,20 @@ const functionCheck = {
     ],
     "else-f":[
       {
+        rule:new RegExp(`^${callFunc.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
+      },
+      {
+        rule:new RegExp(`^${callFuncVal.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
+      },
+      {
+        rule:new RegExp(`^${mathExpressionRegex.source};$`),
+        error: "Error: en la escritura del else if",
+        nextCheck: "else-r",
+      },{
         rule: /^\}\s*$/,
         error: "Error: en la escritura del no cerror correctamente su else",
         nextCheck: "content",
@@ -289,6 +333,21 @@ const functionCheck = {
           nextCheck: "else-t-r",
         },
         {
+          rule:new RegExp(`^${callFunc.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
+        },
+        {
+          rule:new RegExp(`^${callFuncVal.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
+        },
+        {
+          rule:new RegExp(`^${mathExpressionRegex.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
+        },
+        {
           rule: /^\}\s*:\s*\{$/,
           error: "Error: en la escritura del else ternario",
           nextCheck: "else-f-r",
@@ -312,6 +371,21 @@ const functionCheck = {
           nextCheck: "else-r",
         },
         {
+          rule:new RegExp(`^${callFunc.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
+        },
+        {
+          rule:new RegExp(`^${callFuncVal.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
+        },
+        {
+          rule:new RegExp(`^${mathExpressionRegex.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
+        },
+        {
           rule: /^\}\s*else\s*\{$/,
           error: "Error: en la escritura del else",
           nextCheck: "else-f-r",
@@ -327,7 +401,21 @@ const functionCheck = {
           rule: /^\}\s*$/,
           error: "Error: en la escritura del no cerror correctamente su else",
           nextCheck: "content-r",
+        },{
+          rule:new RegExp(`^${callFunc.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
         },
+        {
+          rule:new RegExp(`^${callFuncVal.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
+        },
+        {
+          rule:new RegExp(`^${mathExpressionRegex.source};$`),
+          error: "Error: en la escritura del else if",
+          nextCheck: "else-r",
+        }
       ],
       "for-r":[
         {

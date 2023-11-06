@@ -48,11 +48,11 @@ function MiuDoc() {
       content: [
         {
           subtitle: "Metodo tradicional",
-          code: `fn ValidateX(x:int){\n\tif x>10 {\n\t\tfmt.print("x > 10");\n\t}else if x<10{\n\t\tfmt.print("x < 10");\n\t}else{\n\t\tfmt.print("x == 10");\n\t}\n}`,
+          code: `fn ValidateX(x:int){\n\tif x>10 {\n\t\tfmt.Print("x > 10");\n\t}else if x<10{\n\t\tfmt.Print("x < 10");\n\t}else{\n\t\tfmt.Print("x == 10");\n\t}\n}`,
         },
         {
           subtitle: "Metodo Ternario",
-          code: `fn ValidateX(x:int){\n\tx>10?{\n\t\tfmt.print("x > 10");\n\t}: x<10 ?{\n\t\tfmt.print("x > 10");\n\t}:{\n\t\tfmt.print("x == 10");\n\t}\n}`,
+          code: `fn ValidateX(x:int){\n\tx>10?{\n\t\tfmt.Print("x > 10");\n\t}: x<10 ?{\n\t\tfmt.Print("x > 10");\n\t}:{\n\t\tfmt.Print("x == 10");\n\t}\n}`,
         },
       ],
     },
