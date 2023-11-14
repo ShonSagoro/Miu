@@ -117,11 +117,11 @@ const functionCheck = {
         error: "Error: parce que algo salio mal",
         nextCheck: "if-t",
       },
-      {
-        rule: new RegExp(`^${newVariable.source}$`),
-        error: "Error: parce que algo salio mal",
-        nextCheck: "nv", //list
-      }
+      // {
+      //   rule: new RegExp(`^${newVariable.source}$`),
+      //   error: "Error: parce que algo salio mal",
+      //   nextCheck: "nv", //list
+      // }
     ],
     "content-r": [
       {
@@ -164,11 +164,11 @@ const functionCheck = {
          error: "Error: parce que algo salio mal",
         nextCheck: "fn-call-r", //list
       },
-      {
-        rule: new RegExp(`^${newVariable.source}$`),
-        error: "Error: parce que algo salio mal",
-        nextCheck: "nv-r", //list
-      }
+      // {
+      //   rule: new RegExp(`^${newVariable.source}$`),
+      //   error: "Error: parce que algo salio mal",
+      //   nextCheck: "nv-r", //list
+      // }
     ],
     "fn": [
         {
@@ -189,20 +189,20 @@ const functionCheck = {
         nextCheck: "init",
       }
     ],
-    "nv":[
-      {
-        rule: new RegExp(`^${newVariable.source}$`),
-        error: "Error: En la asignacion del valor de una variable",
-        nextCheck: "content",
-      }
-    ],
-    "nv-r":[
-      {
-        rule: new RegExp(`^${newVariable.source}$`),
-        error: "Error: En la asignacion del valor de una variable",
-        nextCheck: "content-r",
-      }
-    ],
+    // "nv":[
+    //   {
+    //     rule: new RegExp(`^${newVariable.source}$`),
+    //     error: "Error: En la asignacion del valor de una variable",
+    //     nextCheck: "content",
+    //   }
+    // ],
+    // "nv-r":[
+    //   {
+    //     rule: new RegExp(`^${newVariable.source}$`),
+    //     error: "Error: En la asignacion del valor de una variable",
+    //     nextCheck: "content-r",
+    //   }
+    // ],
     "if-t":[
       {
         rule: new RegExp(`^${ifRegexT.source}$`), 
@@ -226,11 +226,11 @@ const functionCheck = {
         error: "Error: en la escritura del else if",
         nextCheck: "else-t",
       },
-      {
-        rule:new RegExp(`^${newVariable.source};$`),
-        error: "Error: en la escritura del else if",
-        nextCheck: "else-t",
-      },
+      // {
+      //   rule:new RegExp(`^${newVariable.source};$`),
+      //   error: "Error: en la escritura del else if",
+      //   nextCheck: "else-t",
+      // },
       {
         rule: /^\}\s*:\s*\{$/,
         error: "Error: en la escritura del else ternario",
@@ -264,11 +264,11 @@ const functionCheck = {
         error: "Error: en la escritura del else if",
         nextCheck: "else",
       },
-      {
-        rule:new RegExp(`^${newVariable.source};$`),
-        error: "Error: en la escritura del else if",
-        nextCheck: "else",
-      },
+      // {
+      //   rule:new RegExp(`^${newVariable.source};$`),
+      //   error: "Error: en la escritura del else if",
+      //   nextCheck: "else",
+      // }
       {
         rule: /^\}\s*else\s*\{$/,
         error: "Error: en la escritura del else",
@@ -291,15 +291,16 @@ const functionCheck = {
         error: "Error: en la escritura del else if",
         nextCheck: "else-f",
       },
+      // {
+      //   rule:new RegExp(`^${newVariable.source};$`),
+      //   error: "Error: en la escritura del else if",
+      //   nextCheck: "else-f",
+      // }
       {
-        rule:new RegExp(`^${newVariable.source};$`),
-        error: "Error: en la escritura del else if",
-        nextCheck: "else-f",
-      },{
         rule: /^\}\s*$/,
         error: "Error: en la escritura del no cerror correctamente su else",
         nextCheck: "content",
-      },
+      }
     ],
     "for":[
       {
@@ -321,18 +322,23 @@ const functionCheck = {
         error: "Error: en la escritura del for",
         nextCheck: "for",
       },
-      {
-        rule:new RegExp(`^${newVariable.source};$`),
-        error: "Error: en la escritura del for",
-        nextCheck: "for",
-      }
+      // {
+      //   rule:new RegExp(`^${newVariable.source};$`),
+      //   error: "Error: en la escritura del for",
+      //   nextCheck: "for",
+      // }
     ],
     "val":[
         {
             rule: /^[a-z][a-zA-Z0-9]*[\s]*=(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\)));$/,
             error: "Error: En el modulo",
             nextCheck: "content",
-        }
+        },
+        {
+          rule: /^[a-z][a-zA-Z0-9]*[\s]*=(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\)))(?:(\+|-|\/|\*)+?(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\)))+)?;$/,
+          error: "Error: En el modulo",
+          nextCheck: "content",
+      },
     ],
     "dval":[
         {
@@ -345,6 +351,11 @@ const functionCheck = {
             error: "Error: En el modulo",
             nextCheck: "content",
         },
+        {
+          rule: /^let [a-z][a-zA-Z0-9]*[\s]*=(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\)))(?:(\+|-|\/|\*)(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\))))?;$/,
+          error: "Error: En el modulo",
+          nextCheck: "content",
+      },
     ],
     "fn-call":[
         {
@@ -395,11 +406,11 @@ const functionCheck = {
           error: "Error: en la escritura del else if",
           nextCheck: "else-t-r",
         },
-        {
-          rule:new RegExp(`^${newVariable.source};$`),
-          error: "Error: en la escritura del else if",
-          nextCheck: "else-t-r",
-        },
+        // {
+        //   rule:new RegExp(`^${newVariable.source};$`),
+        //   error: "Error: en la escritura del else if",
+        //   nextCheck: "else-t-r",
+        // },
         {
           rule: /^\}\s*:\s*\{$/,
           error: "Error: en la escritura del else ternario",
@@ -433,11 +444,11 @@ const functionCheck = {
           error: "Error: en la escritura del else if",
           nextCheck: "else-r",
         },
-        {
-          rule:new RegExp(`^${newVariable.source};$`),
-          error: "Error: en la escritura del else if",
-          nextCheck: "else-r",
-        },
+        // {
+        //   rule:new RegExp(`^${newVariable.source};$`),
+        //   error: "Error: en la escritura del else if",
+        //   nextCheck: "else-r",
+        // },
         {
           rule: /^\}\s*else\s*\{$/,
           error: "Error: en la escritura del else",
@@ -464,11 +475,11 @@ const functionCheck = {
           error: "Error: en la escritura del else if",
           nextCheck: "else-r",
         },
-        {
-          rule:new RegExp(`^${newVariable.source};$`),
-          error: "Error: en la escritura del else if",
-          nextCheck: "else-r",
-        }
+        // {
+        //   rule:new RegExp(`^${newVariable.source};$`),
+        //   error: "Error: en la escritura del else if",
+        //   nextCheck: "else-r",
+        // }
       ],
       "for-r":[
         {
@@ -490,18 +501,23 @@ const functionCheck = {
           error: "Error: en la escritura del for",
           nextCheck: "for-r",
         },
-        {
-          rule:new RegExp(`^${newVariable.source};$`),
-          error: "Error: en la escritura del for",
-          nextCheck: "for-r",
-        }
+        // {
+        //   rule:new RegExp(`^${newVariable.source};$`),
+        //   error: "Error: en la escritura del for",
+        //   nextCheck: "for-r",
+        // }
       ],
       "val-r":[
           {
               rule: /^[a-z][a-zA-Z0-9]*[\s]*=(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\)));$/,
               error: "Error: En el modulo",
               nextCheck: "content-r",
-          }
+          },
+          {
+              rule: /^[a-z][a-zA-Z0-9]*[\s]*=(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\)))(?:(\+|-|\/|\*)(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\))))?;$/,
+              error: "Error: En el modulo",
+              nextCheck: "content-r",
+          },
       ],
       "dval-r":[
           {
@@ -514,6 +530,11 @@ const functionCheck = {
               error: "Error: En el modulo",
               nextCheck: "content-r",
           },
+          {
+            rule: /^let [a-z][a-zA-Z0-9]*[\s]*=(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\)))(?:(\+|-|\/|\*)(\d+|('[^']*')|("[^"]*")|([a-z][a-zA-Z0-9]*.[A-Z][a-zA-Z0-9]*\(\))|([A-Z][a-zA-Z0-9]*\(\))))?;$/,
+            error: "Error: En el modulo",
+            nextCheck: "content-r",
+        },
       ],
       "fn-call-r":[
           {

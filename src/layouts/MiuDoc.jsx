@@ -13,7 +13,7 @@ function MiuDoc() {
         },
         {
           subtitle: "Funcion con parametros",
-          code: `fn Suma(x:int) {\n\tx+=1;\n}`,
+          code: `fn Suma(x:int) {\n\tx=10;\n}`,
         },
         {
           subtitle: "Funcion con retorno (opcion 1)",
