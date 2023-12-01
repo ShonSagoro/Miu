@@ -1,16 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import { UseCheck } from "../context/CheckProvider";
+import ScrollableFeed from "react-scrollable-feed";
 
 function MiuCode() {
-  const { checkGrammar} = UseCheck();
+  const { checkGrammar, consoleMessage } = UseCheck();
 
-  const [message, setMessage] = useState("Write and check your miu Code");
+  const [messages, setMessages] = useState(["Write and check your miu Code"]);
   const editorRef = useRef(null);
-  const [code, setCode] = useState(
-    `fn Main() {\n\tfmt.Print("Hola, mundo!");\n}`
-    );
- 
+  const [code, setCode] = useState(`fn Main() {\n\tfmt.Print("Hola, mundo!");\n}`);
+
+  //fn Main() {\n\tfmt.Print("Hola, mundo!");\n}
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
   }
@@ -39,10 +39,18 @@ function MiuCode() {
   };
 
   const handleCLick = async () => {
-     let messageInfo=await checkGrammar(code);
-     setMessage(messageInfo)
-     console.log("ayuda")
+    let messageInfo = await checkGrammar(code);
+    setMessages((prevMessages) => [...prevMessages, messageInfo]);
+    console.log("ayuda");
   };
+
+  const handleConsole = async () => {
+    setMessages(["Clear"]);
+  };
+
+  useEffect(() => {
+    setMessages((prevMessages) => [...prevMessages, consoleMessage]);
+  }, [consoleMessage]);
 
   return (
     <div className="text-white h-full w-1/2 bg-slate-900 flex flex-col">
@@ -59,14 +67,25 @@ function MiuCode() {
       <div className="border border-transparent border-t-slate-200 h-1/3">
         <div className="flex flex-row-reverse px-2 pt-2">
           <button
-            className="border border-slate-700 text-slate-700 hover:border-slate-400 hover:text-slate-400 rounded-md px-3"
+            className="border border-slate-700 text-slate-700 hover:border-slate-400 hover:text-slate-400 rounded-md px-3 mx-2"
             onClick={handleCLick}
           >
             Check code
           </button>
+          <button
+            className="border border-slate-700 text-slate-700 hover:border-slate-400 hover:text-slate-400 rounded-md px-3"
+            onClick={handleConsole}
+          >
+            Clear console
+          </button>
         </div>
-        <div className=" px-2 text-slate-200">
-          <h1>{`> ${message}`}</h1>
+        <div
+          className=" px-2 text-slate-200 overflow-y-auto h-4/5">
+            <ScrollableFeed>
+              {messages.map((message, index) => (
+                <p>{message}</p>
+              ))}
+            </ScrollableFeed>
         </div>
       </div>
     </div>
