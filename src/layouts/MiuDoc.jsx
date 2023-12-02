@@ -99,10 +99,15 @@ function MiuDoc() {
         <div className="w-full pl-8">
           {ExamplesCodes.map((example, index) => {
             return (
-              <CodeCard title={example.title} content={example.content} index={index}/>
+              <CodeCard
+                title={example.title}
+                content={example.content}
+                index={index}
+              />
             );
           })}
         </div>
+        <h1>--En Proceso--</h1>
       </div>
     </>
   );

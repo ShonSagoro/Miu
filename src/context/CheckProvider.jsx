@@ -9,7 +9,7 @@ const CheckProvider = ({ children }) => {
   const [consoleMessage, setConsoleMessage] = useState("");
 
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  const seconds = 0.1;
+  const seconds = 0.000001;
 
   const executeWithDelay = async (fn, args) => {
     fn(args);
@@ -194,5 +194,3 @@ export function UseCheck() {
 
   return context;
 }
-
-// [{"symbol":{"key":"PR","isTerminal":false},"symbols":[{"key":"PRN","isTerminal":false},[[{"key":"-","regex":{},"isTerminal":true,"length":4}],[{"key":"-","regex":{},"isTerminal":true,"length":3}],[{"key":"-","regex":{},"isTerminal":true,"length":6}],[{"key":"-","regex":{},"isTerminal":true,"length":5}]]]},{"symbol":{"key":"PRN","isTerminal":false},"symbols":[{"key":"xd","regex":{},"isTerminal":true,"length":1},{"key":"RPRN","isTerminal":false}]},{"symbol":{"key":"RPRN","isTerminal":false},"symbols":[[[{"key":"-","regex":{},"isTerminal":true,"length":1},{"key":"RPRN","isTerminal":false}],[{"key":"el :","regex":{},"isTerminal":true,"length":1},{"key":"RPRN","isTerminal":false}],[{"key":"el vacio","regex":{},"isTerminal":true,"length":1}]]]}]
