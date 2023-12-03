@@ -1,6 +1,158 @@
 const producctions = [
   {
     symbol: {
+      key: "INIT",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^(fn)$/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FS",
+            isTerminal: false,
+          },
+          {
+            key: "INIT",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(use)$/,
+            isTerminal: true,
+            length: 3,
+          },
+          {
+            key: "USEI",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "USEI",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "USEI",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]$/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "USEN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "USEN",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^::/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "USENR",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]$/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "USEN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "USENR",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^::/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "USENR",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]$/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "USENR",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^;$/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "INIT",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
       key: "F",
       isTerminal: false,
     },
@@ -436,7 +588,7 @@ const producctions = [
             isTerminal: false,
           },
           {
-            key: "VCP",
+            key: "VPC",
             isTerminal: false,
           },
           {
@@ -447,12 +599,12 @@ const producctions = [
         [
           {
             key: "-",
-            regex: /^for/,
+            regex: /^for[\s]+/,
             isTerminal: true,
-            length: 3,
+            length: 4,
           },
           {
-            key: "FORV",
+            key: "FORIV",
             isTerminal: false,
           },
           {
@@ -472,11 +624,27 @@ const producctions = [
             isTerminal: false,
           },
           {
-            key: "VCP",
+            key: "VPC",
             isTerminal: false,
           },
           {
             key: "FCN",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^if/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+          {
+            key: "EL",
             isTerminal: false,
           },
         ],
@@ -646,7 +814,27 @@ const producctions = [
             isTerminal: false,
           },
           {
-            key: "VCP",
+            key: "VPC",
+            isTerminal: false,
+          },
+          {
+            key: "FCR",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^if/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+          {
+            key: "EL",
             isTerminal: false,
           },
           {
@@ -666,7 +854,23 @@ const producctions = [
             isTerminal: false,
           },
           {
-            key: "VCP",
+            key: "VPC",
+            isTerminal: false,
+          },
+          {
+            key: "FCR",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^for/,
+            isTerminal: true,
+            length: 3,
+          },
+          {
+            key: "FORIV",
             isTerminal: false,
           },
           {
@@ -682,7 +886,7 @@ const producctions = [
             length: 9,
           },
           {
-            key: "VCP",
+            key: "VPC",
             isTerminal: false,
           },
           {
@@ -1302,7 +1506,7 @@ const producctions = [
             regex: /^\)/,
             isTerminal: true,
             length: 1,
-          }
+          },
         ],
         [
           {
@@ -1416,7 +1620,7 @@ const producctions = [
             regex: /^\)/,
             isTerminal: true,
             length: 1,
-          }
+          },
         ],
         [
           {
@@ -1482,7 +1686,7 @@ const producctions = [
             regex: /^\)/,
             isTerminal: true,
             length: 1,
-          }
+          },
         ],
         [
           {
@@ -1536,7 +1740,7 @@ const producctions = [
             regex: /^\)/,
             isTerminal: true,
             length: 1,
-          }
+          },
         ],
         [
           {
@@ -1706,10 +1910,6 @@ const producctions = [
             regex: /^\)/,
             isTerminal: true,
             length: 1,
-          },
-          {
-            key: "VPC",
-            isTerminal: false,
           },
         ],
         [
@@ -2111,6 +2311,850 @@ const producctions = [
         isTerminal: true,
         length: 1,
       },
+    ],
+  },
+  {
+    symbol: {
+      key: "FORIV",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORV",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "FORV",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORIN",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORV",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "FORIN",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORIN",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^in/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FORRAN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "FORRAN",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORRAN",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORRANV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[0-9]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORRANI",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "FORRANI",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^[0-9]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORRANI",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\.\./,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FORRANIF",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "FORRANIF",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^[0-9]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORRANIF",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\{/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FCN",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FORCON",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "FORRANV",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORCON",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORRANV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\{/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FCN",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\./,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORF",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "FORF",
+      isTerminal: false,
+    },
+    symbols: [
+      {
+        key: "VVLLFN",
+        isTerminal: false,
+      },
+      {
+        key: "FORCON",
+        isTerminal: false,
+      },
+    ],
+  },
+  {
+    symbol: {
+      key: "FORCON",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FORCON",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\{/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "FCN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "IFV",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFMV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z0-9]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\./,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFVRF",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(==|>=|<=|!=|\|\||\&\&)/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(>|<)/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\{/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FCN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "IFVRF",
+      isTerminal: false,
+    },
+    symbols: [
+      {
+        key: "VVLLFN",
+        isTerminal: false,
+      },
+      {
+        key: "IFMV",
+        isTerminal: false,
+      },
+    ],
+  },
+  {
+    symbol: {
+      key: "IFIV",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[0-9]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFINT",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^!/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFVN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "IFVN",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^[a-zA-Z]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^[0-9]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFINT",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "IFINT",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^[0-9]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFINT",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\./,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFFLO",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFMV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(==|>=|<=|!=|\|\||\&\&)/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(>|<)/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\{/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FCN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "IFFLO",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^[0-9]/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFFLO",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFMV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(==|>=|<=|!=|\|\||\&\&)/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(>|<)/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\{/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FCN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "IFMV",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "IFMV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(==|>=|<=|!=|\|\||\&\&)/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^(>|<)/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIV",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\{/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "FCN",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "ELIF",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^\s/,
+            isTerminal: true,
+            length: 1,
+          },
+          {
+            key: "ELIF",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^if/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "IFIVC",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\{/,
+            isTerminal: true,
+            length: 2,
+          },
+          {
+            key: "ELIFC",
+            isTerminal: false,
+          },
+        ],
+      ],
+    ],
+  },
+  {
+    symbol: {
+      key: "ELIFC",
+      isTerminal: false,
+    },
+    symbols: [
+      {
+        key: "FCN",
+        isTerminal: false,
+      },
+      {
+        key: "EL",
+        isTerminal: false,
+      },
+    ],
+  },
+  {
+    symbol: {
+      key: "IFIVC",
+      isTerminal: false,
+    },
+    symbols: [
+      {
+        key: "IFIV",
+        isTerminal: false,
+      },
+      {
+        key: "EL",
+        isTerminal: false,
+      },
+    ],
+  },
+  {
+    symbol: {
+      key: "EL",
+      isTerminal: false,
+    },
+    symbols: [
+      [
+        [
+          {
+            key: "-",
+            regex: /^else/,
+            isTerminal: true,
+            length: 4,
+          },
+          {
+            key: "ELIF",
+            isTerminal: false,
+          },
+        ],
+        [
+          {
+            key: "-",
+            regex: /^\}/,
+            isTerminal: true,
+            length: 1,
+          },
+        ],
+      ],
     ],
   },
 ];

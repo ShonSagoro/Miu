@@ -7,6 +7,7 @@ const CheckProvider = ({ children }) => {
   let stack = [];
 
   const [consoleMessage, setConsoleMessage] = useState("");
+  const [isDebugEnable, setIsDebugEnable] = useState(false);
 
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const seconds = 0.000001;
@@ -17,17 +18,25 @@ const CheckProvider = ({ children }) => {
   };
 
   const addMessage = async (message) => {
-    // setConsoleMessage(JSON.stringify(message))
     await executeWithDelay(setConsoleMessage, JSON.stringify(message));
   };
+  const addDebugMessage = async (message) => {
+    if (isDebugEnable) {
+      await executeWithDelay(
+        setConsoleMessage,
+        JSON.stringify(">> " + message)
+      );
+    }
+  };
 
-  async function checkGrammar(code) {
+  async function checkGrammar(code, debugMode) {
+    setIsDebugEnable(debugMode);
     let positionFail = -1;
     stack.splice(0, stack.length);
 
     await addMessage("[-] Stack Empty: " + JSON.stringify(stack) + " [-]");
     stack.push({
-      key: "F",
+      key: "INIT",
       isTerminal: false,
     });
     await addMessage("[-] Stack Init: " + JSON.stringify(stack) + " [-]");
@@ -36,19 +45,25 @@ const CheckProvider = ({ children }) => {
     let state;
     for (let i = 0; i < codeLines.length; i++) {
       if (!/^\s*$/.test(codeLines[i])) {
-        let lineClean = codeLines[i].replace(/[\r\n\t]/gm, ""); //limpia las tabulaciones
-        await addMessage("line Check");
-        await addMessage(lineClean);
+        let lineClean = codeLines[i].replace(/[\r\n\t]/gm, "");
+        await addDebugMessage("line Check");
+        await addDebugMessage(lineClean);
         state = await checkGrammarLine(lineClean);
         if (!state) {
-          await addMessage(
+          await addDebugMessage(
             "[x] Falle en la linea: " + JSON.stringify(i + 1) + " [x]"
           );
           positionFail = i + 1;
           break;
         }
+        await addDebugMessage("El stack quedo asi: " + JSON.stringify(stack));
       }
     }
+
+    if(stack[0].key =="INIT"){
+      stack.pop();
+    }
+    
     await addMessage("[F] Stack final: " + JSON.stringify(stack) + " [F]");
     await addMessage("[F] State final: " + JSON.stringify(state) + " [F]");
 
@@ -61,35 +76,51 @@ const CheckProvider = ({ children }) => {
     let character;
     let symbol;
     for (let i = 0; i < code.length; i++) {
+      await addDebugMessage("STACK");
+      await addDebugMessage(JSON.stringify(stack));
+      await addDebugMessage("STACK");
       character = code[i];
       symbol = stack.pop();
-
-      await addMessage("[c] Character Actual: " + JSON.stringify(character) + " [c]");
-      await addMessage("[symbol] Symbolo Actual: " + JSON.stringify(symbol) + " [symbol]");
-      await addMessage("[p] Posicion Actual: " + JSON.stringify(i) + " [p]");
-    
+      await addDebugMessage("STACK");
+      await addDebugMessage(JSON.stringify(stack));
+      await addDebugMessage("STACK");
+      await addDebugMessage(
+        "[c] Character Actual: " + JSON.stringify(character) + " [c]"
+      );
+      await addDebugMessage(
+        "[symbol] Symbolo Actual: " + JSON.stringify(symbol) + " [symbol]"
+      );
+      await addDebugMessage(
+        "[p] Posicion Actual: " + JSON.stringify(i) + " [p]"
+      );
 
       if (Array.isArray(symbol)) {
         let pass = await checkOrOptions(symbol, code, i);
         if (!pass) {
-          await addMessage("[x] Error: con las opciones en produccion [x]");
+          await addDebugMessage(
+            "[x] Error: con las opciones en produccion [x]"
+          );
           return false;
         } else {
           symbol = stack.pop();
           i += symbol.length - 1;
         }
       } else if (symbol.isTerminal) {
-        await addMessage("[o] Terminal: " + JSON.stringify(symbol) + " [o]");
-        await addMessage("[c] Letra: " + JSON.stringify(character) + " [c]");
+        await addDebugMessage(
+          "[o] Terminal: " + JSON.stringify(symbol) + " [o]"
+        );
+        await addDebugMessage(
+          "[c] Letra: " + JSON.stringify(character) + " [c]"
+        );
         if (symbol.length != undefined) {
           character = code.slice(i, i + symbol.length);
-          await addMessage(
+          await addDebugMessage(
             "[c] Palabra: " + JSON.stringify(character) + " [c]"
           );
-          await addMessage(
+          await addDebugMessage(
             "[r] Regex: " + symbol.regex.toString() + " [r]"
-          )
-          await addMessage(
+          );
+          await addDebugMessage(
             "[R] Resultado de test: " +
               JSON.stringify(symbol.regex.test(character)) +
               " [R]"
@@ -97,17 +128,17 @@ const CheckProvider = ({ children }) => {
           if (symbol.regex.test(character)) {
             i += symbol.length - 1;
           } else {
-            await addMessage("[x] Error: con la terminal [x]");
+            await addDebugMessage("[x] Error: con la terminal [x]");
             return false;
           }
         }
       } else {
         i--;
-        await addMessage("[i] Buscando Produccion [i]");
+        await addDebugMessage("[i] Buscando Produccion [i]");
         let production = findProduction(symbol);
 
         if (production != undefined) {
-          await addMessage("[i] Produccion Encontrada[i]");
+          await addDebugMessage("[i] Produccion Encontrada[i]");
           const reversestack = production.symbols.slice().reverse();
           for (let newSymbols of reversestack) {
             if (newSymbols != undefined) {
@@ -117,32 +148,34 @@ const CheckProvider = ({ children }) => {
         }
       }
     }
-    await addMessage("[ok] todo bien con: " + code + " [ok]");
+    await addDebugMessage("[ok] todo bien con: " + code + " [ok]");
     return true;
   }
 
   async function checkOrOptions(symbol, code, position) {
     let symbolstackReverse = symbol.slice().reverse();
     for (let orArraySymbols of symbolstackReverse) {
-      await addMessage(
+      await addDebugMessage(
         "[o] Array Option: " + JSON.stringify(orArraySymbols) + " [o]"
       );
       if (orArraySymbols[0].isTerminal) {
         if (orArraySymbols[0].length != undefined) {
-          await addMessage("[o] code eval: " + JSON.stringify(code) + " [o]");
+          await addDebugMessage(
+            "[o] code eval: " + JSON.stringify(code) + " [o]"
+          );
           let character = code.slice(
             position,
             position + orArraySymbols[0].length
           );
-          await addMessage(
+          await addDebugMessage(
             "[o] slice code eval: " + JSON.stringify(character) + " [o]"
           );
-          await addMessage(
+          await addDebugMessage(
             "[r] Regex: " + orArraySymbols[0].regex.toString() + " [r]"
           );
           if (orArraySymbols[0].regex.test(character)) {
             const reversestack = orArraySymbols.slice().reverse();
-            await addMessage(
+            await addDebugMessage(
               "[ok] Push Option Correct: " +
                 JSON.stringify(reversestack) +
                 " [ok]"
@@ -157,9 +190,9 @@ const CheckProvider = ({ children }) => {
         }
       }
     }
-    await addMessage("[x] Error: con las opciones [x]");
-    await addMessage("[x] Evalue:" + JSON.stringify(code) + "[x]");
-    await addMessage("[x] Con:" + JSON.stringify(symbol) + " [x]");
+    await addDebugMessage("[x] Error: con las opciones [x]");
+    await addDebugMessage("[x] Evalue:" + JSON.stringify(code) + "[x]");
+    await addDebugMessage("[x] Con:" + JSON.stringify(symbol) + " [x]");
     return false;
   }
 
@@ -176,8 +209,10 @@ const CheckProvider = ({ children }) => {
     return {
       checkGrammar,
       consoleMessage,
+      isDebugEnable,
+      setIsDebugEnable,
     };
-  }, [consoleMessage]);
+  }, [consoleMessage, isDebugEnable]);
 
   return (
     <CheckContext.Provider value={value}>{children}</CheckContext.Provider>
