@@ -8,6 +8,7 @@ const CheckProvider = ({ children }) => {
 
   const [consoleMessage, setConsoleMessage] = useState("");
   const [isDebugEnable, setIsDebugEnable] = useState(false);
+  const [isQuickEnable, setIsQuickEnable] = useState(false);
 
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const seconds = 0.000001;
@@ -17,9 +18,17 @@ const CheckProvider = ({ children }) => {
     await wait(seconds);
   };
 
-  const addMessage = async (message) => {
+  const addQuickMessage = async (message) => {
     await executeWithDelay(setConsoleMessage, JSON.stringify(message));
   };
+  const addMessage = async (message) => {
+    if(!isQuickEnable){
+      await executeWithDelay(setConsoleMessage, JSON.stringify(message));
+    }
+  };
+
+  
+
   const addDebugMessage = async (message) => {
     if (isDebugEnable) {
       await executeWithDelay(
@@ -29,27 +38,62 @@ const CheckProvider = ({ children }) => {
     }
   };
 
-  async function checkGrammar(code, debugMode) {
-    setIsDebugEnable(debugMode);
+  const printStack = async () => {
+    if (!isQuickEnable) {
+      let reversestack = stack.slice().reverse();
+      await addMessage(" ");
+      await addMessage("[] Stack-------------------------------------[]");
+      for (let stackElement of reversestack) {
+        if (Array.isArray(stackElement)) {
+          let stackElementReverse=stackElement.slice().reverse();
+          await addMessage(
+            "  []Options element-------------------------------------"
+          );
+          for (let stackElementOption of stackElement) {
+            let stackElementOptionReverse =stackElementOption.slice().reverse();
+            await addMessage("[Option]: ");
+            await addMessage("[");
+            for (let dataOption of stackElementOption){
+              await addMessage(dataOption);
+            }
+            await addMessage("]");
+          }
+          await addMessage(
+            "  []Options element-------------------------------------"
+          );
+        } else {
+          await addMessage("Stack Content: " + stackElement.key);
+          await addMessage("-is Terminal?: " + stackElement.isTerminal);
+          if(stackElement.isTerminal) {
+            await addMessage("---REGEX?: " + stackElement.regex);
+          }
+        }
+      }
+      await addMessage("[] FIN-Stack-------------------------------------[]");
+      await addMessage(" ");
+    }
+  };
+
+  async function checkGrammar(code) {
     let positionFail = -1;
     stack.splice(0, stack.length);
 
-    await addMessage("[-] Stack Empty: " + JSON.stringify(stack) + " [-]");
+    await addQuickMessage("[-] Stack Empty: " + JSON.stringify(stack) + " [-]");
     stack.push({
       key: "INIT",
       isTerminal: false,
     });
-    await addMessage("[-] Stack Init: " + JSON.stringify(stack) + " [-]");
+    await addQuickMessage("[-] Stack Init: " + JSON.stringify(stack) + " [-]");
 
     const codeLines = code.split("\n");
     let state;
     for (let i = 0; i < codeLines.length; i++) {
       if (!/^\s*$/.test(codeLines[i])) {
-        await addMessage("code");
-        await addMessage(codeLines);
+        await addDebugMessage("code");
+        await addDebugMessage(codeLines);
         let lineClean = codeLines[i].replace(/[\r\n\t]/gm, "");
-        await addMessage("line Check");
-        await addMessage(lineClean);
+        await addDebugMessage("line Check");
+        await addDebugMessage(lineClean);
         state = await checkGrammarLine(lineClean);
         if (!state) {
           await addDebugMessage(
@@ -62,39 +106,31 @@ const CheckProvider = ({ children }) => {
       }
     }
 
-    if(stack[0].key =="INIT"){
-      stack.pop();
+    if (!Array.isArray(stack[0])) {
+      if(stack.key="INIT"){
+        stack.pop();
+      }
     }
-    
-    await addMessage("[F] Stack final: " + JSON.stringify(stack) + " [F]");
-    await addMessage("[F] State final: " + JSON.stringify(state) + " [F]");
 
-    return stack.length === 0 && state && positionFail === -1
+    await printStack();
+    await addQuickMessage("[F] Stack final: " + JSON.stringify(stack) + " [F]");
+
+    return stack.length === 0
       ? "todo ok"
-      : "todo mal JAJAJAJ, en la linea: " + positionFail;
+      : "OH no tenemos un problema";
   }
 
   async function checkGrammarLine(code) {
     let character;
     let symbol;
     for (let i = 0; i < code.length; i++) {
-      await addDebugMessage("STACK");
-      await addDebugMessage(JSON.stringify(stack));
-      await addDebugMessage("STACK");
+      await printStack();
       character = code[i];
       symbol = stack.pop();
-      await addDebugMessage("STACK");
-      await addDebugMessage(JSON.stringify(stack));
-      await addDebugMessage("STACK");
-      await addDebugMessage(
+      await addMessage(
         "[c] Character Actual: " + JSON.stringify(character) + " [c]"
       );
-      await addDebugMessage(
-        "[symbol] Symbolo Actual: " + JSON.stringify(symbol) + " [symbol]"
-      );
-      await addDebugMessage(
-        "[p] Posicion Actual: " + JSON.stringify(i) + " [p]"
-      );
+      await addMessage("[p] Posicion Actual: " + JSON.stringify(i) + " [p]");
 
       if (Array.isArray(symbol)) {
         let pass = await checkOrOptions(symbol, code, i);
@@ -213,8 +249,10 @@ const CheckProvider = ({ children }) => {
       consoleMessage,
       isDebugEnable,
       setIsDebugEnable,
+      isQuickEnable,
+      setIsQuickEnable,
     };
-  }, [consoleMessage, isDebugEnable]);
+  }, [consoleMessage, isDebugEnable, isQuickEnable]);
 
   return (
     <CheckContext.Provider value={value}>{children}</CheckContext.Provider>

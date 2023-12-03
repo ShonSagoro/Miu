@@ -4,7 +4,14 @@ import { UseCheck } from "../context/CheckProvider";
 import ScrollableFeed from "react-scrollable-feed";
 
 function MiuCode() {
-  const { checkGrammar, consoleMessage, isDebugEnable, setIsDebugEnable} = UseCheck();
+  const {
+    checkGrammar,
+    consoleMessage,
+    isDebugEnable,
+    setIsDebugEnable,
+    isQuickEnable,
+    setIsQuickEnable,
+  } = UseCheck();
 
   const [messages, setMessages] = useState(["Write and check your miu Code"]);
   const editorRef = useRef(null);
@@ -44,19 +51,21 @@ function MiuCode() {
 
   const handleCLick = async () => {
     setIsDisabled(true);
-    console.log("Perro entre");
-    let messageInfo = await checkGrammar(code, isDebugEnable);
+    let messageInfo = await checkGrammar(code);
     setMessages((prevMessages) => [...prevMessages, messageInfo]);
     setIsDisabled(false);
-    console.log("ayuda");
   };
 
   const handleConsole = async () => {
     setMessages(["Clear"]);
   };
 
-  const handleButtonClick = () => {
+  const handleDebug = () => {
     setIsDebugEnable((prevState) => !prevState);
+  };
+
+  const handleQuick = () => {
+    setIsQuickEnable((prevState) => !prevState);
   };
 
   useEffect(() => {
@@ -65,7 +74,7 @@ function MiuCode() {
 
   return (
     <div className="text-white h-full w-1/2 bg-slate-900 flex flex-col">
-      <div className="h-2/3 pt-3 px-6">
+      <div className="h-1/3 pt-3 px-6">
         <Editor
           beforeMount={setEditorTheme}
           defaultValue={code}
@@ -75,31 +84,38 @@ function MiuCode() {
           onMount={handleEditorDidMount}
         />
       </div>
-      <div className="border border-transparent  border-t-slate-200 h-2/3">
-        <div className="flex flex-row-reverse px-2 pt-2">
+      <div className="border border-transparent  border-t-slate-200 h-2/3 flex flex-col">
+        <div className="h-auto flex flex-row-reverse px-2 pt-2">
           <button
-            className="border border-slate-700 text-slate-700 hover:border-slate-400 hover:text-slate-400 rounded-md px-3 mx-2"
+            className="border border-slate-700 text-slate-700 hover:border-slate-400 hover:text-slate-400 rounded-md px-3 ml-2"
             onClick={handleCLick}
-            disabled={isDisabled}
           >
             Check code
           </button>
           <button
-            onClick={handleButtonClick}
-            className={`border border-slate-700  hover:border-slate-400 hover:text-slate-400 rounded-md px-3 ${
+            onClick={handleDebug}
+            className={`border border-slate-700  hover:border-slate-400 hover:text-slate-400 rounded-md px-3 ml-2 ${
               isDebugEnable ? "bg-slate-500 text-slate-200" : "text-slate-700"
             }`}
           >
             Debug: {isDebugEnable ? "Enable" : "Disable"}
           </button>
           <button
-            className="border border-slate-700 text-slate-700 hover:border-slate-400 hover:text-slate-400 rounded-md px-3 mx-2"
+            onClick={handleQuick}
+            className={`border border-slate-700  hover:border-slate-400 hover:text-slate-400 rounded-md ml-2 px-3 ${
+              isQuickEnable ? "bg-slate-500 text-slate-200" : "text-slate-700"
+            }`}
+          >
+            Quick mode: {isQuickEnable ? "Enable" : "Disable"}
+          </button>
+          <button
+            className="border border-slate-700 text-slate-700 hover:border-slate-400 hover:text-slate-400 rounded-md px-3 ml-2"
             onClick={handleConsole}
           >
             Clear console
           </button>
         </div>
-        <div className=" px-2 text-slate-200 overflow-y-auto h-2/3">
+        <div className=" px-2 text-slate-200 overflow-y-auto h-full pt-2">
           <ScrollableFeed>
             {messages.map((message, index) => (
               <p>{message}</p>
