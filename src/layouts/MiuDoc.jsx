@@ -16,13 +16,9 @@ function MiuDoc() {
           code: `fn Suma(x:int) {\n\tx=10;\n}`,
         },
         {
-          subtitle: "Funcion con retorno (opcion 1)",
+          subtitle: "Funcion con retorno",
           code: `fn Suma()->int {\n\t10==1\n}`,
-        },
-        {
-          subtitle: "Funcion con retorno (opcion 2)",
-          code: `fn Suma()->int {\n\treturn 10==1;\n}`,
-        },
+        }
       ],
     },
     {

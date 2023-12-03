@@ -45,9 +45,11 @@ const CheckProvider = ({ children }) => {
     let state;
     for (let i = 0; i < codeLines.length; i++) {
       if (!/^\s*$/.test(codeLines[i])) {
+        await addMessage("code");
+        await addMessage(codeLines);
         let lineClean = codeLines[i].replace(/[\r\n\t]/gm, "");
-        await addDebugMessage("line Check");
-        await addDebugMessage(lineClean);
+        await addMessage("line Check");
+        await addMessage(lineClean);
         state = await checkGrammarLine(lineClean);
         if (!state) {
           await addDebugMessage(
