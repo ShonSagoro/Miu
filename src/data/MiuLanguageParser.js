@@ -2,42 +2,40 @@
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import MiuLanguageListener from './MiuLanguageListener.js';
-const serializedATN = [4,1,18,123,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
-4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,1,0,1,0,5,0,23,8,0,10,0,12,0,26,
-9,0,1,1,1,1,4,1,30,8,1,11,1,12,1,31,1,1,1,1,4,1,36,8,1,11,1,12,1,37,5,1,
-40,8,1,10,1,12,1,43,9,1,1,1,1,1,1,2,1,2,1,2,1,2,3,2,51,8,2,1,2,1,2,1,2,5,
-2,56,8,2,10,2,12,2,59,9,2,1,2,1,2,1,3,4,3,64,8,3,11,3,12,3,65,1,3,1,3,1,
-3,1,3,3,3,72,8,3,1,3,1,3,1,3,1,4,1,4,1,4,5,4,80,8,4,10,4,12,4,83,9,4,1,5,
-4,5,86,8,5,11,5,12,5,87,1,5,1,5,1,5,1,6,1,6,1,6,3,6,96,8,6,1,7,4,7,99,8,
-7,11,7,12,7,100,1,7,1,7,4,7,105,8,7,11,7,12,7,106,5,7,109,8,7,10,7,12,7,
-112,9,7,1,8,1,8,1,9,1,9,1,9,3,9,119,8,9,1,9,1,9,1,9,0,0,10,0,2,4,6,8,10,
-12,14,16,18,0,1,1,0,12,12,129,0,24,1,0,0,0,2,27,1,0,0,0,4,46,1,0,0,0,6,63,
-1,0,0,0,8,76,1,0,0,0,10,85,1,0,0,0,12,95,1,0,0,0,14,98,1,0,0,0,16,113,1,
-0,0,0,18,115,1,0,0,0,20,23,3,4,2,0,21,23,3,2,1,0,22,20,1,0,0,0,22,21,1,0,
-0,0,23,26,1,0,0,0,24,22,1,0,0,0,24,25,1,0,0,0,25,1,1,0,0,0,26,24,1,0,0,0,
-27,29,5,1,0,0,28,30,5,14,0,0,29,28,1,0,0,0,30,31,1,0,0,0,31,29,1,0,0,0,31,
-32,1,0,0,0,32,41,1,0,0,0,33,35,5,2,0,0,34,36,5,14,0,0,35,34,1,0,0,0,36,37,
-1,0,0,0,37,35,1,0,0,0,37,38,1,0,0,0,38,40,1,0,0,0,39,33,1,0,0,0,40,43,1,
-0,0,0,41,39,1,0,0,0,41,42,1,0,0,0,42,44,1,0,0,0,43,41,1,0,0,0,44,45,5,3,
-0,0,45,3,1,0,0,0,46,47,5,4,0,0,47,48,5,15,0,0,48,50,5,5,0,0,49,51,3,8,4,
-0,50,49,1,0,0,0,50,51,1,0,0,0,51,52,1,0,0,0,52,53,5,6,0,0,53,57,5,7,0,0,
-54,56,3,16,8,0,55,54,1,0,0,0,56,59,1,0,0,0,57,55,1,0,0,0,57,58,1,0,0,0,58,
-60,1,0,0,0,59,57,1,0,0,0,60,61,5,8,0,0,61,5,1,0,0,0,62,64,5,14,0,0,63,62,
-1,0,0,0,64,65,1,0,0,0,65,63,1,0,0,0,65,66,1,0,0,0,66,67,1,0,0,0,67,68,5,
-9,0,0,68,69,5,15,0,0,69,71,5,5,0,0,70,72,3,12,6,0,71,70,1,0,0,0,71,72,1,
-0,0,0,72,73,1,0,0,0,73,74,5,6,0,0,74,75,5,3,0,0,75,7,1,0,0,0,76,81,3,10,
-5,0,77,78,5,10,0,0,78,80,3,10,5,0,79,77,1,0,0,0,80,83,1,0,0,0,81,79,1,0,
-0,0,81,82,1,0,0,0,82,9,1,0,0,0,83,81,1,0,0,0,84,86,5,14,0,0,85,84,1,0,0,
-0,86,87,1,0,0,0,87,85,1,0,0,0,87,88,1,0,0,0,88,89,1,0,0,0,89,90,5,11,0,0,
-90,91,5,17,0,0,91,11,1,0,0,0,92,96,3,14,7,0,93,96,5,16,0,0,94,96,3,18,9,
-0,95,92,1,0,0,0,95,93,1,0,0,0,95,94,1,0,0,0,96,13,1,0,0,0,97,99,5,14,0,0,
-98,97,1,0,0,0,99,100,1,0,0,0,100,98,1,0,0,0,100,101,1,0,0,0,101,110,1,0,
-0,0,102,104,5,10,0,0,103,105,5,14,0,0,104,103,1,0,0,0,105,106,1,0,0,0,106,
-104,1,0,0,0,106,107,1,0,0,0,107,109,1,0,0,0,108,102,1,0,0,0,109,112,1,0,
-0,0,110,108,1,0,0,0,110,111,1,0,0,0,111,15,1,0,0,0,112,110,1,0,0,0,113,114,
-3,6,3,0,114,17,1,0,0,0,115,118,5,12,0,0,116,119,5,13,0,0,117,119,8,0,0,0,
-118,116,1,0,0,0,118,117,1,0,0,0,119,120,1,0,0,0,120,121,5,12,0,0,121,19,
-1,0,0,0,16,22,24,31,37,41,50,57,65,71,81,87,95,100,106,110,118];
+const serializedATN = [4,1,30,120,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,1,0,1,0,5,
+0,27,8,0,10,0,12,0,30,9,0,1,1,1,1,1,1,5,1,35,8,1,10,1,12,1,38,9,1,1,1,1,
+1,1,2,1,2,1,2,1,3,1,3,1,3,1,3,3,3,49,8,3,1,3,1,3,1,3,5,3,54,8,3,10,3,12,
+3,57,9,3,1,3,1,3,1,4,1,4,1,4,1,4,3,4,65,8,4,1,5,1,5,1,5,1,5,1,5,3,5,72,8,
+5,1,5,1,5,1,5,1,6,1,6,1,6,3,6,80,8,6,1,6,1,6,1,6,1,7,1,7,1,7,5,7,88,8,7,
+10,7,12,7,91,9,7,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,103,8,9,10,
+9,12,9,106,9,9,1,9,1,9,1,10,1,10,1,10,3,10,113,8,10,1,11,1,11,1,11,1,11,
+1,11,1,11,0,0,12,0,2,4,6,8,10,12,14,16,18,20,22,0,2,3,0,18,18,26,26,28,29,
+1,0,16,17,121,0,28,1,0,0,0,2,31,1,0,0,0,4,41,1,0,0,0,6,44,1,0,0,0,8,64,1,
+0,0,0,10,66,1,0,0,0,12,76,1,0,0,0,14,84,1,0,0,0,16,92,1,0,0,0,18,94,1,0,
+0,0,20,112,1,0,0,0,22,114,1,0,0,0,24,27,3,6,3,0,25,27,3,2,1,0,26,24,1,0,
+0,0,26,25,1,0,0,0,27,30,1,0,0,0,28,26,1,0,0,0,28,29,1,0,0,0,29,1,1,0,0,0,
+30,28,1,0,0,0,31,32,5,1,0,0,32,36,5,18,0,0,33,35,3,4,2,0,34,33,1,0,0,0,35,
+38,1,0,0,0,36,34,1,0,0,0,36,37,1,0,0,0,37,39,1,0,0,0,38,36,1,0,0,0,39,40,
+5,2,0,0,40,3,1,0,0,0,41,42,5,3,0,0,42,43,5,18,0,0,43,5,1,0,0,0,44,45,5,4,
+0,0,45,46,5,18,0,0,46,48,5,5,0,0,47,49,5,15,0,0,48,47,1,0,0,0,48,49,1,0,
+0,0,49,50,1,0,0,0,50,51,5,6,0,0,51,55,5,7,0,0,52,54,3,8,4,0,53,52,1,0,0,
+0,54,57,1,0,0,0,55,53,1,0,0,0,55,56,1,0,0,0,56,58,1,0,0,0,57,55,1,0,0,0,
+58,59,5,8,0,0,59,7,1,0,0,0,60,65,3,10,5,0,61,65,3,22,11,0,62,65,3,12,6,0,
+63,65,3,18,9,0,64,60,1,0,0,0,64,61,1,0,0,0,64,62,1,0,0,0,64,63,1,0,0,0,65,
+9,1,0,0,0,66,67,5,18,0,0,67,68,5,9,0,0,68,69,5,18,0,0,69,71,5,5,0,0,70,72,
+3,14,7,0,71,70,1,0,0,0,71,72,1,0,0,0,72,73,1,0,0,0,73,74,5,6,0,0,74,75,5,
+2,0,0,75,11,1,0,0,0,76,77,5,18,0,0,77,79,5,5,0,0,78,80,3,14,7,0,79,78,1,
+0,0,0,79,80,1,0,0,0,80,81,1,0,0,0,81,82,5,6,0,0,82,83,5,2,0,0,83,13,1,0,
+0,0,84,89,3,16,8,0,85,86,5,10,0,0,86,88,3,16,8,0,87,85,1,0,0,0,88,91,1,0,
+0,0,89,87,1,0,0,0,89,90,1,0,0,0,90,15,1,0,0,0,91,89,1,0,0,0,92,93,7,0,0,
+0,93,17,1,0,0,0,94,95,5,11,0,0,95,96,5,18,0,0,96,97,5,12,0,0,97,98,5,28,
+0,0,98,99,5,13,0,0,99,100,3,20,10,0,100,104,5,7,0,0,101,103,3,8,4,0,102,
+101,1,0,0,0,103,106,1,0,0,0,104,102,1,0,0,0,104,105,1,0,0,0,105,107,1,0,
+0,0,106,104,1,0,0,0,107,108,5,8,0,0,108,19,1,0,0,0,109,113,3,12,6,0,110,
+113,3,10,5,0,111,113,5,28,0,0,112,109,1,0,0,0,112,110,1,0,0,0,112,111,1,
+0,0,0,113,21,1,0,0,0,114,115,5,14,0,0,115,116,5,18,0,0,116,117,7,1,0,0,117,
+118,5,2,0,0,118,23,1,0,0,0,11,26,28,36,48,55,64,71,79,89,104,112];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -49,15 +47,18 @@ const sharedContextCache = new antlr4.atn.PredictionContextCache();
 export default class MiuLanguageParser extends antlr4.Parser {
 
     static grammarFileName = "MiuLanguage.g4";
-    static literalNames = [ null, "'use'", "'::'", "';'", "'fn'", "'('", 
-                            "')'", "'{'", "'}'", "'.'", "','", "':'", "'''", 
-                            "'\\''" ];
+    static literalNames = [ null, "'use'", "';'", "'::'", "'fn'", "'('", 
+                            "')'", "'{'", "'}'", "'.'", "','", "'for'", 
+                            "'in'", "'..'", "'let'", null, null, null, null, 
+                            null, null, "'int'", "'float'", "'char'", "'string'" ];
     static symbolicNames = [ null, null, null, null, null, null, null, null, 
-                             null, null, null, null, null, null, "Var", 
-                             "Fname", "String", "Vtype", "WS" ];
-    static ruleNames = [ "program", "modularCall", "function", "varFunctionStatement", 
-                         "paramRe", "param", "param2", "paramSend", "statement", 
-                         "char" ];
+                             null, null, null, null, null, null, null, "Param", 
+                             "VarD", "VarT", "ID", "REST_ID", "TYPES", "TINT", 
+                             "TFLO", "TCHA", "TSTR", "VALUES", "VSTR", "VCHA", 
+                             "VINT", "VFLO", "WS" ];
+    static ruleNames = [ "program", "modularCall", "anotherDirectory", "dFunc", 
+                         "statement", "varFunc", "func", "param2", "vParam", 
+                         "for", "range", "var" ];
 
     constructor(input) {
         super(input);
@@ -75,25 +76,25 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 24;
+	        this.state = 28;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
 	        while(_la===1 || _la===4) {
-	            this.state = 22;
+	            this.state = 26;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
 	            case 4:
-	                this.state = 20;
-	                this.function_();
+	                this.state = 24;
+	                this.dFunc();
 	                break;
 	            case 1:
-	                this.state = 21;
+	                this.state = 25;
 	                this.modularCall();
 	                break;
 	            default:
 	                throw new antlr4.error.NoViableAltException(this);
 	            }
-	            this.state = 26;
+	            this.state = 30;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
@@ -119,305 +120,99 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 27;
+	        this.state = 31;
 	        this.match(MiuLanguageParser.T__0);
-	        this.state = 29; 
+	        this.state = 32;
+	        this.match(MiuLanguageParser.ID);
+	        this.state = 36;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        do {
-	            this.state = 28;
-	            this.match(MiuLanguageParser.Var);
-	            this.state = 31; 
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	        } while(_la===14);
-	        this.state = 41;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        while(_la===2) {
+	        while(_la===3) {
 	            this.state = 33;
-	            this.match(MiuLanguageParser.T__1);
-	            this.state = 35; 
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	            do {
-	                this.state = 34;
-	                this.match(MiuLanguageParser.Var);
-	                this.state = 37; 
-	                this._errHandler.sync(this);
-	                _la = this._input.LA(1);
-	            } while(_la===14);
-	            this.state = 43;
+	            this.anotherDirectory();
+	            this.state = 38;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
+	        this.state = 39;
+	        this.match(MiuLanguageParser.T__1);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	anotherDirectory() {
+	    let localctx = new AnotherDirectoryContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 4, MiuLanguageParser.RULE_anotherDirectory);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 41;
+	        this.match(MiuLanguageParser.T__2);
+	        this.state = 42;
+	        this.match(MiuLanguageParser.ID);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	dFunc() {
+	    let localctx = new DFuncContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 6, MiuLanguageParser.RULE_dFunc);
+	    var _la = 0;
+	    try {
+	        this.enterOuterAlt(localctx, 1);
 	        this.state = 44;
-	        this.match(MiuLanguageParser.T__2);
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	function_() {
-	    let localctx = new FunctionContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 4, MiuLanguageParser.RULE_function);
-	    var _la = 0;
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 46;
 	        this.match(MiuLanguageParser.T__3);
-	        this.state = 47;
-	        this.match(MiuLanguageParser.Fname);
+	        this.state = 45;
+	        this.match(MiuLanguageParser.ID);
+	        this.state = 46;
+	        this.match(MiuLanguageParser.T__4);
 	        this.state = 48;
-	        this.match(MiuLanguageParser.T__4);
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        if(_la===15) {
+	            this.state = 47;
+	            this.match(MiuLanguageParser.Param);
+	        }
+
 	        this.state = 50;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        if(_la===14) {
-	            this.state = 49;
-	            this.paramRe();
-	        }
-
-	        this.state = 52;
 	        this.match(MiuLanguageParser.T__5);
-	        this.state = 53;
+	        this.state = 51;
 	        this.match(MiuLanguageParser.T__6);
-	        this.state = 57;
+	        this.state = 55;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===14) {
-	            this.state = 54;
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 280576) !== 0)) {
+	            this.state = 52;
 	            this.statement();
-	            this.state = 59;
+	            this.state = 57;
 	            this._errHandler.sync(this);
 	            _la = this._input.LA(1);
 	        }
-	        this.state = 60;
+	        this.state = 58;
 	        this.match(MiuLanguageParser.T__7);
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	varFunctionStatement() {
-	    let localctx = new VarFunctionStatementContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 6, MiuLanguageParser.RULE_varFunctionStatement);
-	    var _la = 0;
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 63; 
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        do {
-	            this.state = 62;
-	            this.match(MiuLanguageParser.Var);
-	            this.state = 65; 
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	        } while(_la===14);
-	        this.state = 67;
-	        this.match(MiuLanguageParser.T__8);
-	        this.state = 68;
-	        this.match(MiuLanguageParser.Fname);
-	        this.state = 69;
-	        this.match(MiuLanguageParser.T__4);
-	        this.state = 71;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 86016) !== 0)) {
-	            this.state = 70;
-	            this.param2();
-	        }
-
-	        this.state = 73;
-	        this.match(MiuLanguageParser.T__5);
-	        this.state = 74;
-	        this.match(MiuLanguageParser.T__2);
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	paramRe() {
-	    let localctx = new ParamReContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 8, MiuLanguageParser.RULE_paramRe);
-	    var _la = 0;
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 76;
-	        this.param();
-	        this.state = 81;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        while(_la===10) {
-	            this.state = 77;
-	            this.match(MiuLanguageParser.T__9);
-	            this.state = 78;
-	            this.param();
-	            this.state = 83;
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	        }
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	param() {
-	    let localctx = new ParamContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 10, MiuLanguageParser.RULE_param);
-	    var _la = 0;
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 85; 
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        do {
-	            this.state = 84;
-	            this.match(MiuLanguageParser.Var);
-	            this.state = 87; 
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	        } while(_la===14);
-	        this.state = 89;
-	        this.match(MiuLanguageParser.T__10);
-	        this.state = 90;
-	        this.match(MiuLanguageParser.Vtype);
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	param2() {
-	    let localctx = new Param2Context(this, this._ctx, this.state);
-	    this.enterRule(localctx, 12, MiuLanguageParser.RULE_param2);
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 95;
-	        this._errHandler.sync(this);
-	        switch(this._input.LA(1)) {
-	        case 14:
-	            this.state = 92;
-	            this.paramSend();
-	            break;
-	        case 16:
-	            this.state = 93;
-	            this.match(MiuLanguageParser.String);
-	            break;
-	        case 12:
-	            this.state = 94;
-	            this.char_();
-	            break;
-	        default:
-	            throw new antlr4.error.NoViableAltException(this);
-	        }
-	    } catch (re) {
-	    	if(re instanceof antlr4.error.RecognitionException) {
-		        localctx.exception = re;
-		        this._errHandler.reportError(this, re);
-		        this._errHandler.recover(this, re);
-		    } else {
-		    	throw re;
-		    }
-	    } finally {
-	        this.exitRule();
-	    }
-	    return localctx;
-	}
-
-
-
-	paramSend() {
-	    let localctx = new ParamSendContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 14, MiuLanguageParser.RULE_paramSend);
-	    var _la = 0;
-	    try {
-	        this.enterOuterAlt(localctx, 1);
-	        this.state = 98; 
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        do {
-	            this.state = 97;
-	            this.match(MiuLanguageParser.Var);
-	            this.state = 100; 
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	        } while(_la===14);
-	        this.state = 110;
-	        this._errHandler.sync(this);
-	        _la = this._input.LA(1);
-	        while(_la===10) {
-	            this.state = 102;
-	            this.match(MiuLanguageParser.T__9);
-	            this.state = 104; 
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	            do {
-	                this.state = 103;
-	                this.match(MiuLanguageParser.Var);
-	                this.state = 106; 
-	                this._errHandler.sync(this);
-	                _la = this._input.LA(1);
-	            } while(_la===14);
-	            this.state = 112;
-	            this._errHandler.sync(this);
-	            _la = this._input.LA(1);
-	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -436,11 +231,34 @@ export default class MiuLanguageParser extends antlr4.Parser {
 
 	statement() {
 	    let localctx = new StatementContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 16, MiuLanguageParser.RULE_statement);
+	    this.enterRule(localctx, 8, MiuLanguageParser.RULE_statement);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 113;
-	        this.varFunctionStatement();
+	        this.state = 64;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
+	        switch(la_) {
+	        case 1:
+	            this.state = 60;
+	            this.varFunc();
+	            break;
+
+	        case 2:
+	            this.state = 61;
+	            this.var_();
+	            break;
+
+	        case 3:
+	            this.state = 62;
+	            this.func();
+	            break;
+
+	        case 4:
+	            this.state = 63;
+	            this.for_();
+	            break;
+
+	        }
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -457,38 +275,263 @@ export default class MiuLanguageParser extends antlr4.Parser {
 
 
 
-	char_() {
-	    let localctx = new CharContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 18, MiuLanguageParser.RULE_char);
+	varFunc() {
+	    let localctx = new VarFuncContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 10, MiuLanguageParser.RULE_varFunc);
 	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 115;
-	        this.match(MiuLanguageParser.T__11);
-	        this.state = 118;
+	        this.state = 66;
+	        this.match(MiuLanguageParser.ID);
+	        this.state = 67;
+	        this.match(MiuLanguageParser.T__8);
+	        this.state = 68;
+	        this.match(MiuLanguageParser.ID);
+	        this.state = 69;
+	        this.match(MiuLanguageParser.T__4);
+	        this.state = 71;
 	        this._errHandler.sync(this);
-	        var la_ = this._interp.adaptivePredict(this._input,15,this._ctx);
+	        _la = this._input.LA(1);
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 872677376) !== 0)) {
+	            this.state = 70;
+	            this.param2();
+	        }
+
+	        this.state = 73;
+	        this.match(MiuLanguageParser.T__5);
+	        this.state = 74;
+	        this.match(MiuLanguageParser.T__1);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	func() {
+	    let localctx = new FuncContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 12, MiuLanguageParser.RULE_func);
+	    var _la = 0;
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 76;
+	        this.match(MiuLanguageParser.ID);
+	        this.state = 77;
+	        this.match(MiuLanguageParser.T__4);
+	        this.state = 79;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 872677376) !== 0)) {
+	            this.state = 78;
+	            this.param2();
+	        }
+
+	        this.state = 81;
+	        this.match(MiuLanguageParser.T__5);
+	        this.state = 82;
+	        this.match(MiuLanguageParser.T__1);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	param2() {
+	    let localctx = new Param2Context(this, this._ctx, this.state);
+	    this.enterRule(localctx, 14, MiuLanguageParser.RULE_param2);
+	    var _la = 0;
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 84;
+	        this.vParam();
+	        this.state = 89;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        while(_la===10) {
+	            this.state = 85;
+	            this.match(MiuLanguageParser.T__9);
+	            this.state = 86;
+	            this.vParam();
+	            this.state = 91;
+	            this._errHandler.sync(this);
+	            _la = this._input.LA(1);
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	vParam() {
+	    let localctx = new VParamContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 16, MiuLanguageParser.RULE_vParam);
+	    var _la = 0;
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 92;
+	        _la = this._input.LA(1);
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 872677376) !== 0))) {
+	        this._errHandler.recoverInline(this);
+	        }
+	        else {
+	        	this._errHandler.reportMatch(this);
+	            this.consume();
+	        }
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	for_() {
+	    let localctx = new ForContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 18, MiuLanguageParser.RULE_for);
+	    var _la = 0;
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 94;
+	        this.match(MiuLanguageParser.T__10);
+	        this.state = 95;
+	        this.match(MiuLanguageParser.ID);
+	        this.state = 96;
+	        this.match(MiuLanguageParser.T__11);
+	        this.state = 97;
+	        this.match(MiuLanguageParser.VINT);
+	        this.state = 98;
+	        this.match(MiuLanguageParser.T__12);
+	        this.state = 99;
+	        this.range();
+	        this.state = 100;
+	        this.match(MiuLanguageParser.T__6);
+	        this.state = 104;
+	        this._errHandler.sync(this);
+	        _la = this._input.LA(1);
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 280576) !== 0)) {
+	            this.state = 101;
+	            this.statement();
+	            this.state = 106;
+	            this._errHandler.sync(this);
+	            _la = this._input.LA(1);
+	        }
+	        this.state = 107;
+	        this.match(MiuLanguageParser.T__7);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	range() {
+	    let localctx = new RangeContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 20, MiuLanguageParser.RULE_range);
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 112;
+	        this._errHandler.sync(this);
+	        var la_ = this._interp.adaptivePredict(this._input,10,this._ctx);
 	        switch(la_) {
 	        case 1:
-	            this.state = 116;
-	            this.match(MiuLanguageParser.T__12);
+	            this.state = 109;
+	            this.func();
 	            break;
 
 	        case 2:
-	            this.state = 117;
-	            _la = this._input.LA(1);
-	            if(_la<=0 || _la===12) {
-	            this._errHandler.recoverInline(this);
-	            }
-	            else {
-	            	this._errHandler.reportMatch(this);
-	                this.consume();
-	            }
+	            this.state = 110;
+	            this.varFunc();
+	            break;
+
+	        case 3:
+	            this.state = 111;
+	            this.match(MiuLanguageParser.VINT);
 	            break;
 
 	        }
-	        this.state = 120;
-	        this.match(MiuLanguageParser.T__11);
+	    } catch (re) {
+	    	if(re instanceof antlr4.error.RecognitionException) {
+		        localctx.exception = re;
+		        this._errHandler.reportError(this, re);
+		        this._errHandler.recover(this, re);
+		    } else {
+		    	throw re;
+		    }
+	    } finally {
+	        this.exitRule();
+	    }
+	    return localctx;
+	}
+
+
+
+	var_() {
+	    let localctx = new VarContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 22, MiuLanguageParser.RULE_var);
+	    var _la = 0;
+	    try {
+	        this.enterOuterAlt(localctx, 1);
+	        this.state = 114;
+	        this.match(MiuLanguageParser.T__13);
+	        this.state = 115;
+	        this.match(MiuLanguageParser.ID);
+	        this.state = 116;
+	        _la = this._input.LA(1);
+	        if(!(_la===16 || _la===17)) {
+	        this._errHandler.recoverInline(this);
+	        }
+	        else {
+	        	this._errHandler.reportMatch(this);
+	            this.consume();
+	        }
+	        this.state = 117;
+	        this.match(MiuLanguageParser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -520,22 +563,36 @@ MiuLanguageParser.T__9 = 10;
 MiuLanguageParser.T__10 = 11;
 MiuLanguageParser.T__11 = 12;
 MiuLanguageParser.T__12 = 13;
-MiuLanguageParser.Var = 14;
-MiuLanguageParser.Fname = 15;
-MiuLanguageParser.String = 16;
-MiuLanguageParser.Vtype = 17;
-MiuLanguageParser.WS = 18;
+MiuLanguageParser.T__13 = 14;
+MiuLanguageParser.Param = 15;
+MiuLanguageParser.VarD = 16;
+MiuLanguageParser.VarT = 17;
+MiuLanguageParser.ID = 18;
+MiuLanguageParser.REST_ID = 19;
+MiuLanguageParser.TYPES = 20;
+MiuLanguageParser.TINT = 21;
+MiuLanguageParser.TFLO = 22;
+MiuLanguageParser.TCHA = 23;
+MiuLanguageParser.TSTR = 24;
+MiuLanguageParser.VALUES = 25;
+MiuLanguageParser.VSTR = 26;
+MiuLanguageParser.VCHA = 27;
+MiuLanguageParser.VINT = 28;
+MiuLanguageParser.VFLO = 29;
+MiuLanguageParser.WS = 30;
 
 MiuLanguageParser.RULE_program = 0;
 MiuLanguageParser.RULE_modularCall = 1;
-MiuLanguageParser.RULE_function = 2;
-MiuLanguageParser.RULE_varFunctionStatement = 3;
-MiuLanguageParser.RULE_paramRe = 4;
-MiuLanguageParser.RULE_param = 5;
-MiuLanguageParser.RULE_param2 = 6;
-MiuLanguageParser.RULE_paramSend = 7;
-MiuLanguageParser.RULE_statement = 8;
-MiuLanguageParser.RULE_char = 9;
+MiuLanguageParser.RULE_anotherDirectory = 2;
+MiuLanguageParser.RULE_dFunc = 3;
+MiuLanguageParser.RULE_statement = 4;
+MiuLanguageParser.RULE_varFunc = 5;
+MiuLanguageParser.RULE_func = 6;
+MiuLanguageParser.RULE_param2 = 7;
+MiuLanguageParser.RULE_vParam = 8;
+MiuLanguageParser.RULE_for = 9;
+MiuLanguageParser.RULE_range = 10;
+MiuLanguageParser.RULE_var = 11;
 
 class ProgramContext extends antlr4.ParserRuleContext {
 
@@ -551,14 +608,14 @@ class ProgramContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_program;
     }
 
-	function_ = function(i) {
+	dFunc = function(i) {
 	    if(i===undefined) {
 	        i = null;
 	    }
 	    if(i===null) {
-	        return this.getTypedRuleContexts(FunctionContext);
+	        return this.getTypedRuleContexts(DFuncContext);
 	    } else {
-	        return this.getTypedRuleContext(FunctionContext,i);
+	        return this.getTypedRuleContext(DFuncContext,i);
 	    }
 	};
 
@@ -604,17 +661,20 @@ class ModularCallContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_modularCall;
     }
 
-	Var = function(i) {
-		if(i===undefined) {
-			i = null;
-		}
-	    if(i===null) {
-	        return this.getTokens(MiuLanguageParser.Var);
-	    } else {
-	        return this.getToken(MiuLanguageParser.Var, i);
-	    }
+	ID() {
+	    return this.getToken(MiuLanguageParser.ID, 0);
 	};
 
+	anotherDirectory = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(AnotherDirectoryContext);
+	    } else {
+	        return this.getTypedRuleContext(AnotherDirectoryContext,i);
+	    }
+	};
 
 	enterRule(listener) {
 	    if(listener instanceof MiuLanguageListener ) {
@@ -633,7 +693,7 @@ class ModularCallContext extends antlr4.ParserRuleContext {
 
 
 
-class FunctionContext extends antlr4.ParserRuleContext {
+class AnotherDirectoryContext extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
         if(parent===undefined) {
@@ -644,15 +704,50 @@ class FunctionContext extends antlr4.ParserRuleContext {
         }
         super(parent, invokingState);
         this.parser = parser;
-        this.ruleIndex = MiuLanguageParser.RULE_function;
+        this.ruleIndex = MiuLanguageParser.RULE_anotherDirectory;
     }
 
-	Fname() {
-	    return this.getToken(MiuLanguageParser.Fname, 0);
+	ID() {
+	    return this.getToken(MiuLanguageParser.ID, 0);
 	};
 
-	paramRe() {
-	    return this.getTypedRuleContext(ParamReContext,0);
+	enterRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.enterAnotherDirectory(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.exitAnotherDirectory(this);
+		}
+	}
+
+
+}
+
+
+
+class DFuncContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = MiuLanguageParser.RULE_dFunc;
+    }
+
+	ID() {
+	    return this.getToken(MiuLanguageParser.ID, 0);
+	};
+
+	Param() {
+	    return this.getToken(MiuLanguageParser.Param, 0);
 	};
 
 	statement = function(i) {
@@ -668,239 +763,13 @@ class FunctionContext extends antlr4.ParserRuleContext {
 
 	enterRule(listener) {
 	    if(listener instanceof MiuLanguageListener ) {
-	        listener.enterFunction(this);
+	        listener.enterDFunc(this);
 		}
 	}
 
 	exitRule(listener) {
 	    if(listener instanceof MiuLanguageListener ) {
-	        listener.exitFunction(this);
-		}
-	}
-
-
-}
-
-
-
-class VarFunctionStatementContext extends antlr4.ParserRuleContext {
-
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = MiuLanguageParser.RULE_varFunctionStatement;
-    }
-
-	Fname() {
-	    return this.getToken(MiuLanguageParser.Fname, 0);
-	};
-
-	Var = function(i) {
-		if(i===undefined) {
-			i = null;
-		}
-	    if(i===null) {
-	        return this.getTokens(MiuLanguageParser.Var);
-	    } else {
-	        return this.getToken(MiuLanguageParser.Var, i);
-	    }
-	};
-
-
-	param2() {
-	    return this.getTypedRuleContext(Param2Context,0);
-	};
-
-	enterRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.enterVarFunctionStatement(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.exitVarFunctionStatement(this);
-		}
-	}
-
-
-}
-
-
-
-class ParamReContext extends antlr4.ParserRuleContext {
-
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = MiuLanguageParser.RULE_paramRe;
-    }
-
-	param = function(i) {
-	    if(i===undefined) {
-	        i = null;
-	    }
-	    if(i===null) {
-	        return this.getTypedRuleContexts(ParamContext);
-	    } else {
-	        return this.getTypedRuleContext(ParamContext,i);
-	    }
-	};
-
-	enterRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.enterParamRe(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.exitParamRe(this);
-		}
-	}
-
-
-}
-
-
-
-class ParamContext extends antlr4.ParserRuleContext {
-
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = MiuLanguageParser.RULE_param;
-    }
-
-	Vtype() {
-	    return this.getToken(MiuLanguageParser.Vtype, 0);
-	};
-
-	Var = function(i) {
-		if(i===undefined) {
-			i = null;
-		}
-	    if(i===null) {
-	        return this.getTokens(MiuLanguageParser.Var);
-	    } else {
-	        return this.getToken(MiuLanguageParser.Var, i);
-	    }
-	};
-
-
-	enterRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.enterParam(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.exitParam(this);
-		}
-	}
-
-
-}
-
-
-
-class Param2Context extends antlr4.ParserRuleContext {
-
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = MiuLanguageParser.RULE_param2;
-    }
-
-	paramSend() {
-	    return this.getTypedRuleContext(ParamSendContext,0);
-	};
-
-	String() {
-	    return this.getToken(MiuLanguageParser.String, 0);
-	};
-
-	char_() {
-	    return this.getTypedRuleContext(CharContext,0);
-	};
-
-	enterRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.enterParam2(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.exitParam2(this);
-		}
-	}
-
-
-}
-
-
-
-class ParamSendContext extends antlr4.ParserRuleContext {
-
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = MiuLanguageParser.RULE_paramSend;
-    }
-
-	Var = function(i) {
-		if(i===undefined) {
-			i = null;
-		}
-	    if(i===null) {
-	        return this.getTokens(MiuLanguageParser.Var);
-	    } else {
-	        return this.getToken(MiuLanguageParser.Var, i);
-	    }
-	};
-
-
-	enterRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.enterParamSend(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof MiuLanguageListener ) {
-	        listener.exitParamSend(this);
+	        listener.exitDFunc(this);
 		}
 	}
 
@@ -923,8 +792,20 @@ class StatementContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_statement;
     }
 
-	varFunctionStatement() {
-	    return this.getTypedRuleContext(VarFunctionStatementContext,0);
+	varFunc() {
+	    return this.getTypedRuleContext(VarFuncContext,0);
+	};
+
+	var_() {
+	    return this.getTypedRuleContext(VarContext,0);
+	};
+
+	func() {
+	    return this.getTypedRuleContext(FuncContext,0);
+	};
+
+	for_() {
+	    return this.getTypedRuleContext(ForContext,0);
 	};
 
 	enterRule(listener) {
@@ -944,7 +825,7 @@ class StatementContext extends antlr4.ParserRuleContext {
 
 
 
-class CharContext extends antlr4.ParserRuleContext {
+class VarFuncContext extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
         if(parent===undefined) {
@@ -955,19 +836,302 @@ class CharContext extends antlr4.ParserRuleContext {
         }
         super(parent, invokingState);
         this.parser = parser;
-        this.ruleIndex = MiuLanguageParser.RULE_char;
+        this.ruleIndex = MiuLanguageParser.RULE_varFunc;
     }
 
+	ID = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(MiuLanguageParser.ID);
+	    } else {
+	        return this.getToken(MiuLanguageParser.ID, i);
+	    }
+	};
+
+
+	param2() {
+	    return this.getTypedRuleContext(Param2Context,0);
+	};
 
 	enterRule(listener) {
 	    if(listener instanceof MiuLanguageListener ) {
-	        listener.enterChar(this);
+	        listener.enterVarFunc(this);
 		}
 	}
 
 	exitRule(listener) {
 	    if(listener instanceof MiuLanguageListener ) {
-	        listener.exitChar(this);
+	        listener.exitVarFunc(this);
+		}
+	}
+
+
+}
+
+
+
+class FuncContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = MiuLanguageParser.RULE_func;
+    }
+
+	ID() {
+	    return this.getToken(MiuLanguageParser.ID, 0);
+	};
+
+	param2() {
+	    return this.getTypedRuleContext(Param2Context,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.enterFunc(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.exitFunc(this);
+		}
+	}
+
+
+}
+
+
+
+class Param2Context extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = MiuLanguageParser.RULE_param2;
+    }
+
+	vParam = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(VParamContext);
+	    } else {
+	        return this.getTypedRuleContext(VParamContext,i);
+	    }
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.enterParam2(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.exitParam2(this);
+		}
+	}
+
+
+}
+
+
+
+class VParamContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = MiuLanguageParser.RULE_vParam;
+    }
+
+	VSTR() {
+	    return this.getToken(MiuLanguageParser.VSTR, 0);
+	};
+
+	VINT() {
+	    return this.getToken(MiuLanguageParser.VINT, 0);
+	};
+
+	VFLO() {
+	    return this.getToken(MiuLanguageParser.VFLO, 0);
+	};
+
+	ID() {
+	    return this.getToken(MiuLanguageParser.ID, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.enterVParam(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.exitVParam(this);
+		}
+	}
+
+
+}
+
+
+
+class ForContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = MiuLanguageParser.RULE_for;
+    }
+
+	ID() {
+	    return this.getToken(MiuLanguageParser.ID, 0);
+	};
+
+	VINT() {
+	    return this.getToken(MiuLanguageParser.VINT, 0);
+	};
+
+	range() {
+	    return this.getTypedRuleContext(RangeContext,0);
+	};
+
+	statement = function(i) {
+	    if(i===undefined) {
+	        i = null;
+	    }
+	    if(i===null) {
+	        return this.getTypedRuleContexts(StatementContext);
+	    } else {
+	        return this.getTypedRuleContext(StatementContext,i);
+	    }
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.enterFor(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.exitFor(this);
+		}
+	}
+
+
+}
+
+
+
+class RangeContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = MiuLanguageParser.RULE_range;
+    }
+
+	func() {
+	    return this.getTypedRuleContext(FuncContext,0);
+	};
+
+	varFunc() {
+	    return this.getTypedRuleContext(VarFuncContext,0);
+	};
+
+	VINT() {
+	    return this.getToken(MiuLanguageParser.VINT, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.enterRange(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.exitRange(this);
+		}
+	}
+
+
+}
+
+
+
+class VarContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = MiuLanguageParser.RULE_var;
+    }
+
+	ID() {
+	    return this.getToken(MiuLanguageParser.ID, 0);
+	};
+
+	VarT() {
+	    return this.getToken(MiuLanguageParser.VarT, 0);
+	};
+
+	VarD() {
+	    return this.getToken(MiuLanguageParser.VarD, 0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.enterVar(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof MiuLanguageListener ) {
+	        listener.exitVar(this);
 		}
 	}
 
@@ -979,11 +1143,13 @@ class CharContext extends antlr4.ParserRuleContext {
 
 MiuLanguageParser.ProgramContext = ProgramContext; 
 MiuLanguageParser.ModularCallContext = ModularCallContext; 
-MiuLanguageParser.FunctionContext = FunctionContext; 
-MiuLanguageParser.VarFunctionStatementContext = VarFunctionStatementContext; 
-MiuLanguageParser.ParamReContext = ParamReContext; 
-MiuLanguageParser.ParamContext = ParamContext; 
-MiuLanguageParser.Param2Context = Param2Context; 
-MiuLanguageParser.ParamSendContext = ParamSendContext; 
+MiuLanguageParser.AnotherDirectoryContext = AnotherDirectoryContext; 
+MiuLanguageParser.DFuncContext = DFuncContext; 
 MiuLanguageParser.StatementContext = StatementContext; 
-MiuLanguageParser.CharContext = CharContext; 
+MiuLanguageParser.VarFuncContext = VarFuncContext; 
+MiuLanguageParser.FuncContext = FuncContext; 
+MiuLanguageParser.Param2Context = Param2Context; 
+MiuLanguageParser.VParamContext = VParamContext; 
+MiuLanguageParser.ForContext = ForContext; 
+MiuLanguageParser.RangeContext = RangeContext; 
+MiuLanguageParser.VarContext = VarContext; 

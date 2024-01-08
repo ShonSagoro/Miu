@@ -1,32 +1,60 @@
 grammar MiuLanguage;
 
-program: (function | modularCall)*;
+program: (dFunc | modularCall)*;
 
-modularCall: 'use' Var+ ('::' Var+)* ';';
+//module
 
-function: 'fn' Fname '(' paramRe? ')' '{' statement* '}';
+modularCall: 'use' ID anotherDirectory* ';';
 
-varFunctionStatement: Var+ '.' Fname '(' param2? ')' ';';
+anotherDirectory: '::' ID;
 
-paramRe: param (',' param)*;
+//fn
 
-param: Var+ ':' Vtype;
+dFunc: 'fn' ID '(' Param? ')' '{' statement* '}';
 
-param2: (paramSend | String | char);
+Param: ID ':' TYPES (',' ID ':' TYPES)*;
 
-paramSend: Var+ (',' Var+)*;
+//BODY
+statement: (varFunc | var | func | for);
 
-statement: varFunctionStatement;
+varFunc: ID '.' ID '(' param2? ')' ';';
 
-Var: [a-zA-Z0-9];
+func: ID '(' param2? ')' ';';
 
-Fname: [A-Z] Var*;
+param2: vParam (',' vParam)*;
 
-String: '"' ('\\"' | ~'"')* '"'
-     | '\'' ('\\\'' | ~'\'')* '\'';
+vParam: (VSTR | VINT | VFLO | ID);
 
-char: '\'' ('\\\'' | ~'\'') '\'';
+// for
 
-Vtype: ('int' | 'float' | 'char' | 'string');
+for: 'for' ID 'in' VINT '..' range '{' statement* '}';
+
+range: (func | varFunc | VINT);
+
+//define variable
+
+var: 'let' ID (VarT | VarD) ';';
+VarD: '=' VALUES;
+VarT:
+	':' (
+		TINT '=' VINT
+		| TFLO '=' VFLO
+		| TCHA '=' VCHA
+		| TSTR '=' VSTR
+	);
+
+//TOKENS
+ID: [a-zA-Z] REST_ID*;
+REST_ID: [a-zA-Z0-9];
+TYPES: (TINT | TFLO | TCHA | TSTR);
+TINT: 'int';
+TFLO: 'float';
+TCHA: 'char';
+TSTR: 'string';
+VALUES: (VSTR | VINT | VFLO | VCHA);
+VSTR: '"' ('\\"' | .)*? '"';
+VCHA: '\'' ('\\\'' | .)*? '\'';
+VINT: [0-9]+;
+VFLO: VINT '.' VINT;
 
 WS: [ \t\r\n]+ -> skip;
