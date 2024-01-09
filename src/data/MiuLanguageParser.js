@@ -2,7 +2,7 @@
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import MiuLanguageListener from './MiuLanguageListener.js';
-const serializedATN = [4,1,30,120,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
+const serializedATN = [4,1,31,119,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,1,0,1,0,5,
 0,27,8,0,10,0,12,0,30,9,0,1,1,1,1,1,1,5,1,35,8,1,10,1,12,1,38,9,1,1,1,1,
 1,1,2,1,2,1,2,1,3,1,3,1,3,1,3,3,3,49,8,3,1,3,1,3,1,3,5,3,54,8,3,10,3,12,
@@ -10,32 +10,32 @@ const serializedATN = [4,1,30,120,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 5,1,5,1,5,1,5,1,6,1,6,1,6,3,6,80,8,6,1,6,1,6,1,6,1,7,1,7,1,7,5,7,88,8,7,
 10,7,12,7,91,9,7,1,8,1,8,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,103,8,9,10,
 9,12,9,106,9,9,1,9,1,9,1,10,1,10,1,10,3,10,113,8,10,1,11,1,11,1,11,1,11,
-1,11,1,11,0,0,12,0,2,4,6,8,10,12,14,16,18,20,22,0,2,3,0,18,18,26,26,28,29,
-1,0,16,17,121,0,28,1,0,0,0,2,31,1,0,0,0,4,41,1,0,0,0,6,44,1,0,0,0,8,64,1,
-0,0,0,10,66,1,0,0,0,12,76,1,0,0,0,14,84,1,0,0,0,16,92,1,0,0,0,18,94,1,0,
-0,0,20,112,1,0,0,0,22,114,1,0,0,0,24,27,3,6,3,0,25,27,3,2,1,0,26,24,1,0,
-0,0,26,25,1,0,0,0,27,30,1,0,0,0,28,26,1,0,0,0,28,29,1,0,0,0,29,1,1,0,0,0,
-30,28,1,0,0,0,31,32,5,1,0,0,32,36,5,18,0,0,33,35,3,4,2,0,34,33,1,0,0,0,35,
-38,1,0,0,0,36,34,1,0,0,0,36,37,1,0,0,0,37,39,1,0,0,0,38,36,1,0,0,0,39,40,
-5,2,0,0,40,3,1,0,0,0,41,42,5,3,0,0,42,43,5,18,0,0,43,5,1,0,0,0,44,45,5,4,
-0,0,45,46,5,18,0,0,46,48,5,5,0,0,47,49,5,15,0,0,48,47,1,0,0,0,48,49,1,0,
-0,0,49,50,1,0,0,0,50,51,5,6,0,0,51,55,5,7,0,0,52,54,3,8,4,0,53,52,1,0,0,
-0,54,57,1,0,0,0,55,53,1,0,0,0,55,56,1,0,0,0,56,58,1,0,0,0,57,55,1,0,0,0,
-58,59,5,8,0,0,59,7,1,0,0,0,60,65,3,10,5,0,61,65,3,22,11,0,62,65,3,12,6,0,
-63,65,3,18,9,0,64,60,1,0,0,0,64,61,1,0,0,0,64,62,1,0,0,0,64,63,1,0,0,0,65,
-9,1,0,0,0,66,67,5,18,0,0,67,68,5,9,0,0,68,69,5,18,0,0,69,71,5,5,0,0,70,72,
-3,14,7,0,71,70,1,0,0,0,71,72,1,0,0,0,72,73,1,0,0,0,73,74,5,6,0,0,74,75,5,
-2,0,0,75,11,1,0,0,0,76,77,5,18,0,0,77,79,5,5,0,0,78,80,3,14,7,0,79,78,1,
-0,0,0,79,80,1,0,0,0,80,81,1,0,0,0,81,82,5,6,0,0,82,83,5,2,0,0,83,13,1,0,
-0,0,84,89,3,16,8,0,85,86,5,10,0,0,86,88,3,16,8,0,87,85,1,0,0,0,88,91,1,0,
-0,0,89,87,1,0,0,0,89,90,1,0,0,0,90,15,1,0,0,0,91,89,1,0,0,0,92,93,7,0,0,
-0,93,17,1,0,0,0,94,95,5,11,0,0,95,96,5,18,0,0,96,97,5,12,0,0,97,98,5,28,
-0,0,98,99,5,13,0,0,99,100,3,20,10,0,100,104,5,7,0,0,101,103,3,8,4,0,102,
-101,1,0,0,0,103,106,1,0,0,0,104,102,1,0,0,0,104,105,1,0,0,0,105,107,1,0,
-0,0,106,104,1,0,0,0,107,108,5,8,0,0,108,19,1,0,0,0,109,113,3,12,6,0,110,
-113,3,10,5,0,111,113,5,28,0,0,112,109,1,0,0,0,112,110,1,0,0,0,112,111,1,
-0,0,0,113,21,1,0,0,0,114,115,5,14,0,0,115,116,5,18,0,0,116,117,7,1,0,0,117,
-118,5,2,0,0,118,23,1,0,0,0,11,26,28,36,48,55,64,71,79,89,104,112];
+1,11,0,0,12,0,2,4,6,8,10,12,14,16,18,20,22,0,1,2,0,19,20,28,30,120,0,28,
+1,0,0,0,2,31,1,0,0,0,4,41,1,0,0,0,6,44,1,0,0,0,8,64,1,0,0,0,10,66,1,0,0,
+0,12,76,1,0,0,0,14,84,1,0,0,0,16,92,1,0,0,0,18,94,1,0,0,0,20,112,1,0,0,0,
+22,114,1,0,0,0,24,27,3,6,3,0,25,27,3,2,1,0,26,24,1,0,0,0,26,25,1,0,0,0,27,
+30,1,0,0,0,28,26,1,0,0,0,28,29,1,0,0,0,29,1,1,0,0,0,30,28,1,0,0,0,31,32,
+5,1,0,0,32,36,5,20,0,0,33,35,3,4,2,0,34,33,1,0,0,0,35,38,1,0,0,0,36,34,1,
+0,0,0,36,37,1,0,0,0,37,39,1,0,0,0,38,36,1,0,0,0,39,40,5,2,0,0,40,3,1,0,0,
+0,41,42,5,3,0,0,42,43,5,20,0,0,43,5,1,0,0,0,44,45,5,4,0,0,45,46,5,20,0,0,
+46,48,5,5,0,0,47,49,5,15,0,0,48,47,1,0,0,0,48,49,1,0,0,0,49,50,1,0,0,0,50,
+51,5,6,0,0,51,55,5,7,0,0,52,54,3,8,4,0,53,52,1,0,0,0,54,57,1,0,0,0,55,53,
+1,0,0,0,55,56,1,0,0,0,56,58,1,0,0,0,57,55,1,0,0,0,58,59,5,8,0,0,59,7,1,0,
+0,0,60,65,3,10,5,0,61,65,3,22,11,0,62,65,3,12,6,0,63,65,3,18,9,0,64,60,1,
+0,0,0,64,61,1,0,0,0,64,62,1,0,0,0,64,63,1,0,0,0,65,9,1,0,0,0,66,67,5,20,
+0,0,67,68,5,9,0,0,68,69,5,20,0,0,69,71,5,5,0,0,70,72,3,14,7,0,71,70,1,0,
+0,0,71,72,1,0,0,0,72,73,1,0,0,0,73,74,5,6,0,0,74,75,5,2,0,0,75,11,1,0,0,
+0,76,77,5,20,0,0,77,79,5,5,0,0,78,80,3,14,7,0,79,78,1,0,0,0,79,80,1,0,0,
+0,80,81,1,0,0,0,81,82,5,6,0,0,82,83,5,2,0,0,83,13,1,0,0,0,84,89,3,16,8,0,
+85,86,5,10,0,0,86,88,3,16,8,0,87,85,1,0,0,0,88,91,1,0,0,0,89,87,1,0,0,0,
+89,90,1,0,0,0,90,15,1,0,0,0,91,89,1,0,0,0,92,93,7,0,0,0,93,17,1,0,0,0,94,
+95,5,11,0,0,95,96,5,20,0,0,96,97,5,12,0,0,97,98,5,29,0,0,98,99,5,13,0,0,
+99,100,3,20,10,0,100,104,5,7,0,0,101,103,3,8,4,0,102,101,1,0,0,0,103,106,
+1,0,0,0,104,102,1,0,0,0,104,105,1,0,0,0,105,107,1,0,0,0,106,104,1,0,0,0,
+107,108,5,8,0,0,108,19,1,0,0,0,109,113,3,12,6,0,110,113,3,10,5,0,111,113,
+5,29,0,0,112,109,1,0,0,0,112,110,1,0,0,0,112,111,1,0,0,0,113,21,1,0,0,0,
+114,115,5,14,0,0,115,116,5,16,0,0,116,117,5,2,0,0,117,23,1,0,0,0,11,26,28,
+36,48,55,64,71,79,89,104,112];
 
 
 const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -50,12 +50,13 @@ export default class MiuLanguageParser extends antlr4.Parser {
     static literalNames = [ null, "'use'", "';'", "'::'", "'fn'", "'('", 
                             "')'", "'{'", "'}'", "'.'", "','", "'for'", 
                             "'in'", "'..'", "'let'", null, null, null, null, 
-                            null, null, "'int'", "'float'", "'char'", "'string'" ];
+                            null, null, null, null, "'int'", "'float'", 
+                            "'char'", "'string'" ];
     static symbolicNames = [ null, null, null, null, null, null, null, null, 
                              null, null, null, null, null, null, null, "Param", 
-                             "VarD", "VarT", "ID", "REST_ID", "TYPES", "TINT", 
-                             "TFLO", "TCHA", "TSTR", "VALUES", "VSTR", "VCHA", 
-                             "VINT", "VFLO", "WS" ];
+                             "Var", "VarD", "VarT", "VSTR", "ID", "REST_ID", 
+                             "TYPES", "TINT", "TFLO", "TCHA", "TSTR", "VALUES", 
+                             "VCHA", "VINT", "VFLO", "WS" ];
     static ruleNames = [ "program", "modularCall", "anotherDirectory", "dFunc", 
                          "statement", "varFunc", "func", "param2", "vParam", 
                          "for", "range", "var" ];
@@ -204,7 +205,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 55;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 280576) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1067008) !== 0)) {
 	            this.state = 52;
 	            this.statement();
 	            this.state = 57;
@@ -292,7 +293,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 71;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 872677376) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1880621056) !== 0)) {
 	            this.state = 70;
 	            this.param2();
 	        }
@@ -330,7 +331,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 79;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 872677376) !== 0)) {
+	        if((((_la) & ~0x1f) === 0 && ((1 << _la) & 1880621056) !== 0)) {
 	            this.state = 78;
 	            this.param2();
 	        }
@@ -399,7 +400,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 92;
 	        _la = this._input.LA(1);
-	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 872677376) !== 0))) {
+	        if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1880621056) !== 0))) {
 	        this._errHandler.recoverInline(this);
 	        }
 	        else {
@@ -445,7 +446,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 104;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 280576) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1067008) !== 0)) {
 	            this.state = 101;
 	            this.statement();
 	            this.state = 106;
@@ -514,23 +515,13 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	var_() {
 	    let localctx = new VarContext(this, this._ctx, this.state);
 	    this.enterRule(localctx, 22, MiuLanguageParser.RULE_var);
-	    var _la = 0;
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 114;
 	        this.match(MiuLanguageParser.T__13);
 	        this.state = 115;
-	        this.match(MiuLanguageParser.ID);
+	        this.match(MiuLanguageParser.Var);
 	        this.state = 116;
-	        _la = this._input.LA(1);
-	        if(!(_la===16 || _la===17)) {
-	        this._errHandler.recoverInline(this);
-	        }
-	        else {
-	        	this._errHandler.reportMatch(this);
-	            this.consume();
-	        }
-	        this.state = 117;
 	        this.match(MiuLanguageParser.T__1);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
@@ -565,21 +556,22 @@ MiuLanguageParser.T__11 = 12;
 MiuLanguageParser.T__12 = 13;
 MiuLanguageParser.T__13 = 14;
 MiuLanguageParser.Param = 15;
-MiuLanguageParser.VarD = 16;
-MiuLanguageParser.VarT = 17;
-MiuLanguageParser.ID = 18;
-MiuLanguageParser.REST_ID = 19;
-MiuLanguageParser.TYPES = 20;
-MiuLanguageParser.TINT = 21;
-MiuLanguageParser.TFLO = 22;
-MiuLanguageParser.TCHA = 23;
-MiuLanguageParser.TSTR = 24;
-MiuLanguageParser.VALUES = 25;
-MiuLanguageParser.VSTR = 26;
-MiuLanguageParser.VCHA = 27;
-MiuLanguageParser.VINT = 28;
-MiuLanguageParser.VFLO = 29;
-MiuLanguageParser.WS = 30;
+MiuLanguageParser.Var = 16;
+MiuLanguageParser.VarD = 17;
+MiuLanguageParser.VarT = 18;
+MiuLanguageParser.VSTR = 19;
+MiuLanguageParser.ID = 20;
+MiuLanguageParser.REST_ID = 21;
+MiuLanguageParser.TYPES = 22;
+MiuLanguageParser.TINT = 23;
+MiuLanguageParser.TFLO = 24;
+MiuLanguageParser.TCHA = 25;
+MiuLanguageParser.TSTR = 26;
+MiuLanguageParser.VALUES = 27;
+MiuLanguageParser.VCHA = 28;
+MiuLanguageParser.VINT = 29;
+MiuLanguageParser.VFLO = 30;
+MiuLanguageParser.WS = 31;
 
 MiuLanguageParser.RULE_program = 0;
 MiuLanguageParser.RULE_modularCall = 1;
@@ -979,6 +971,10 @@ class VParamContext extends antlr4.ParserRuleContext {
 	    return this.getToken(MiuLanguageParser.VFLO, 0);
 	};
 
+	VCHA() {
+	    return this.getToken(MiuLanguageParser.VCHA, 0);
+	};
+
 	ID() {
 	    return this.getToken(MiuLanguageParser.ID, 0);
 	};
@@ -1111,16 +1107,8 @@ class VarContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_var;
     }
 
-	ID() {
-	    return this.getToken(MiuLanguageParser.ID, 0);
-	};
-
-	VarT() {
-	    return this.getToken(MiuLanguageParser.VarT, 0);
-	};
-
-	VarD() {
-	    return this.getToken(MiuLanguageParser.VarD, 0);
+	Var() {
+	    return this.getToken(MiuLanguageParser.Var, 0);
 	};
 
 	enterRule(listener) {

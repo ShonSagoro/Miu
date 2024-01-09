@@ -12,7 +12,7 @@ anotherDirectory: '::' ID;
 
 dFunc: 'fn' ID '(' Param? ')' '{' statement* '}';
 
-Param: ID ':' TYPES (',' ID ':' TYPES)*;
+Param: ID VarT (',' ID VarT)*;
 
 //BODY
 statement: (varFunc | var | func | for);
@@ -23,7 +23,7 @@ func: ID '(' param2? ')' ';';
 
 param2: vParam (',' vParam)*;
 
-vParam: (VSTR | VINT | VFLO | ID);
+vParam: (VSTR | VINT | VFLO | VCHA | ID);
 
 // for
 
@@ -33,26 +33,21 @@ range: (func | varFunc | VINT);
 
 //define variable
 
-var: 'let' ID (VarT | VarD) ';';
-VarD: '=' VALUES;
-VarT:
-	':' (
-		TINT '=' VINT
-		| TFLO '=' VFLO
-		| TCHA '=' VCHA
-		| TSTR '=' VSTR
-	);
+var: 'let' Var ';';
+Var:  ID WS? VarT?  WS? VarD;
+VarD: '=' WS? VALUES;
+VarT: ':' WS? TYPES;
 
 //TOKENS
+VSTR: '"' ('\\"' | .)*? '"';
 ID: [a-zA-Z] REST_ID*;
-REST_ID: [a-zA-Z0-9];
+REST_ID: [a-zA-Z0-9_];
 TYPES: (TINT | TFLO | TCHA | TSTR);
 TINT: 'int';
 TFLO: 'float';
 TCHA: 'char';
 TSTR: 'string';
 VALUES: (VSTR | VINT | VFLO | VCHA);
-VSTR: '"' ('\\"' | .)*? '"';
 VCHA: '\'' ('\\\'' | .)*? '\'';
 VINT: [0-9]+;
 VFLO: VINT '.' VINT;
