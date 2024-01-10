@@ -4,52 +4,84 @@ program: (dFunc | modularCall)*;
 
 //module
 
-modularCall: 'use' ID anotherDirectory* ';';
+modularCall: 'use' L anotherDirectory* ';';
 
-anotherDirectory: '::' ID;
+anotherDirectory: '::' L;
 
 //fn
 
-dFunc: 'fn' ID '(' Param? ')' '{' statement* '}';
+dFunc: 'fn' L '(' param? ')' dDFunc ;
 
-Param: ID VarT (',' ID VarT)*;
+dDFunc: (wRFunc | wORFunc) ;
+
+wRFunc: '->' types '{' statementR* '}';
+types: TYPES;
+wORFunc: '{' statement* '}';
+
+param: L VarT (',' L VarT)*;
+
 
 //BODY
-statement: (varFunc | var | func | for);
+statement: (varFunc | var | func | for |varA );
 
-varFunc: ID '.' ID '(' param2? ')' ';';
+varFunc: L '.' L '(' param2? ')' ';';
 
-func: ID '(' param2? ')' ';';
+func: L '(' param2? ')' ';';
 
 param2: vParam (',' vParam)*;
 
-vParam: (VSTR | VINT | VFLO | VCHA | ID);
+vParam: (VSTR | VINT+ | VFLO | VCHA | L);
+
+
+//BODY R
+statementR: statement* returnStatement;
+
+returnStatement: 'return' returnData ';';
+returnData: (condition | ANY+);
+
 
 // for
+range: VINT+;
 
-for: 'for' ID 'in' VINT '..' range '{' statement* '}';
+for: 'for' L 'in' range '..' range '{' statement* '}';
 
-range: (func | varFunc | VINT);
 
 //define variable
 
-var: 'let' Var ';';
-Var:  ID WS? VarT?  WS? VarD;
+var: 'let' varG ';';
+varG:  L VarT? VarD;
 VarD: '=' WS? VALUES;
 VarT: ':' WS? TYPES;
 
+//variable assignature data
+
+varA: L '=' VALUES ';';
+
+//if statament
+
+
+//conditions
+
+conditions: condition addConditions? ;
+condition: (VALUES | L) SIG (VALUES | L);
+addConditions: ADDSIG SIG (VALUES | L);
+
+
+
 //TOKENS
-VSTR: '"' ('\\"' | .)*? '"';
-ID: [a-zA-Z] REST_ID*;
-REST_ID: [a-zA-Z0-9_];
+VINT: [0-9];
 TYPES: (TINT | TFLO | TCHA | TSTR);
+L: [a-zA-Z] R*;
+VSTR: '"' ('\\"' | .)*? '"';
 TINT: 'int';
 TFLO: 'float';
 TCHA: 'char';
 TSTR: 'string';
 VALUES: (VSTR | VINT | VFLO | VCHA);
+VFLO: VINT+ '.' VINT+;
 VCHA: '\'' ('\\\'' | .)*? '\'';
-VINT: [0-9]+;
-VFLO: VINT '.' VINT;
-
+R: [a-zA-Z]|VINT;
+SIG:('=='|'>='|'<='|'!='|'>'|'<');
+ADDSIG:('&&' | '||');
 WS: [ \t\r\n]+ -> skip;
+ANY: .;
