@@ -35,7 +35,7 @@ param : ID ':' TYPE ;
 body : '{' (statement)* '}' ;
 bodyR: '{' (statement)* statementR '}' ;
 
-statementR : 'return' expr ';' ;
+statementR : 'return' exprReturn ';' ;
 
 functionCall : IDF '(' argList? ')' ';';
 functionCallVar: ID '.' IDF '(' argList? ')' ';';
@@ -46,11 +46,13 @@ statement : assignment | functionCall | functionCallVar | controlStructure ;
 assignment : 'let' ID '=' expr ';';
 controlStructure : ifStatement | forStatement ;
 
-ifStatement : 'if' comparisonExpr body (elseIfStatement)* ('else' body)? ;
-elseIfStatement : 'else' 'if' comparisonExpr body ;
+ifStatement : 'if' comparisonExprADD body (elseIfStatement)* ('else' body)? ;
+elseIfStatement : 'else' 'if' comparisonExprADD body ;
 
 forStatement : 'for' ID 'in' INT '..' INT body ;
 
+comparisonExprADD : comparisonExpr (ADD_OPERATOR comparisonExpr)* ;
 comparisonExpr : expr COMPARISON_OPERATOR expr ;
+exprReturn: expr | comparisonExprADD;
 expr : ID | STRING | CHAR | INT | FLOAT | BOOL ;
  

@@ -167,12 +167,30 @@ export default class MiuLanguageListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
+	// Enter a parse tree produced by MiuLanguageParser#comparisonExprADD.
+	enterComparisonExprADD(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguageParser#comparisonExprADD.
+	exitComparisonExprADD(ctx) {
+	}
+
+
 	// Enter a parse tree produced by MiuLanguageParser#comparisonExpr.
 	enterComparisonExpr(ctx) {
 	}
 
 	// Exit a parse tree produced by MiuLanguageParser#comparisonExpr.
 	exitComparisonExpr(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguageParser#exprReturn.
+	enterExprReturn(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguageParser#exprReturn.
+	exitExprReturn(ctx) {
 	}
 
 
