@@ -14,66 +14,39 @@ export default class MiuLanguageListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#modularCall.
-	enterModularCall(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#functionDeclaration.
+	enterFunctionDeclaration(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#modularCall.
-	exitModularCall(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#anotherDirectory.
-	enterAnotherDirectory(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#anotherDirectory.
-	exitAnotherDirectory(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#functionDeclaration.
+	exitFunctionDeclaration(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#dFunc.
-	enterDFunc(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#moduleDeclaration.
+	enterModuleDeclaration(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#dFunc.
-	exitDFunc(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#dDFunc.
-	enterDDFunc(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#dDFunc.
-	exitDDFunc(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#moduleDeclaration.
+	exitModuleDeclaration(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#wRFunc.
-	enterWRFunc(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#checkreturnFunction.
+	enterCheckreturnFunction(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#wRFunc.
-	exitWRFunc(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#types.
-	enterTypes(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#types.
-	exitTypes(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#checkreturnFunction.
+	exitCheckreturnFunction(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#wORFunc.
-	enterWORFunc(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#paramList.
+	enterParamList(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#wORFunc.
-	exitWORFunc(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#paramList.
+	exitParamList(ctx) {
 	}
 
 
@@ -86,48 +59,21 @@ export default class MiuLanguageListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#statement.
-	enterStatement(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#body.
+	enterBody(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#statement.
-	exitStatement(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#varFunc.
-	enterVarFunc(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#varFunc.
-	exitVarFunc(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#body.
+	exitBody(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#func.
-	enterFunc(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#bodyR.
+	enterBodyR(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#func.
-	exitFunc(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#param2.
-	enterParam2(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#param2.
-	exitParam2(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#vParam.
-	enterVParam(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#vParam.
-	exitVParam(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#bodyR.
+	exitBodyR(ctx) {
 	}
 
 
@@ -140,93 +86,102 @@ export default class MiuLanguageListener extends antlr4.tree.ParseTreeListener {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#returnStatement.
-	enterReturnStatement(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#functionCall.
+	enterFunctionCall(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#returnStatement.
-	exitReturnStatement(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#returnData.
-	enterReturnData(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#returnData.
-	exitReturnData(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#functionCall.
+	exitFunctionCall(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#range.
-	enterRange(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#functionCallVar.
+	enterFunctionCallVar(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#range.
-	exitRange(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#for.
-	enterFor(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#for.
-	exitFor(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#functionCallVar.
+	exitFunctionCallVar(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#var.
-	enterVar(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#argList.
+	enterArgList(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#var.
-	exitVar(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#varG.
-	enterVarG(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#varG.
-	exitVarG(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#argList.
+	exitArgList(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#varA.
-	enterVarA(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#statement.
+	enterStatement(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#varA.
-	exitVarA(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguageParser#conditions.
-	enterConditions(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguageParser#conditions.
-	exitConditions(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#statement.
+	exitStatement(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#condition.
-	enterCondition(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#assignment.
+	enterAssignment(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#condition.
-	exitCondition(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#assignment.
+	exitAssignment(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguageParser#addConditions.
-	enterAddConditions(ctx) {
+	// Enter a parse tree produced by MiuLanguageParser#controlStructure.
+	enterControlStructure(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguageParser#addConditions.
-	exitAddConditions(ctx) {
+	// Exit a parse tree produced by MiuLanguageParser#controlStructure.
+	exitControlStructure(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguageParser#ifStatement.
+	enterIfStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguageParser#ifStatement.
+	exitIfStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguageParser#elseIfStatement.
+	enterElseIfStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguageParser#elseIfStatement.
+	exitElseIfStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguageParser#forStatement.
+	enterForStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguageParser#forStatement.
+	exitForStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguageParser#comparisonExpr.
+	enterComparisonExpr(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguageParser#comparisonExpr.
+	exitComparisonExpr(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguageParser#expr.
+	enterExpr(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguageParser#expr.
+	exitExpr(ctx) {
 	}
 
 

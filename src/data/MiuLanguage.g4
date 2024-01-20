@@ -1,87 +1,56 @@
 grammar MiuLanguage;
 
-program: (dFunc | modularCall)*;
+program : (moduleDeclaration | functionDeclaration)*;
 
-//module
+//lexer rules
+COMPARISON_OPERATOR: EQ | NEQ | GT | LT | GTEQ | LTEQ;
+ADD_OPERATOR: AND | OR;
+fragment EQ : '==';
+fragment AND : '&&';
+fragment OR : '||';
+fragment NEQ : '!=';
+fragment GT : '>';
+fragment LT : '<';
+fragment GTEQ : '>=';
+fragment LTEQ : '<=';
+TYPE : 'int' | 'float' | 'bool' | 'string' | 'char' ;
+BOOL : 'true' | 'false' ;
+STRING : '"' (~["])* '"' ;
+CHAR : '\'' ~'\'' '\'' ;
+FLOAT : [0-9]+ '.' [0-9]+ ;
+INT : [0-9]+ ;
+IDF : [A-Z] IDN* ;
+ID: [a-zA-Z] IDN* ;
+fragment IDN: [a-zA-Z0-9];
+WS : [ \t\r\n]+ -> skip ;
 
-modularCall: 'use' L anotherDirectory* ';';
+// Parser rules
+functionDeclaration : 'fn' IDF '(' paramList? ')' checkreturnFunction ;
+moduleDeclaration : 'use' ID ('::' ID)* ';';
+checkreturnFunction : '->' TYPE bodyR | body ;
 
-anotherDirectory: '::' L;
+paramList : param (',' param)* ;
+param : ID ':' TYPE ;
 
-//fn
+body : '{' (statement)* '}' ;
+bodyR: '{' (statement)* statementR '}' ;
 
-dFunc: 'fn' L '(' param? ')' dDFunc ;
+statementR : 'return' expr ';' ;
 
-dDFunc: (wRFunc | wORFunc) ;
+functionCall : IDF '(' argList? ')' ';';
+functionCallVar: ID '.' IDF '(' argList? ')' ';';
+argList : (ID | STRING | CHAR | INT | FLOAT | BOOL) (',' (ID | STRING | CHAR | INT | FLOAT | BOOL))* ;
 
-wRFunc: '->' types '{' statementR* '}';
-types: TYPES;
-wORFunc: '{' statement* '}';
+statement : assignment | functionCall | functionCallVar | controlStructure ;
 
-param: L VarT (',' L VarT)*;
+assignment : 'let' ID '=' expr ';';
+controlStructure : ifStatement | forStatement ;
 
+ifStatement : 'if' comparisonExpr body (elseIfStatement)* ('else' body)? ;
+elseIfStatement : 'else' 'if' comparisonExpr body ;
 
-//BODY
-statement: (varFunc | var | func | for |varA );
+forStatement : 'for' ID 'in' INT '..' INT body ;
 
-varFunc: L '.' L '(' param2? ')' ';';
-
-func: L '(' param2? ')' ';';
-
-param2: vParam (',' vParam)*;
-
-vParam: (VSTR | VINT+ | VFLO | VCHA | L);
-
-
-//BODY R
-statementR: statement* returnStatement;
-
-returnStatement: 'return' returnData ';';
-returnData: (condition | ANY+);
-
-
-// for
-range: VINT+;
-
-for: 'for' L 'in' range '..' range '{' statement* '}';
-
-
-//define variable
-
-var: 'let' varG ';';
-varG:  L VarT? VarD;
-VarD: '=' WS? VALUES;
-VarT: ':' WS? TYPES;
-
-//variable assignature data
-
-varA: L '=' VALUES ';';
-
-//if statament
-
-
-//conditions
-
-conditions: condition addConditions? ;
-condition: (VALUES | L) SIG (VALUES | L);
-addConditions: ADDSIG SIG (VALUES | L);
-
-
-
-//TOKENS
-VINT: [0-9];
-TYPES: (TINT | TFLO | TCHA | TSTR);
-L: [a-zA-Z] R*;
-VSTR: '"' ('\\"' | .)*? '"';
-TINT: 'int';
-TFLO: 'float';
-TCHA: 'char';
-TSTR: 'string';
-VALUES: (VSTR | VINT | VFLO | VCHA);
-VFLO: VINT+ '.' VINT+;
-VCHA: '\'' ('\\\'' | .)*? '\'';
-R: [a-zA-Z]|VINT;
-SIG:('=='|'>='|'<='|'!='|'>'|'<');
-ADDSIG:('&&' | '||');
-WS: [ \t\r\n]+ -> skip;
-ANY: .;
+comparisonExpr : expr COMPARISON_OPERATOR expr ;
+expr : ID | STRING | CHAR | INT | FLOAT | BOOL ;
+ 
