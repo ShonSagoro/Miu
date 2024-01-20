@@ -1,14 +1,60 @@
+/* eslint-disable no-unused-vars */
 import React, { useMemo, useState } from "react";
-import producctions from "../data/productions.js";
+import MiuLexer from "../data/MiuLanguageLexer.js";
+import MiuParser from "../data/MiuLanguageParser.js";
+import antlr4 from "antlr4";
 
 import CheckContext from "./CheckContext";
 
+// eslint-disable-next-line react/prop-types
 const CheckProvider = ({ children }) => {
-  let stack = [];
+  // let stack = [];
 
+  // eslint-disable-next-line no-unused-vars
   const [consoleMessage, setConsoleMessage] = useState("");
   const [isDebugEnable, setIsDebugEnable] = useState(false);
   const [isQuickEnable, setIsQuickEnable] = useState(false);
+
+  const TOKEN_NAMES = {
+    [MiuLexer.COMPARISON_OPERATOR]: "Comparison Operator",
+    [MiuLexer.ADD_OPERATOR]: "Addition Operator",
+    [MiuLexer.EQ]: "Equal",
+    [MiuLexer.AND]: "And",
+    [MiuLexer.OR]: "Or",
+    [MiuLexer.NEQ]: "Not Equal",
+    [MiuLexer.GT]: "Greater Than",
+    [MiuLexer.LT]: "Less Than",
+    [MiuLexer.GTEQ]: "Greater Than or Equal",
+    [MiuLexer.LTEQ]: "Less Than or Equal",
+    [MiuLexer.EQUAL]: "Assignment",
+    [MiuLexer.FN]: "Function Keyword",
+    [MiuLexer.USE]: "Use Keyword",
+    [MiuLexer.LET]: "Let Keyword",
+    [MiuLexer.IN]: "In Keyword",
+    [MiuLexer.IF]: "If Keyword",
+    [MiuLexer.ELSE]: "Else Keyword",
+    [MiuLexer.FOR]: "For Keyword",
+    [MiuLexer.RETURN]: "Return Keyword",
+    [MiuLexer.ARROW]: "Arrow",
+    [MiuLexer.DOT]: "Dot",
+    [MiuLexer.DOUBLE_DOT]: "Double Dot",
+    [MiuLexer.COMMA]: "Comma",
+    [MiuLexer.PC]: "Semicolon",
+    [MiuLexer.PP]: "Double Colon",
+    [MiuLexer.P]: "Colon",
+    [MiuLexer.LPAREN]: "Left Parenthesis",
+    [MiuLexer.RPAREN]: "Right Parenthesis",
+    [MiuLexer.LBRACE]: "Left Brace",
+    [MiuLexer.RBRACE]: "Right Brace",
+    [MiuLexer.TYPE]: "Type",
+    [MiuLexer.BOOL]: "Boolean",
+    [MiuLexer.STRING]: "String",
+    [MiuLexer.CHAR]: "Character",
+    [MiuLexer.FLOAT]: "Float",
+    [MiuLexer.INT]: "Integer",
+    [MiuLexer.IDF]: "Function Identifier",
+    [MiuLexer.ID]: "Identifier",
+  };
 
   const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const seconds = 0.000001;
@@ -21,227 +67,107 @@ const CheckProvider = ({ children }) => {
   const addQuickMessage = async (message) => {
     await executeWithDelay(setConsoleMessage, JSON.stringify(message));
   };
+
+  // eslint-disable-next-line no-unused-vars
   const addMessage = async (message) => {
-    if(!isQuickEnable){
-      await executeWithDelay(setConsoleMessage, JSON.stringify(message));
-    }
-  };
-
-  
-
-  const addDebugMessage = async (message) => {
-    if (isDebugEnable) {
-      await executeWithDelay(
-        setConsoleMessage,
-        JSON.stringify(">> " + message)
-      );
-    }
-  };
-
-  const printStack = async () => {
+    message = `>> ${message} \n`;
     if (!isQuickEnable) {
-      let reversestack = stack.slice().reverse();
-      await addMessage(" ");
-      await addMessage("[] Stack-------------------------------------[]");
-      for (let stackElement of reversestack) {
-        if (Array.isArray(stackElement)) {
-          let stackElementReverse=stackElement.slice().reverse();
-          await addMessage(
-            "  []Options element-------------------------------------"
-          );
-          for (let stackElementOption of stackElement) {
-            let stackElementOptionReverse =stackElementOption.slice().reverse();
-            await addMessage("[Option]: ");
-            await addMessage("[");
-            for (let dataOption of stackElementOption){
-              await addMessage(dataOption);
-            }
-            await addMessage("]");
-          }
-          await addMessage(
-            "  []Options element-------------------------------------"
-          );
-        } else {
-          await addMessage("Stack Content: " + stackElement.key);
-          await addMessage("-is Terminal?: " + stackElement.isTerminal);
-          if(stackElement.isTerminal) {
-            await addMessage("---REGEX?: " + stackElement.regex);
-          }
-        }
-      }
-      await addMessage("[] FIN-Stack-------------------------------------[]");
-      await addMessage(" ");
+      await executeWithDelay(setConsoleMessage, message);
     }
   };
 
-  async function checkGrammar(code) {
-    let positionFail = -1;
-    stack.splice(0, stack.length);
+  function printTree(node, indent = 0) {
+    let result = "";
+    let indentation = " ";
 
-    await addQuickMessage("[-] Stack Empty: " + JSON.stringify(stack) + " [-]");
-    stack.push({
-      key: "INIT",
-      isTerminal: false,
-    });
-    await addQuickMessage("[-] Stack Init: " + JSON.stringify(stack) + " [-]");
+    if (node.constructor.name != "Me" || node.constructor.name != ")") {
+      indentation = " ".repeat(indent * 4);
+    }
+    if (node.constructor.name === "Me") {
+      result += `${indentation}(Token: "${node.getText()}"$`;
+    } else {
+      result += `${indentation}(${node.constructor.name}: \n`;
+    }
 
-    const codeLines = code.split("\n");
-    let state;
-    for (let i = 0; i < codeLines.length; i++) {
-      if (!/^\s*$/.test(codeLines[i])) {
-        await addDebugMessage("code");
-        await addDebugMessage(codeLines);
-        let lineClean = codeLines[i].replace(/[\r\n\t]/gm, "");
-        await addDebugMessage("line Check");
-        await addDebugMessage(lineClean);
-        state = await checkGrammarLine(lineClean);
-        if (!state) {
-          await addDebugMessage(
-            "[x] Falle en la linea: " + JSON.stringify(i + 1) + " [x]"
-          );
-          positionFail = i + 1;
-          break;
-        }
-        await addDebugMessage("El stack quedo asi: " + JSON.stringify(stack));
+    if (node.children) {
+      for (const child of node.children) {
+        result += printTree(child, indent + 1);
       }
     }
 
-    if (!Array.isArray(stack[0])) {
-      if(stack.key="INIT"){
-        stack.pop();
-      }
-    }
+    result = result.replace(/\$\s+/g, "$");
+    result += `${indentation})\n`;
 
-    await printStack();
-    await addQuickMessage("[F] Stack final: " + JSON.stringify(stack) + " [F]");
-
-    return stack.length === 0
-      ? "todo ok"
-      : "OH no tenemos un problema";
+    return result;
   }
 
-  async function checkGrammarLine(code) {
-    let character;
-    let symbol;
-    for (let i = 0; i < code.length; i++) {
-      await printStack();
-      character = code[i];
-      symbol = stack.pop();
-      await addMessage(
-        "[c] Character Actual: " + JSON.stringify(character) + " [c]"
-      );
-      await addMessage("[p] Posicion Actual: " + JSON.stringify(i) + " [p]");
+  const addMessageTree = async (tree) => {
+    let formattedTree = printTree(tree);
+    formattedTree = formattedTree.replace(/\$/g, "");
+    formattedTree = "\nTREE >>\n" + formattedTree + "\n";
 
-      if (Array.isArray(symbol)) {
-        let pass = await checkOrOptions(symbol, code, i);
-        if (!pass) {
-          await addDebugMessage(
-            "[x] Error: con las opciones en produccion [x]"
-          );
-          return false;
-        } else {
-          symbol = stack.pop();
-          i += symbol.length - 1;
-        }
-      } else if (symbol.isTerminal) {
+    if (!isQuickEnable) {
+      await executeWithDelay(setConsoleMessage, formattedTree);
+    }
+  };
+
+  // eslint-disable-next-line no-unused-vars
+  const addDebugMessage = async (message) => {
+    message = "[DEBUG] >> "+message;
+    if (isDebugEnable) {
+      await executeWithDelay(setConsoleMessage, message);
+    }
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const checkGrammar = async (code) => {
+    let tokenCounts = {};
+    try {
+      await addMessage("Iniciando análisis...");
+      const chars = new antlr4.InputStream(code);
+      const lexer = new MiuLexer(chars);
+      const tokens = new antlr4.CommonTokenStream(lexer);
+      const parser = new MiuParser(tokens);
+      let tree = parser.program();
+
+      tokenCounts = await countTokens(tokens.tokens);
+      for (const token in tokenCounts) {
         await addDebugMessage(
-          "[o] Terminal: " + JSON.stringify(symbol) + " [o]"
+          `Token: Type: ${tokenCounts[token].type}, Token= ${token}, Count: ${tokenCounts[token].count}`
         );
-        await addDebugMessage(
-          "[c] Letra: " + JSON.stringify(character) + " [c]"
-        );
-        if (symbol.length != undefined) {
-          character = code.slice(i, i + symbol.length);
-          await addDebugMessage(
-            "[c] Palabra: " + JSON.stringify(character) + " [c]"
-          );
-          await addDebugMessage(
-            "[r] Regex: " + symbol.regex.toString() + " [r]"
-          );
-          await addDebugMessage(
-            "[R] Resultado de test: " +
-              JSON.stringify(symbol.regex.test(character)) +
-              " [R]"
-          );
-          if (symbol.regex.test(character)) {
-            i += symbol.length - 1;
-          } else {
-            await addDebugMessage("[x] Error: con la terminal [x]");
-            return false;
-          }
-        }
+      }
+      parser.buildParseTrees = true;
+
+      parser.addErrorListener({
+        syntaxError: async function (line, column, msg) {
+          await addMessage(`ERROR en línea ${line}:${column}: ${msg}`);
+        },
+      });
+
+
+      await addMessageTree(tree);
+
+      return true;
+    } catch (e) {
+      await addMessage(`ERROR X-X: ${e}`);
+      return false;
+    }
+  };
+
+  const countTokens = async (tokens) => {
+    let tokenCounts = {};
+    tokens.forEach(async (token) => {
+      if (!tokenCounts[token.text]) {
+        tokenCounts[token.text] = {
+          count: 1,
+          type: TOKEN_NAMES[token.type],
+        };
       } else {
-        i--;
-        await addDebugMessage("[i] Buscando Produccion [i]");
-        let production = findProduction(symbol);
-
-        if (production != undefined) {
-          await addDebugMessage("[i] Produccion Encontrada[i]");
-          const reversestack = production.symbols.slice().reverse();
-          for (let newSymbols of reversestack) {
-            if (newSymbols != undefined) {
-              stack.push(newSymbols);
-            }
-          }
-        }
+        tokenCounts[token.text].count++;
       }
-    }
-    await addDebugMessage("[ok] todo bien con: " + code + " [ok]");
-    return true;
-  }
-
-  async function checkOrOptions(symbol, code, position) {
-    let symbolstackReverse = symbol.slice().reverse();
-    for (let orArraySymbols of symbolstackReverse) {
-      await addDebugMessage(
-        "[o] Array Option: " + JSON.stringify(orArraySymbols) + " [o]"
-      );
-      if (orArraySymbols[0].isTerminal) {
-        if (orArraySymbols[0].length != undefined) {
-          await addDebugMessage(
-            "[o] code eval: " + JSON.stringify(code) + " [o]"
-          );
-          let character = code.slice(
-            position,
-            position + orArraySymbols[0].length
-          );
-          await addDebugMessage(
-            "[o] slice code eval: " + JSON.stringify(character) + " [o]"
-          );
-          await addDebugMessage(
-            "[r] Regex: " + orArraySymbols[0].regex.toString() + " [r]"
-          );
-          if (orArraySymbols[0].regex.test(character)) {
-            const reversestack = orArraySymbols.slice().reverse();
-            await addDebugMessage(
-              "[ok] Push Option Correct: " +
-                JSON.stringify(reversestack) +
-                " [ok]"
-            );
-            for (let newSymbols of reversestack) {
-              if (newSymbols != undefined) {
-                stack.push(newSymbols);
-              }
-            }
-            return true;
-          }
-        }
-      }
-    }
-    await addDebugMessage("[x] Error: con las opciones [x]");
-    await addDebugMessage("[x] Evalue:" + JSON.stringify(code) + "[x]");
-    await addDebugMessage("[x] Con:" + JSON.stringify(symbol) + " [x]");
-    return false;
-  }
-
-  function findProduction(symbol) {
-    for (let production of producctions) {
-      if (production.symbol.key === symbol.key) {
-        return production;
-      }
-    }
-    return undefined;
-  }
+    });
+    return tokenCounts;
+  };
 
   const value = useMemo(() => {
     return {
@@ -252,7 +178,7 @@ const CheckProvider = ({ children }) => {
       isQuickEnable,
       setIsQuickEnable,
     };
-  }, [consoleMessage, isDebugEnable, isQuickEnable]);
+  }, [consoleMessage, isDebugEnable, isQuickEnable, checkGrammar]);
 
   return (
     <CheckContext.Provider value={value}>{children}</CheckContext.Provider>

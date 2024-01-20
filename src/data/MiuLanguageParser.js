@@ -23,40 +23,40 @@ const serializedATN = [4,1,31,199,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 0,0,26,144,1,0,0,0,28,152,1,0,0,0,30,154,1,0,0,0,32,167,1,0,0,0,34,172,1,
 0,0,0,36,180,1,0,0,0,38,188,1,0,0,0,40,194,1,0,0,0,42,196,1,0,0,0,44,47,
 3,4,2,0,45,47,3,2,1,0,46,44,1,0,0,0,46,45,1,0,0,0,47,50,1,0,0,0,48,46,1,
-0,0,0,48,49,1,0,0,0,49,1,1,0,0,0,50,48,1,0,0,0,51,52,5,1,0,0,52,53,5,29,
-0,0,53,55,5,2,0,0,54,56,3,8,4,0,55,54,1,0,0,0,55,56,1,0,0,0,56,57,1,0,0,
-0,57,58,5,3,0,0,58,59,3,6,3,0,59,3,1,0,0,0,60,61,5,4,0,0,61,66,5,30,0,0,
-62,63,5,5,0,0,63,65,5,30,0,0,64,62,1,0,0,0,65,68,1,0,0,0,66,64,1,0,0,0,66,
-67,1,0,0,0,67,69,1,0,0,0,68,66,1,0,0,0,69,70,5,6,0,0,70,5,1,0,0,0,71,72,
-5,7,0,0,72,73,5,23,0,0,73,76,3,14,7,0,74,76,3,12,6,0,75,71,1,0,0,0,75,74,
-1,0,0,0,76,7,1,0,0,0,77,82,3,10,5,0,78,79,5,8,0,0,79,81,3,10,5,0,80,78,1,
-0,0,0,81,84,1,0,0,0,82,80,1,0,0,0,82,83,1,0,0,0,83,9,1,0,0,0,84,82,1,0,0,
-0,85,86,5,30,0,0,86,87,5,9,0,0,87,88,5,23,0,0,88,11,1,0,0,0,89,93,5,10,0,
-0,90,92,3,24,12,0,91,90,1,0,0,0,92,95,1,0,0,0,93,91,1,0,0,0,93,94,1,0,0,
-0,94,96,1,0,0,0,95,93,1,0,0,0,96,97,5,11,0,0,97,13,1,0,0,0,98,102,5,10,0,
-0,99,101,3,24,12,0,100,99,1,0,0,0,101,104,1,0,0,0,102,100,1,0,0,0,102,103,
-1,0,0,0,103,105,1,0,0,0,104,102,1,0,0,0,105,106,3,16,8,0,106,107,5,11,0,
-0,107,15,1,0,0,0,108,109,5,12,0,0,109,110,3,40,20,0,110,111,5,6,0,0,111,
-17,1,0,0,0,112,113,5,29,0,0,113,115,5,2,0,0,114,116,3,22,11,0,115,114,1,
-0,0,0,115,116,1,0,0,0,116,117,1,0,0,0,117,118,5,3,0,0,118,119,5,6,0,0,119,
-19,1,0,0,0,120,121,5,30,0,0,121,122,5,13,0,0,122,123,5,29,0,0,123,125,5,
-2,0,0,124,126,3,22,11,0,125,124,1,0,0,0,125,126,1,0,0,0,126,127,1,0,0,0,
-127,128,5,3,0,0,128,129,5,6,0,0,129,21,1,0,0,0,130,135,7,0,0,0,131,132,5,
-8,0,0,132,134,7,0,0,0,133,131,1,0,0,0,134,137,1,0,0,0,135,133,1,0,0,0,135,
-136,1,0,0,0,136,23,1,0,0,0,137,135,1,0,0,0,138,143,3,26,13,0,139,143,3,18,
-9,0,140,143,3,20,10,0,141,143,3,28,14,0,142,138,1,0,0,0,142,139,1,0,0,0,
-142,140,1,0,0,0,142,141,1,0,0,0,143,25,1,0,0,0,144,145,5,14,0,0,145,146,
-5,30,0,0,146,147,5,15,0,0,147,148,3,42,21,0,148,149,5,6,0,0,149,27,1,0,0,
-0,150,153,3,30,15,0,151,153,3,34,17,0,152,150,1,0,0,0,152,151,1,0,0,0,153,
-29,1,0,0,0,154,155,5,16,0,0,155,156,3,36,18,0,156,160,3,12,6,0,157,159,3,
-32,16,0,158,157,1,0,0,0,159,162,1,0,0,0,160,158,1,0,0,0,160,161,1,0,0,0,
-161,165,1,0,0,0,162,160,1,0,0,0,163,164,5,17,0,0,164,166,3,12,6,0,165,163,
-1,0,0,0,165,166,1,0,0,0,166,31,1,0,0,0,167,168,5,17,0,0,168,169,5,16,0,0,
-169,170,3,36,18,0,170,171,3,12,6,0,171,33,1,0,0,0,172,173,5,18,0,0,173,174,
-5,30,0,0,174,175,5,19,0,0,175,176,5,28,0,0,176,177,5,20,0,0,177,178,5,28,
-0,0,178,179,3,12,6,0,179,35,1,0,0,0,180,185,3,38,19,0,181,182,5,22,0,0,182,
-184,3,38,19,0,183,181,1,0,0,0,184,187,1,0,0,0,185,183,1,0,0,0,185,186,1,
-0,0,0,186,37,1,0,0,0,187,185,1,0,0,0,188,189,3,42,21,0,189,190,5,21,0,0,
+0,0,0,48,49,1,0,0,0,49,1,1,0,0,0,50,48,1,0,0,0,51,52,5,4,0,0,52,53,5,29,
+0,0,53,55,5,19,0,0,54,56,3,8,4,0,55,54,1,0,0,0,55,56,1,0,0,0,56,57,1,0,0,
+0,57,58,5,20,0,0,58,59,3,6,3,0,59,3,1,0,0,0,60,61,5,5,0,0,61,66,5,30,0,0,
+62,63,5,17,0,0,63,65,5,30,0,0,64,62,1,0,0,0,65,68,1,0,0,0,66,64,1,0,0,0,
+66,67,1,0,0,0,67,69,1,0,0,0,68,66,1,0,0,0,69,70,5,16,0,0,70,5,1,0,0,0,71,
+72,5,11,0,0,72,73,5,23,0,0,73,76,3,14,7,0,74,76,3,12,6,0,75,71,1,0,0,0,75,
+74,1,0,0,0,76,7,1,0,0,0,77,82,3,10,5,0,78,79,5,15,0,0,79,81,3,10,5,0,80,
+78,1,0,0,0,81,84,1,0,0,0,82,80,1,0,0,0,82,83,1,0,0,0,83,9,1,0,0,0,84,82,
+1,0,0,0,85,86,5,30,0,0,86,87,5,18,0,0,87,88,5,23,0,0,88,11,1,0,0,0,89,93,
+5,21,0,0,90,92,3,24,12,0,91,90,1,0,0,0,92,95,1,0,0,0,93,91,1,0,0,0,93,94,
+1,0,0,0,94,96,1,0,0,0,95,93,1,0,0,0,96,97,5,22,0,0,97,13,1,0,0,0,98,102,
+5,21,0,0,99,101,3,24,12,0,100,99,1,0,0,0,101,104,1,0,0,0,102,100,1,0,0,0,
+102,103,1,0,0,0,103,105,1,0,0,0,104,102,1,0,0,0,105,106,3,16,8,0,106,107,
+5,22,0,0,107,15,1,0,0,0,108,109,5,11,0,0,109,110,3,40,20,0,110,111,5,17,
+0,0,111,17,1,0,0,0,112,113,5,29,0,0,113,115,5,19,0,0,114,116,3,22,11,0,115,
+114,1,0,0,0,115,116,1,0,0,0,116,117,1,0,0,0,117,118,5,20,0,0,118,119,5,16,
+0,0,119,19,1,0,0,0,120,121,5,30,0,0,121,122,5,13,0,0,122,123,5,29,0,0,123,
+125,5,19,0,0,124,126,3,22,11,0,125,124,1,0,0,0,125,126,1,0,0,0,126,127,1,
+0,0,0,127,128,5,20,0,0,128,129,5,16,0,0,129,21,1,0,0,0,130,135,7,0,0,0,131,
+132,5,15,0,0,132,134,7,0,0,0,133,131,1,0,0,0,134,137,1,0,0,0,135,133,1,0,
+0,0,135,136,1,0,0,0,136,23,1,0,0,0,137,135,1,0,0,0,138,143,3,26,13,0,139,
+143,3,18,9,0,140,143,3,20,10,0,141,143,3,28,14,0,142,138,1,0,0,0,142,139,
+1,0,0,0,142,140,1,0,0,0,142,141,1,0,0,0,143,25,1,0,0,0,144,145,5,6,0,0,145,
+146,5,30,0,0,146,147,5,3,0,0,147,148,3,42,21,0,148,149,5,16,0,0,149,27,1,
+0,0,0,150,153,3,30,15,0,151,153,3,34,17,0,152,150,1,0,0,0,152,151,1,0,0,
+0,153,29,1,0,0,0,154,155,5,8,0,0,155,156,3,36,18,0,156,160,3,12,6,0,157,
+159,3,32,16,0,158,157,1,0,0,0,159,162,1,0,0,0,160,158,1,0,0,0,160,161,1,
+0,0,0,161,165,1,0,0,0,162,160,1,0,0,0,163,164,5,9,0,0,164,166,3,12,6,0,165,
+163,1,0,0,0,165,166,1,0,0,0,166,31,1,0,0,0,167,168,5,9,0,0,168,169,5,8,0,
+0,169,170,3,36,18,0,170,171,3,12,6,0,171,33,1,0,0,0,172,173,5,10,0,0,173,
+174,5,30,0,0,174,175,5,7,0,0,175,176,5,28,0,0,176,177,5,14,0,0,177,178,5,
+28,0,0,178,179,3,12,6,0,179,35,1,0,0,0,180,185,3,38,19,0,181,182,5,2,0,0,
+182,184,3,38,19,0,183,181,1,0,0,0,184,187,1,0,0,0,185,183,1,0,0,0,185,186,
+1,0,0,0,186,37,1,0,0,0,187,185,1,0,0,0,188,189,3,42,21,0,189,190,5,1,0,0,
 190,191,3,42,21,0,191,39,1,0,0,0,192,195,3,42,21,0,193,195,3,36,18,0,194,
 192,1,0,0,0,194,193,1,0,0,0,195,41,1,0,0,0,196,197,7,0,0,0,197,43,1,0,0,
 0,17,46,48,55,66,75,82,93,102,115,125,135,142,152,160,165,185,194];
@@ -71,15 +71,16 @@ const sharedContextCache = new antlr4.atn.PredictionContextCache();
 export default class MiuLanguageParser extends antlr4.Parser {
 
     static grammarFileName = "MiuLanguage.g4";
-    static literalNames = [ null, "'fn'", "'('", "')'", "'use'", "'::'", 
-                            "';'", "'->'", "','", "':'", "'{'", "'}'", "'return'", 
-                            "'.'", "'let'", "'='", "'if'", "'else'", "'for'", 
-                            "'in'", "'..'" ];
-    static symbolicNames = [ null, null, null, null, null, null, null, null, 
-                             null, null, null, null, null, null, null, null, 
-                             null, null, null, null, null, "COMPARISON_OPERATOR", 
-                             "ADD_OPERATOR", "TYPE", "BOOL", "STRING", "CHAR", 
-                             "FLOAT", "INT", "IDF", "ID", "WS" ];
+    static literalNames = [ null, null, null, "'='", "'fn'", "'use'", "'let'", 
+                            "'in'", "'if'", "'else'", "'for'", "'return'", 
+                            "'->'", "'.'", "'..'", "','", "';'", "'::'", 
+                            "':'", "'('", "')'", "'{'", "'}'" ];
+    static symbolicNames = [ null, "COMPARISON_OPERATOR", "ADD_OPERATOR", 
+                             "EQUAL", "FN", "USE", "LET", "IN", "IF", "ELSE", 
+                             "FOR", "RETURN", "ARROW", "DOT", "DOUBLE_DOT", 
+                             "COMMA", "PC", "PP", "P", "LPAREN", "RPAREN", 
+                             "LBRACE", "RBRACE", "TYPE", "BOOL", "STRING", 
+                             "CHAR", "FLOAT", "INT", "IDF", "ID", "WS" ];
     static ruleNames = [ "program", "functionDeclaration", "moduleDeclaration", 
                          "checkreturnFunction", "paramList", "param", "body", 
                          "bodyR", "statementR", "functionCall", "functionCallVar", 
@@ -107,15 +108,15 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 48;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===1 || _la===4) {
+	        while(_la===4 || _la===5) {
 	            this.state = 46;
 	            this._errHandler.sync(this);
 	            switch(this._input.LA(1)) {
-	            case 4:
+	            case 5:
 	                this.state = 44;
 	                this.moduleDeclaration();
 	                break;
-	            case 1:
+	            case 4:
 	                this.state = 45;
 	                this.functionDeclaration();
 	                break;
@@ -149,11 +150,11 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 51;
-	        this.match(MiuLanguageParser.T__0);
+	        this.match(MiuLanguageParser.FN);
 	        this.state = 52;
 	        this.match(MiuLanguageParser.IDF);
 	        this.state = 53;
-	        this.match(MiuLanguageParser.T__1);
+	        this.match(MiuLanguageParser.LPAREN);
 	        this.state = 55;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
@@ -163,7 +164,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        }
 
 	        this.state = 57;
-	        this.match(MiuLanguageParser.T__2);
+	        this.match(MiuLanguageParser.RPAREN);
 	        this.state = 58;
 	        this.checkreturnFunction();
 	    } catch (re) {
@@ -189,15 +190,15 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 60;
-	        this.match(MiuLanguageParser.T__3);
+	        this.match(MiuLanguageParser.USE);
 	        this.state = 61;
 	        this.match(MiuLanguageParser.ID);
 	        this.state = 66;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===5) {
+	        while(_la===17) {
 	            this.state = 62;
-	            this.match(MiuLanguageParser.T__4);
+	            this.match(MiuLanguageParser.PP);
 	            this.state = 63;
 	            this.match(MiuLanguageParser.ID);
 	            this.state = 68;
@@ -205,7 +206,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	            _la = this._input.LA(1);
 	        }
 	        this.state = 69;
-	        this.match(MiuLanguageParser.T__5);
+	        this.match(MiuLanguageParser.PC);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -229,16 +230,16 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 75;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case 7:
+	        case 11:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 71;
-	            this.match(MiuLanguageParser.T__6);
+	            this.match(MiuLanguageParser.RETURN);
 	            this.state = 72;
 	            this.match(MiuLanguageParser.TYPE);
 	            this.state = 73;
 	            this.bodyR();
 	            break;
-	        case 10:
+	        case 21:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 74;
 	            this.body();
@@ -273,9 +274,9 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 82;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===8) {
+	        while(_la===15) {
 	            this.state = 78;
-	            this.match(MiuLanguageParser.T__7);
+	            this.match(MiuLanguageParser.COMMA);
 	            this.state = 79;
 	            this.param();
 	            this.state = 84;
@@ -306,7 +307,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 85;
 	        this.match(MiuLanguageParser.ID);
 	        this.state = 86;
-	        this.match(MiuLanguageParser.T__8);
+	        this.match(MiuLanguageParser.P);
 	        this.state = 87;
 	        this.match(MiuLanguageParser.TYPE);
 	    } catch (re) {
@@ -332,11 +333,11 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 89;
-	        this.match(MiuLanguageParser.T__9);
+	        this.match(MiuLanguageParser.LBRACE);
 	        this.state = 93;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1610956800) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1610614080) !== 0)) {
 	            this.state = 90;
 	            this.statement();
 	            this.state = 95;
@@ -344,7 +345,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	            _la = this._input.LA(1);
 	        }
 	        this.state = 96;
-	        this.match(MiuLanguageParser.T__10);
+	        this.match(MiuLanguageParser.RBRACE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -368,11 +369,11 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 98;
-	        this.match(MiuLanguageParser.T__9);
+	        this.match(MiuLanguageParser.LBRACE);
 	        this.state = 102;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1610956800) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 1610614080) !== 0)) {
 	            this.state = 99;
 	            this.statement();
 	            this.state = 104;
@@ -382,7 +383,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 105;
 	        this.statementR();
 	        this.state = 106;
-	        this.match(MiuLanguageParser.T__10);
+	        this.match(MiuLanguageParser.RBRACE);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -405,11 +406,11 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 108;
-	        this.match(MiuLanguageParser.T__11);
+	        this.match(MiuLanguageParser.RETURN);
 	        this.state = 109;
 	        this.exprReturn();
 	        this.state = 110;
-	        this.match(MiuLanguageParser.T__5);
+	        this.match(MiuLanguageParser.PP);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -435,7 +436,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 112;
 	        this.match(MiuLanguageParser.IDF);
 	        this.state = 113;
-	        this.match(MiuLanguageParser.T__1);
+	        this.match(MiuLanguageParser.LPAREN);
 	        this.state = 115;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
@@ -445,9 +446,9 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        }
 
 	        this.state = 117;
-	        this.match(MiuLanguageParser.T__2);
+	        this.match(MiuLanguageParser.RPAREN);
 	        this.state = 118;
-	        this.match(MiuLanguageParser.T__5);
+	        this.match(MiuLanguageParser.PC);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -473,11 +474,11 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 120;
 	        this.match(MiuLanguageParser.ID);
 	        this.state = 121;
-	        this.match(MiuLanguageParser.T__12);
+	        this.match(MiuLanguageParser.DOT);
 	        this.state = 122;
 	        this.match(MiuLanguageParser.IDF);
 	        this.state = 123;
-	        this.match(MiuLanguageParser.T__1);
+	        this.match(MiuLanguageParser.LPAREN);
 	        this.state = 125;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
@@ -487,9 +488,9 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        }
 
 	        this.state = 127;
-	        this.match(MiuLanguageParser.T__2);
+	        this.match(MiuLanguageParser.RPAREN);
 	        this.state = 128;
-	        this.match(MiuLanguageParser.T__5);
+	        this.match(MiuLanguageParser.PC);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -524,9 +525,9 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 135;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===8) {
+	        while(_la===15) {
 	            this.state = 131;
-	            this.match(MiuLanguageParser.T__7);
+	            this.match(MiuLanguageParser.COMMA);
 	            this.state = 132;
 	            _la = this._input.LA(1);
 	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 1593835520) !== 0))) {
@@ -563,7 +564,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 142;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case 14:
+	        case 6:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 138;
 	            this.assignment();
@@ -578,8 +579,8 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	            this.state = 140;
 	            this.functionCallVar();
 	            break;
-	        case 16:
-	        case 18:
+	        case 8:
+	        case 10:
 	            this.enterOuterAlt(localctx, 4);
 	            this.state = 141;
 	            this.controlStructure();
@@ -609,15 +610,15 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 144;
-	        this.match(MiuLanguageParser.T__13);
+	        this.match(MiuLanguageParser.LET);
 	        this.state = 145;
 	        this.match(MiuLanguageParser.ID);
 	        this.state = 146;
-	        this.match(MiuLanguageParser.T__14);
+	        this.match(MiuLanguageParser.EQUAL);
 	        this.state = 147;
 	        this.expr();
 	        this.state = 148;
-	        this.match(MiuLanguageParser.T__5);
+	        this.match(MiuLanguageParser.PC);
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -641,12 +642,12 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 152;
 	        this._errHandler.sync(this);
 	        switch(this._input.LA(1)) {
-	        case 16:
+	        case 8:
 	            this.enterOuterAlt(localctx, 1);
 	            this.state = 150;
 	            this.ifStatement();
 	            break;
-	        case 18:
+	        case 10:
 	            this.enterOuterAlt(localctx, 2);
 	            this.state = 151;
 	            this.forStatement();
@@ -677,7 +678,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 154;
-	        this.match(MiuLanguageParser.T__15);
+	        this.match(MiuLanguageParser.IF);
 	        this.state = 155;
 	        this.comparisonExprADD();
 	        this.state = 156;
@@ -698,9 +699,9 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 165;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        if(_la===17) {
+	        if(_la===9) {
 	            this.state = 163;
-	            this.match(MiuLanguageParser.T__16);
+	            this.match(MiuLanguageParser.ELSE);
 	            this.state = 164;
 	            this.body();
 	        }
@@ -727,9 +728,9 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 167;
-	        this.match(MiuLanguageParser.T__16);
+	        this.match(MiuLanguageParser.ELSE);
 	        this.state = 168;
-	        this.match(MiuLanguageParser.T__15);
+	        this.match(MiuLanguageParser.IF);
 	        this.state = 169;
 	        this.comparisonExprADD();
 	        this.state = 170;
@@ -756,15 +757,15 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 172;
-	        this.match(MiuLanguageParser.T__17);
+	        this.match(MiuLanguageParser.FOR);
 	        this.state = 173;
 	        this.match(MiuLanguageParser.ID);
 	        this.state = 174;
-	        this.match(MiuLanguageParser.T__18);
+	        this.match(MiuLanguageParser.IN);
 	        this.state = 175;
 	        this.match(MiuLanguageParser.INT);
 	        this.state = 176;
-	        this.match(MiuLanguageParser.T__19);
+	        this.match(MiuLanguageParser.DOUBLE_DOT);
 	        this.state = 177;
 	        this.match(MiuLanguageParser.INT);
 	        this.state = 178;
@@ -796,7 +797,7 @@ export default class MiuLanguageParser extends antlr4.Parser {
 	        this.state = 185;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while(_la===22) {
+	        while(_la===2) {
 	            this.state = 181;
 	            this.match(MiuLanguageParser.ADD_OPERATOR);
 	            this.state = 182;
@@ -918,28 +919,28 @@ export default class MiuLanguageParser extends antlr4.Parser {
 }
 
 MiuLanguageParser.EOF = antlr4.Token.EOF;
-MiuLanguageParser.T__0 = 1;
-MiuLanguageParser.T__1 = 2;
-MiuLanguageParser.T__2 = 3;
-MiuLanguageParser.T__3 = 4;
-MiuLanguageParser.T__4 = 5;
-MiuLanguageParser.T__5 = 6;
-MiuLanguageParser.T__6 = 7;
-MiuLanguageParser.T__7 = 8;
-MiuLanguageParser.T__8 = 9;
-MiuLanguageParser.T__9 = 10;
-MiuLanguageParser.T__10 = 11;
-MiuLanguageParser.T__11 = 12;
-MiuLanguageParser.T__12 = 13;
-MiuLanguageParser.T__13 = 14;
-MiuLanguageParser.T__14 = 15;
-MiuLanguageParser.T__15 = 16;
-MiuLanguageParser.T__16 = 17;
-MiuLanguageParser.T__17 = 18;
-MiuLanguageParser.T__18 = 19;
-MiuLanguageParser.T__19 = 20;
-MiuLanguageParser.COMPARISON_OPERATOR = 21;
-MiuLanguageParser.ADD_OPERATOR = 22;
+MiuLanguageParser.COMPARISON_OPERATOR = 1;
+MiuLanguageParser.ADD_OPERATOR = 2;
+MiuLanguageParser.EQUAL = 3;
+MiuLanguageParser.FN = 4;
+MiuLanguageParser.USE = 5;
+MiuLanguageParser.LET = 6;
+MiuLanguageParser.IN = 7;
+MiuLanguageParser.IF = 8;
+MiuLanguageParser.ELSE = 9;
+MiuLanguageParser.FOR = 10;
+MiuLanguageParser.RETURN = 11;
+MiuLanguageParser.ARROW = 12;
+MiuLanguageParser.DOT = 13;
+MiuLanguageParser.DOUBLE_DOT = 14;
+MiuLanguageParser.COMMA = 15;
+MiuLanguageParser.PC = 16;
+MiuLanguageParser.PP = 17;
+MiuLanguageParser.P = 18;
+MiuLanguageParser.LPAREN = 19;
+MiuLanguageParser.RPAREN = 20;
+MiuLanguageParser.LBRACE = 21;
+MiuLanguageParser.RBRACE = 22;
 MiuLanguageParser.TYPE = 23;
 MiuLanguageParser.BOOL = 24;
 MiuLanguageParser.STRING = 25;
@@ -1040,8 +1041,20 @@ class FunctionDeclarationContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_functionDeclaration;
     }
 
+	FN() {
+	    return this.getToken(MiuLanguageParser.FN, 0);
+	};
+
 	IDF() {
 	    return this.getToken(MiuLanguageParser.IDF, 0);
+	};
+
+	LPAREN() {
+	    return this.getToken(MiuLanguageParser.LPAREN, 0);
+	};
+
+	RPAREN() {
+	    return this.getToken(MiuLanguageParser.RPAREN, 0);
 	};
 
 	checkreturnFunction() {
@@ -1083,6 +1096,10 @@ class ModuleDeclarationContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_moduleDeclaration;
     }
 
+	USE() {
+	    return this.getToken(MiuLanguageParser.USE, 0);
+	};
+
 	ID = function(i) {
 		if(i===undefined) {
 			i = null;
@@ -1091,6 +1108,22 @@ class ModuleDeclarationContext extends antlr4.ParserRuleContext {
 	        return this.getTokens(MiuLanguageParser.ID);
 	    } else {
 	        return this.getToken(MiuLanguageParser.ID, i);
+	    }
+	};
+
+
+	PC() {
+	    return this.getToken(MiuLanguageParser.PC, 0);
+	};
+
+	PP = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(MiuLanguageParser.PP);
+	    } else {
+	        return this.getToken(MiuLanguageParser.PP, i);
 	    }
 	};
 
@@ -1125,6 +1158,10 @@ class CheckreturnFunctionContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = MiuLanguageParser.RULE_checkreturnFunction;
     }
+
+	RETURN() {
+	    return this.getToken(MiuLanguageParser.RETURN, 0);
+	};
 
 	TYPE() {
 	    return this.getToken(MiuLanguageParser.TYPE, 0);
@@ -1180,6 +1217,18 @@ class ParamListContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
+	COMMA = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(MiuLanguageParser.COMMA);
+	    } else {
+	        return this.getToken(MiuLanguageParser.COMMA, i);
+	    }
+	};
+
+
 	enterRule(listener) {
 	    if(listener instanceof MiuLanguageListener ) {
 	        listener.enterParamList(this);
@@ -1213,6 +1262,10 @@ class ParamContext extends antlr4.ParserRuleContext {
 
 	ID() {
 	    return this.getToken(MiuLanguageParser.ID, 0);
+	};
+
+	P() {
+	    return this.getToken(MiuLanguageParser.P, 0);
 	};
 
 	TYPE() {
@@ -1249,6 +1302,14 @@ class BodyContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = MiuLanguageParser.RULE_body;
     }
+
+	LBRACE() {
+	    return this.getToken(MiuLanguageParser.LBRACE, 0);
+	};
+
+	RBRACE() {
+	    return this.getToken(MiuLanguageParser.RBRACE, 0);
+	};
 
 	statement = function(i) {
 	    if(i===undefined) {
@@ -1292,8 +1353,16 @@ class BodyRContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_bodyR;
     }
 
+	LBRACE() {
+	    return this.getToken(MiuLanguageParser.LBRACE, 0);
+	};
+
 	statementR() {
 	    return this.getTypedRuleContext(StatementRContext,0);
+	};
+
+	RBRACE() {
+	    return this.getToken(MiuLanguageParser.RBRACE, 0);
 	};
 
 	statement = function(i) {
@@ -1338,8 +1407,16 @@ class StatementRContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_statementR;
     }
 
+	RETURN() {
+	    return this.getToken(MiuLanguageParser.RETURN, 0);
+	};
+
 	exprReturn() {
 	    return this.getTypedRuleContext(ExprReturnContext,0);
+	};
+
+	PP() {
+	    return this.getToken(MiuLanguageParser.PP, 0);
 	};
 
 	enterRule(listener) {
@@ -1375,6 +1452,18 @@ class FunctionCallContext extends antlr4.ParserRuleContext {
 
 	IDF() {
 	    return this.getToken(MiuLanguageParser.IDF, 0);
+	};
+
+	LPAREN() {
+	    return this.getToken(MiuLanguageParser.LPAREN, 0);
+	};
+
+	RPAREN() {
+	    return this.getToken(MiuLanguageParser.RPAREN, 0);
+	};
+
+	PC() {
+	    return this.getToken(MiuLanguageParser.PC, 0);
 	};
 
 	argList() {
@@ -1416,8 +1505,24 @@ class FunctionCallVarContext extends antlr4.ParserRuleContext {
 	    return this.getToken(MiuLanguageParser.ID, 0);
 	};
 
+	DOT() {
+	    return this.getToken(MiuLanguageParser.DOT, 0);
+	};
+
 	IDF() {
 	    return this.getToken(MiuLanguageParser.IDF, 0);
+	};
+
+	LPAREN() {
+	    return this.getToken(MiuLanguageParser.LPAREN, 0);
+	};
+
+	RPAREN() {
+	    return this.getToken(MiuLanguageParser.RPAREN, 0);
+	};
+
+	PC() {
+	    return this.getToken(MiuLanguageParser.PC, 0);
 	};
 
 	argList() {
@@ -1527,6 +1632,18 @@ class ArgListContext extends antlr4.ParserRuleContext {
 	};
 
 
+	COMMA = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(MiuLanguageParser.COMMA);
+	    } else {
+	        return this.getToken(MiuLanguageParser.COMMA, i);
+	    }
+	};
+
+
 	enterRule(listener) {
 	    if(listener instanceof MiuLanguageListener ) {
 	        listener.enterArgList(this);
@@ -1605,12 +1722,24 @@ class AssignmentContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_assignment;
     }
 
+	LET() {
+	    return this.getToken(MiuLanguageParser.LET, 0);
+	};
+
 	ID() {
 	    return this.getToken(MiuLanguageParser.ID, 0);
 	};
 
+	EQUAL() {
+	    return this.getToken(MiuLanguageParser.EQUAL, 0);
+	};
+
 	expr() {
 	    return this.getTypedRuleContext(ExprContext,0);
+	};
+
+	PC() {
+	    return this.getToken(MiuLanguageParser.PC, 0);
 	};
 
 	enterRule(listener) {
@@ -1683,6 +1812,10 @@ class IfStatementContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_ifStatement;
     }
 
+	IF() {
+	    return this.getToken(MiuLanguageParser.IF, 0);
+	};
+
 	comparisonExprADD() {
 	    return this.getTypedRuleContext(ComparisonExprADDContext,0);
 	};
@@ -1707,6 +1840,10 @@ class IfStatementContext extends antlr4.ParserRuleContext {
 	    } else {
 	        return this.getTypedRuleContext(ElseIfStatementContext,i);
 	    }
+	};
+
+	ELSE() {
+	    return this.getToken(MiuLanguageParser.ELSE, 0);
 	};
 
 	enterRule(listener) {
@@ -1739,6 +1876,14 @@ class ElseIfStatementContext extends antlr4.ParserRuleContext {
         this.parser = parser;
         this.ruleIndex = MiuLanguageParser.RULE_elseIfStatement;
     }
+
+	ELSE() {
+	    return this.getToken(MiuLanguageParser.ELSE, 0);
+	};
+
+	IF() {
+	    return this.getToken(MiuLanguageParser.IF, 0);
+	};
 
 	comparisonExprADD() {
 	    return this.getTypedRuleContext(ComparisonExprADDContext,0);
@@ -1779,8 +1924,16 @@ class ForStatementContext extends antlr4.ParserRuleContext {
         this.ruleIndex = MiuLanguageParser.RULE_forStatement;
     }
 
+	FOR() {
+	    return this.getToken(MiuLanguageParser.FOR, 0);
+	};
+
 	ID() {
 	    return this.getToken(MiuLanguageParser.ID, 0);
+	};
+
+	IN() {
+	    return this.getToken(MiuLanguageParser.IN, 0);
 	};
 
 	INT = function(i) {
@@ -1794,6 +1947,10 @@ class ForStatementContext extends antlr4.ParserRuleContext {
 	    }
 	};
 
+
+	DOUBLE_DOT() {
+	    return this.getToken(MiuLanguageParser.DOUBLE_DOT, 0);
+	};
 
 	body() {
 	    return this.getTypedRuleContext(BodyContext,0);

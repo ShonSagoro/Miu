@@ -1,5 +1,4 @@
 import logo from "../resources/miuLogo.png";
-import CodeSnippet from "../components/CodeSnippet";
 import CodeCard from "../components/CodeCard";
 
 function MiuDoc() {
@@ -13,12 +12,12 @@ function MiuDoc() {
         },
         {
           subtitle: "Funcion con parametros",
-          code: `fn Suma(x:int) {\n\tx=10;\n}`,
+          code: `fn Suma(x:int) {\n\tlet x=10;\n}`,
         },
         {
           subtitle: "Funcion con retorno",
           code: `fn Suma()->int {\n\treturn 10==1;\n}`,
-        }
+        },
       ],
     },
     {
@@ -26,7 +25,7 @@ function MiuDoc() {
       content: [
         {
           subtitle: "",
-          code: `fn Suma()->int {\n\tlet i=0;\n\tlet j:int=0;\n\treturn i==j;\n}`,
+          code: `fn Suma()->int {\n\tlet i=0;\n\tlet j=0;\n\treturn i==j;\n}`,
         },
       ],
     },
@@ -43,13 +42,9 @@ function MiuDoc() {
       title: "Declaración de estructuras de control",
       content: [
         {
-          subtitle: "Metodo tradicional",
+          subtitle: "",
           code: `fn ValidateX(x:int){\n\tif x>10 {\n\t\tfmt.Print("x > 10");\n\t}else if x<10{\n\t\tfmt.Print("x < 10");\n\t}else{\n\t\tfmt.Print("x == 10");\n\t}\n}`,
-        },
-        {
-          subtitle: "Metodo Ternario",
-          code: `fn ValidateX(x:int){\n\tx>10?{\n\t\tfmt.Print("x > 10");\n\t}: x<10 ?{\n\t\tfmt.Print("x > 10");\n\t}:{\n\t\tfmt.Print("x == 10");\n\t}\n}`,
-        },
+        }
       ],
     },
     {
@@ -96,9 +91,9 @@ function MiuDoc() {
           {ExamplesCodes.map((example, index) => {
             return (
               <CodeCard
+                key={index}
                 title={example.title}
                 content={example.content}
-                index={index}
               />
             );
           })}

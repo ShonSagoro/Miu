@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
+/* eslint-disable no-unused-vars */
+import { useState, useRef, useEffect } from "react";
 import Editor from "@monaco-editor/react";
 import { UseCheck } from "../context/CheckProvider";
 import ScrollableFeed from "react-scrollable-feed";
@@ -16,7 +17,7 @@ function MiuCode() {
   const [messages, setMessages] = useState(["Write and check your miu Code"]);
   const editorRef = useRef(null);
   const [code, setCode] = useState(
-    `fn Main() {\n\tfmt.Print("Hola, mundo!");\n}`
+    `use std::fmt;\n\nfn Module() {\n\tfmt.Print("Hola, mundo!");\n}`
   );
 
   const [isDisabled, setIsDisabled] = useState(false);
@@ -45,27 +46,38 @@ function MiuCode() {
     quickSuggestions: false,
   };
 
-  const handleChange = (e) => {
+  const handleChange = () => {
     setCode(editorRef.current.getValue());
   };
 
   const handleCLick = async () => {
     setIsDisabled(true);
-    let messageInfo = await checkGrammar(code);
-    setMessages((prevMessages) => [...prevMessages, messageInfo]);
+    let validate = await checkGrammar(code);
+    setMessages((prevMessages) => [...prevMessages, defineMessage(validate)]);
     setIsDisabled(false);
   };
 
+  const defineMessage = (isValidate) => {
+    if (isValidate) {
+      return ">> Code is valid";
+    } else {
+      return ">> [x] Code is invalid [x]";
+    }
+
+  }
+
   const handleConsole = async () => {
-    setMessages(["Clear"]);
+    setMessages([">> Clear \n"]);
   };
 
   const handleDebug = () => {
     setIsDebugEnable((prevState) => !prevState);
+    setMessages((prevMessages) => [...prevMessages, `>> Debug Mode ${isDebugEnable ? "Enable" : "Disable"} \n`]);
   };
 
   const handleQuick = () => {
     setIsQuickEnable((prevState) => !prevState);
+    setMessages((prevMessages) => [...prevMessages, `>> Quick Mode ${isQuickEnable ? "Enable" : "Disable"} \n`]);
   };
 
   useEffect(() => {
@@ -117,8 +129,8 @@ function MiuCode() {
         </div>
         <div className=" px-2 text-slate-200 overflow-y-auto h-full pt-2">
           <ScrollableFeed>
-            {messages.map((message, index) => (
-              <p>{message}</p>
+            {messages.map((message, key) => (
+              <pre key={key}><code >{message}</code></pre>
             ))}
           </ScrollableFeed>
         </div>

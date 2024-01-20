@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 /* eslint-disable react/prop-types */
 function CodeSnippet(props) {
@@ -7,6 +7,7 @@ function CodeSnippet(props) {
 
   useEffect(() => {
     setCode(props.code.toString());
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[]);
 
   const handleCopyClick = async () => {
