@@ -46,15 +46,15 @@ fragment IDN: [a-zA-Z0-9];
 WS : [ \t\r\n]+ -> skip ;
 
 // Parser rules
-functionDeclaration : FN IDF LPAREN paramList? RPAREN checkreturnFunction ;
+functionDeclaration : FN IDF '(' paramList? ')' checkreturnFunction ;
 moduleDeclaration : USE ID (PP ID)* PC;
 checkreturnFunction : RETURN TYPE bodyR | body ;
 
 paramList : param (COMMA param)* ;
 param : ID ':' TYPE ;
 
-body : LBRACE (statement)* RBRACE ;
-bodyR: LBRACE (statement)* statementR RBRACE ;
+body : '{' (statement)* '}' ;
+bodyR: '{' (statement)* statementR '}' ;
 
 statementR : RETURN exprReturn PP ;
 
