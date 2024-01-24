@@ -163,9 +163,9 @@ const CheckProvider = ({ children }) => {
       }
 
       tokenCounts = await countTokens(tokens.tokens);
-      for (const token in tokenCounts) {
+      for (const lexema in tokenCounts) {
         await addDebugMessage(
-          `Token: Type: ${tokenCounts[token].type}, Token= ${token}, Count: ${tokenCounts[token].count}`
+          `Token: Token= ${tokenCounts[lexema].token}, Lexema= ${lexema}, Count: ${tokenCounts[lexema].count}`
         );
       }
       parser.buildParseTrees = true;
@@ -185,7 +185,7 @@ const CheckProvider = ({ children }) => {
       if (!tokenCounts[token.text]) {
         tokenCounts[token.text] = {
           count: 1,
-          type: TOKEN_NAMES[token.type],
+          token: TOKEN_NAMES[token.type],
         };
       } else {
         tokenCounts[token.text].count++;

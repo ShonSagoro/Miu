@@ -77,7 +77,7 @@ function MiuCode() {
 
   const handleQuick = () => {
     setIsQuickEnable((prevState) => !prevState);
-    setMessages((prevMessages) => [...prevMessages, `>> Quick Mode ${isQuickEnable ? "Enable" : "Disable"} \n`]);
+    setMessages((prevMessages) => [...prevMessages, `>> Quick Mode ${isQuickEnable ? "Disable" : "Enable"} \n`]);
   };
 
   useEffect(() => {
