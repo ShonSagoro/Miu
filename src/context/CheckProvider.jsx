@@ -65,7 +65,12 @@ const CheckProvider = ({ children }) => {
   };
 
   const addQuickMessage = async (message) => {
-    await executeWithDelay(setConsoleMessage, JSON.stringify(message));
+    await executeWithDelay(setConsoleMessage, message);
+  };
+
+  const addErrorMessage = async (message) => {
+    message = `[ERROR] >> ${message} \n`;
+    await executeWithDelay(setConsoleMessage, message);
   };
 
   // eslint-disable-next-line no-unused-vars
@@ -104,16 +109,16 @@ const CheckProvider = ({ children }) => {
   const addMessageTree = async (tree) => {
     let formattedTree = printTree(tree);
     formattedTree = formattedTree.replace(/\$/g, "");
-    formattedTree = "\nTREE >>\n" + formattedTree + "\n";
+    formattedTree = "\n[TREE] >>\n" + formattedTree + "\n";
 
-    if (!isQuickEnable) {
+    if (isDebugEnable) {
       await executeWithDelay(setConsoleMessage, formattedTree);
     }
   };
 
   // eslint-disable-next-line no-unused-vars
   const addDebugMessage = async (message) => {
-    message = "[DEBUG] >> "+message;
+    message = "[DEBUG] >> " + message;
     if (isDebugEnable) {
       await executeWithDelay(setConsoleMessage, message);
     }
@@ -122,13 +127,40 @@ const CheckProvider = ({ children }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkGrammar = async (code) => {
     let tokenCounts = {};
+    let messageQueue = [];
+
     try {
       await addMessage("Iniciando análisis...");
       const chars = new antlr4.InputStream(code);
       const lexer = new MiuLexer(chars);
       const tokens = new antlr4.CommonTokenStream(lexer);
       const parser = new MiuParser(tokens);
+      parser.addErrorListener({
+        syntaxError: function (
+          recognizer,
+          offendingSymbol,
+          line,
+          column,
+          msg,
+          e
+        ) {
+          let line_str = line.toString();
+          let column_str = column.toString();
+          let msg_str = msg.toString();
+          messageQueue.push(
+            `En la línea ${line_str}:${column_str}: ${msg_str}`
+          );
+        },
+      });
       let tree = parser.program();
+
+      // Process the message queue
+      if (messageQueue.length > 0) {
+        for (const message of messageQueue) {
+          await addErrorMessage(message);
+        }
+        return false;
+      }
 
       tokenCounts = await countTokens(tokens.tokens);
       for (const token in tokenCounts) {
@@ -138,18 +170,11 @@ const CheckProvider = ({ children }) => {
       }
       parser.buildParseTrees = true;
 
-      parser.addErrorListener({
-        syntaxError: async function (line, column, msg) {
-          await addMessage(`ERROR en línea ${line}:${column}: ${msg}`);
-        },
-      });
-
-
       await addMessageTree(tree);
 
       return true;
     } catch (e) {
-      await addMessage(`ERROR X-X: ${e}`);
+      await addErrorMessage(`${e}`);
       return false;
     }
   };

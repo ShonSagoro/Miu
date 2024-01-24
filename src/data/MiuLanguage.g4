@@ -1,6 +1,6 @@
 grammar MiuLanguage;
 
-program : (moduleDeclaration | functionDeclaration)*;
+program : (moduleDeclaration | functionDeclaration)* INVALID? EOF ;
 
 //lexer rules
 COMPARISON_OPERATOR: EQ | NEQ | GT | LT | GTEQ | LTEQ;
@@ -13,32 +13,12 @@ fragment GT : '>';
 fragment LT : '<';
 fragment GTEQ : '>=';
 fragment LTEQ : '<=';
-EQUAL : '=';
-FN:'fn';
-USE:'use';
-LET:'let';
-IN:'in';
-IF:'if';
-ELSE:'else';
-FOR:'for';
-RETURN:'return';
-ARROW:'->';
-DOT:'.';
-DOUBLE_DOT:'..';
-COMMA: ',';
-PC: ';';
-PP: '::';
-P: ':';
-LPAREN: '(';
-RPAREN: ')';
-LBRACE: '{';
-RBRACE: '}';
 TYPE : 'int' | 'float' | 'bool' | 'string' | 'char' ;
 BOOL : 'true' | 'false' ;
 
 STRING : '"' (~["])* '"' ;
 CHAR : '\'' ~'\'' '\'' ;
-FLOAT : [0-9]+ DOT [0-9]+ ;
+FLOAT : [0-9]+ '.' [0-9]+ ;
 INT : [0-9]+ ;
 IDF : [A-Z] IDN* ;
 ID: [a-zA-Z] IDN* ;
@@ -46,31 +26,32 @@ fragment IDN: [a-zA-Z0-9];
 WS : [ \t\r\n]+ -> skip ;
 
 // Parser rules
-functionDeclaration : FN IDF '(' paramList? ')' checkreturnFunction ;
-moduleDeclaration : USE ID (PP ID)* PC;
-checkreturnFunction : RETURN TYPE bodyR | body ;
+functionDeclaration : 'fn' IDF '(' paramList? ')' checkreturnFunction ;
+moduleDeclaration : 'use' ID ('::' ID)* ';';
+checkreturnFunction : 'return' TYPE bodyR | body ;
 
-paramList : param (COMMA param)* ;
+paramList : param (',' param)* ;
+INVALID : . ;
 param : ID ':' TYPE ;
 
 body : '{' (statement)* '}' ;
 bodyR: '{' (statement)* statementR '}' ;
 
-statementR : RETURN exprReturn PP ;
+statementR : 'return' exprReturn ';' ;
 
-functionCall : IDF LPAREN argList? RPAREN PC;
-functionCallVar: ID DOT IDF LPAREN argList? RPAREN PC;
-argList : (ID | STRING | CHAR | INT | FLOAT | BOOL) (COMMA (ID | STRING | CHAR | INT | FLOAT | BOOL))* ;
+functionCall : IDF '(' argList? ')' ';';
+functionCallVar: ID '.' IDF '(' argList? ')' ';';
+argList : (ID | STRING | CHAR | INT | FLOAT | BOOL) (',' (ID | STRING | CHAR | INT | FLOAT | BOOL))* ;
 
 statement : assignment | functionCall | functionCallVar | controlStructure ;
 
-assignment : LET ID EQUAL expr PC;
+assignment : 'let' ID '=' expr ';';
 controlStructure : ifStatement | forStatement ;
 
-ifStatement : IF comparisonExprADD body (elseIfStatement)* (ELSE body)? ;
-elseIfStatement : ELSE IF comparisonExprADD body ;
+ifStatement : 'if' comparisonExprADD body (elseIfStatement)* ('else' body)? ;
+elseIfStatement : 'else' 'if' comparisonExprADD body ;
 
-forStatement : FOR ID IN INT DOUBLE_DOT INT body ;
+forStatement : 'for' ID 'in' INT '..' INT body ;
 
 comparisonExprADD : comparisonExpr (ADD_OPERATOR comparisonExpr)* ;
 comparisonExpr : expr COMPARISON_OPERATOR expr ;
