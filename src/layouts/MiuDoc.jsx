@@ -98,7 +98,7 @@ function MiuDoc() {
             );
           })}
         </div>
-        <h1>--En Proceso--</h1>
+    
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-// Generated from ./src/data/MiuLanguage.g4 by ANTLR 4.13.1
+// Generated from ./MiuLanguage_lex.g4 by ANTLR 4.13.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -93,9 +93,9 @@ const atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
 
 const decisionsToDFA = atn.decisionToState.map( (ds, index) => new antlr4.dfa.DFA(ds, index) );
 
-export default class MiuLanguageLexer extends antlr4.Lexer {
+export default class MiuLanguage_lexLexer extends antlr4.Lexer {
 
-    static grammarFileName = "MiuLanguage.g4";
+    static grammarFileName = "MiuLanguage_lex.g4";
     static channelNames = [ "DEFAULT_TOKEN_CHANNEL", "HIDDEN" ];
 	static modeNames = [ "DEFAULT_MODE" ];
 	static literalNames = [ null, null, null, "'='", "'fn'", "'use'", "'let'", 
@@ -122,39 +122,39 @@ export default class MiuLanguageLexer extends antlr4.Lexer {
     }
 }
 
-MiuLanguageLexer.EOF = antlr4.Token.EOF;
-MiuLanguageLexer.COMPARISON_OPERATOR = 1;
-MiuLanguageLexer.ADD_OPERATOR = 2;
-MiuLanguageLexer.EQUAL = 3;
-MiuLanguageLexer.FN = 4;
-MiuLanguageLexer.USE = 5;
-MiuLanguageLexer.LET = 6;
-MiuLanguageLexer.IN = 7;
-MiuLanguageLexer.IF = 8;
-MiuLanguageLexer.ELSE = 9;
-MiuLanguageLexer.FOR = 10;
-MiuLanguageLexer.RETURN = 11;
-MiuLanguageLexer.ARROW = 12;
-MiuLanguageLexer.DOT = 13;
-MiuLanguageLexer.DOUBLE_DOT = 14;
-MiuLanguageLexer.PP = 15;
-MiuLanguageLexer.COMMA = 16;
-MiuLanguageLexer.PC = 17;
-MiuLanguageLexer.P = 18;
-MiuLanguageLexer.LPAREN = 19;
-MiuLanguageLexer.RPAREN = 20;
-MiuLanguageLexer.LBRACE = 21;
-MiuLanguageLexer.RBRACE = 22;
-MiuLanguageLexer.TYPE = 23;
-MiuLanguageLexer.BOOL = 24;
-MiuLanguageLexer.STRING = 25;
-MiuLanguageLexer.CHAR = 26;
-MiuLanguageLexer.FLOAT = 27;
-MiuLanguageLexer.INT = 28;
-MiuLanguageLexer.IDF = 29;
-MiuLanguageLexer.ID = 30;
-MiuLanguageLexer.WS = 31;
-MiuLanguageLexer.INVALID = 32;
+MiuLanguage_lexLexer.EOF = antlr4.Token.EOF;
+MiuLanguage_lexLexer.COMPARISON_OPERATOR = 1;
+MiuLanguage_lexLexer.ADD_OPERATOR = 2;
+MiuLanguage_lexLexer.EQUAL = 3;
+MiuLanguage_lexLexer.FN = 4;
+MiuLanguage_lexLexer.USE = 5;
+MiuLanguage_lexLexer.LET = 6;
+MiuLanguage_lexLexer.IN = 7;
+MiuLanguage_lexLexer.IF = 8;
+MiuLanguage_lexLexer.ELSE = 9;
+MiuLanguage_lexLexer.FOR = 10;
+MiuLanguage_lexLexer.RETURN = 11;
+MiuLanguage_lexLexer.ARROW = 12;
+MiuLanguage_lexLexer.DOT = 13;
+MiuLanguage_lexLexer.DOUBLE_DOT = 14;
+MiuLanguage_lexLexer.PP = 15;
+MiuLanguage_lexLexer.COMMA = 16;
+MiuLanguage_lexLexer.PC = 17;
+MiuLanguage_lexLexer.P = 18;
+MiuLanguage_lexLexer.LPAREN = 19;
+MiuLanguage_lexLexer.RPAREN = 20;
+MiuLanguage_lexLexer.LBRACE = 21;
+MiuLanguage_lexLexer.RBRACE = 22;
+MiuLanguage_lexLexer.TYPE = 23;
+MiuLanguage_lexLexer.BOOL = 24;
+MiuLanguage_lexLexer.STRING = 25;
+MiuLanguage_lexLexer.CHAR = 26;
+MiuLanguage_lexLexer.FLOAT = 27;
+MiuLanguage_lexLexer.INT = 28;
+MiuLanguage_lexLexer.IDF = 29;
+MiuLanguage_lexLexer.ID = 30;
+MiuLanguage_lexLexer.WS = 31;
+MiuLanguage_lexLexer.INVALID = 32;
 
 
 

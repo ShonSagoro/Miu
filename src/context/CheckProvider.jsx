@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useMemo, useState } from "react";
-import MiuLexer from "../data/MiuLanguageLexer.js";
-import MiuParser from "../data/MiuLanguageParser.js";
+import MiuLexer from "../data/analizar_lexico/MiuLanguage_lexLexer.js";
+import MiuParser from "../data/analizar_lexico/MiuLanguage_lexParser.js"
+import MiuLexer_sin  from "../data/analizar_sintactico/MiuLanguage_sinLexer.js"
+import MiuParser_sin  from "../data/analizar_sintactico/MiuLanguage_sinParser.js"
 import antlr4 from "antlr4";
 
 import CheckContext from "./CheckContext";
@@ -130,7 +132,60 @@ const CheckProvider = ({ children }) => {
     let messageQueue = [];
 
     try {
-      await addMessage("Iniciando análisis...");
+      await checkLexical(code, messageQueue, tokenCounts);
+      await checkSintactic(code, messageQueue, tokenCounts);
+      return true;
+    } catch (e) {
+      await addErrorMessage(`${e}`);
+      return false;
+    }
+  };
+
+  const checkSintactic = async (code, messageQueue, tokenCounts) => {
+    await addMessage("Iniciando análisis sintactico...");
+    const chars = new antlr4.InputStream(code);
+    const lexer = new MiuLexer_sin(chars);
+    const tokens = new antlr4.CommonTokenStream(lexer);
+    const parser = new MiuParser_sin(tokens);
+    parser.addErrorListener({
+      syntaxError: function (
+        recognizer,
+        offendingSymbol,
+        line,
+        column,
+        msg,
+        e
+      ) {
+        let line_str = line.toString();
+        let column_str = column.toString();
+        let msg_str = msg.toString();
+        messageQueue.push(
+          `En la línea ${line_str}:${column_str}: ${msg_str}`
+        );
+      },
+    });
+    let tree = parser.program();
+
+    if (messageQueue.length > 0) {
+      for (const message of messageQueue) {
+        await addErrorMessage(message);
+      }
+      return false;
+    }
+
+    tokenCounts = await countTokens(tokens.tokens);
+    for (const lexema in tokenCounts) {
+      await addDebugMessage(
+        `Token: Token= ${tokenCounts[lexema].token}, Lexema= ${lexema}, Count: ${tokenCounts[lexema].count}`
+      );
+    }
+    parser.buildParseTrees = true;
+
+    await addMessageTree(tree);
+  }
+
+  const checkLexical = async (code, messageQueue, tokenCounts) => {
+    await addMessage("Iniciando análisis lexico...");
       const chars = new antlr4.InputStream(code);
       const lexer = new MiuLexer(chars);
       const tokens = new antlr4.CommonTokenStream(lexer);
@@ -154,7 +209,6 @@ const CheckProvider = ({ children }) => {
       });
       let tree = parser.program();
 
-      // Process the message queue
       if (messageQueue.length > 0) {
         for (const message of messageQueue) {
           await addErrorMessage(message);
@@ -171,13 +225,7 @@ const CheckProvider = ({ children }) => {
       parser.buildParseTrees = true;
 
       await addMessageTree(tree);
-
-      return true;
-    } catch (e) {
-      await addErrorMessage(`${e}`);
-      return false;
-    }
-  };
+  }
 
   const countTokens = async (tokens) => {
     let tokenCounts = {};
