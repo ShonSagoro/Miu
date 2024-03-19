@@ -4,9 +4,16 @@ import MiuLexer from "../data/analizar_lexico/MiuLanguage_lexLexer.js";
 import MiuParser from "../data/analizar_lexico/MiuLanguage_lexParser.js"
 import MiuLexer_sin  from "../data/analizar_sintactico/MiuLanguage_sinLexer.js"
 import MiuParser_sin  from "../data/analizar_sintactico/MiuLanguage_sinParser.js"
+//import MiuLanguageVisitor from "../data/analizar_sintactico/MiuLanguage_sinVisitor.java";
 import antlr4 from "antlr4";
+import fs from 'fs';
 
 import CheckContext from "./CheckContext";
+import MiuLanguage_lexParser from "../data/analizar_lexico/MiuLanguage_lexParser.js";
+import MiuLanguage_sinParser from "../data/analizar_sintactico/MiuLanguage_sinParser.js";
+
+const outputPathL = "../data/CodeLGenerator.js"
+const outputPathS = "../data/CodeSGenerator.js"
 
 // eslint-disable-next-line react/prop-types
 const CheckProvider = ({ children }) => {
@@ -242,6 +249,38 @@ const CheckProvider = ({ children }) => {
     return tokenCounts;
   };
 
+  //Generar el codigo 
+  const generateCode = async (code, outputPathL, outputPathS) => {
+    try {
+      const chars = new antlr4.InputStream(code);
+      const lexer = new MiuLexer_sin(chars);
+      const tokens = new antlr4.CommonTokenStream(lexer);
+      const parser = new MiuParser_sin(tokens);
+      parser.buildParseTrees = true;
+      const tree = parser.program();
+  
+      const visitorl = new MiuLanguage_lexParser();
+      const generatedCodel = visitorl.visit(tree);
+  
+      const visitors = new MiuLanguage_sinParser();
+      const generatedCodes = visitors.visit(tree);
+  
+      fs.writeFileSync(outputPathL + "_lex", generatedCodel, 'utf8');
+      fs.writeFileSync(outputPathS + "_sin", generatedCodes, 'utf8');
+  
+      console.log(`Códigos generados exitosamente en ${outputPathL}_lex y ${outputPathS}_sin`);
+  
+      return { lexCode: generatedCodel, sinCode: generatedCodes };
+    } catch (error) {
+      console.error("Error al generar el código:", error);
+      return null;
+    }
+  };
+  
+  
+  
+
+
   const value = useMemo(() => {
     return {
       checkGrammar,
@@ -250,6 +289,7 @@ const CheckProvider = ({ children }) => {
       setIsDebugEnable,
       isQuickEnable,
       setIsQuickEnable,
+      generateCode,
     };
   }, [consoleMessage, isDebugEnable, isQuickEnable, checkGrammar]);
 
@@ -268,3 +308,6 @@ export function UseCheck() {
 
   return context;
 }
+
+
+

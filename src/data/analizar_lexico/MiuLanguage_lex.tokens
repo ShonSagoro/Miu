@@ -29,7 +29,6 @@ INT=28
 IDF=29
 ID=30
 WS=31
-INVALID=32
 '='=3
 'fn'=4
 'use'=5
