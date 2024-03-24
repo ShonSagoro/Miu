@@ -1,7 +1,9 @@
-// Generated from ./MiuLanguage_sin.g4 by ANTLR 4.13.1
+// Generated from MiuLanguage_sin.g4 by ANTLR 4.13.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import MiuLanguage_sinListener from './MiuLanguage_sinListener.js';
+import MiuLanguage_sinVisitor from './MiuLanguage_sinVisitor.js';
+
 const serializedATN = [4,1,32,204,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 4,2,5,7,5,2,6,7,6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,
 2,13,7,13,2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,2,19,7,19,2,
@@ -1044,6 +1046,14 @@ class ProgramContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitProgram(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -1097,6 +1107,14 @@ class FunctionDeclarationContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitFunctionDeclaration(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitFunctionDeclaration(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1162,6 +1180,14 @@ class ModuleDeclarationContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitModuleDeclaration(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -1207,6 +1233,14 @@ class CheckreturnFunctionContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitCheckreturnFunction(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitCheckreturnFunction(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1263,6 +1297,14 @@ class ParamListContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitParamList(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -1304,6 +1346,14 @@ class ParamContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitParam(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitParam(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1354,6 +1404,14 @@ class BodyContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitBody(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitBody(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1410,6 +1468,14 @@ class BodyRContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitBodyR(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -1451,6 +1517,14 @@ class StatementRContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitStatementR(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitStatementR(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1502,6 +1576,14 @@ class FunctionCallContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitFunctionCall(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitFunctionCall(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1561,6 +1643,14 @@ class FunctionCallVarContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitFunctionCallVar(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitFunctionCallVar(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1678,6 +1768,14 @@ class ArgListContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitArgList(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -1723,6 +1821,14 @@ class StatementContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitStatement(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitStatement(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1776,6 +1882,14 @@ class AssignmentContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitAssignment(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -1813,6 +1927,14 @@ class ControlStructureContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitControlStructure(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitControlStructure(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1880,6 +2002,14 @@ class IfStatementContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitIfStatement(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -1925,6 +2055,14 @@ class ElseIfStatementContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitElseIfStatement(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitElseIfStatement(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -1990,6 +2128,14 @@ class ForStatementContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitForStatement(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -2044,6 +2190,14 @@ class ComparisonExprADDContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitComparisonExprADD(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -2090,6 +2244,14 @@ class ComparisonExprContext extends antlr4.ParserRuleContext {
 		}
 	}
 
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitComparisonExpr(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
 
 }
 
@@ -2127,6 +2289,14 @@ class ExprReturnContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitExprReturn(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitExprReturn(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
@@ -2182,6 +2352,14 @@ class ExprContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_sinListener ) {
 	        listener.exitExpr(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitExpr(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 
