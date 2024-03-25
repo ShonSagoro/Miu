@@ -18,7 +18,7 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
         let children = ctx.children.map(child => this.visit(child));
         let dir_name = children.slice(1, -2).join('');
         dir_name = dir_name.slice(0, -1);
-        
+
         let package_name = children[children.length - 2] || '';
 
         console.log(dir_name);
@@ -53,7 +53,7 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#bodyRule.
     visitBodyRule(ctx) {
-        return this.visitChildren(ctx).join('')+ "\n";
+        return this.visitChildren(ctx).join('') + "\n";
     }
 
 
@@ -107,19 +107,52 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#ifStatement.
     visitIfStatement(ctx) {
-        return this.visitChildren(ctx).join('');
+        let if_part = ctx.children.slice(0, 3);
+        let rest = ctx.children.slice(3);
+        let if_structure = "";
+        if_structure += this.visit(if_part[0]);
+        let compare = `(${this.visit(if_part[1])})`;
+        let lbrace = this.visit(if_part[2].children[0]);
+        let body = this.visit(if_part[2].children[1]);
+        let rbrace = "\t" + this.visit(if_part[2].children[2]);
+        if_structure += ` ${compare} ${lbrace} \t${body} ${rbrace} `;
+        for (let i = 0; i < rest.length; i++) {
+            if_structure += this.visit(rest[i]);
+        }
+        return if_structure;
+    }
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#elseStatement.
+    visitElseStatement(ctx) {
+        console.log(ctx.children);
+        let else_structure = "";
+        else_structure += this.visit(ctx.children[0]);
+        let lbrace = this.visit(ctx.children[1].children[0]);
+        let body = this.visit(ctx.children[1].children[1]);
+        let rbrace = this.visit(ctx.children[1].children[2]);
+        else_structure += ` ${lbrace} \t${body} \t${rbrace}\n`;
+        return else_structure;
     }
 
 
     // Visit a parse tree produced by MiuLanguage_sinParser#elseIfStatement.
     visitElseIfStatement(ctx) {
-        return this.visitChildren(ctx).join('');
+        let else_if_structure = "";
+        else_if_structure += this.visit(ctx.children[0]) +" "+ this.visit(ctx.children[1]);
+        let compare = `(${this.visit(ctx.children[2])})`;
+        let lbrace = this.visit(ctx.children[3].children[0]);
+        let body = this.visit(ctx.children[3].children[1]);
+        let rbrace = this.visit(ctx.children[3].children[2]);
+        else_if_structure += ` ${compare} ${lbrace} \t${body} \t${rbrace} `;
+
+        return else_if_structure;
     }
 
 
     // Visit a parse tree produced by MiuLanguage_sinParser#forStatement.
     visitForStatement(ctx) {
-        let for_structure =''
+        console.log(ctx.children);
+        let for_structure = ''
         for_structure += this.visit(ctx.children[0]);
 
         let variable = this.visit(ctx.children[1]);
@@ -190,7 +223,7 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#pcRule.
     visitPcRule(ctx) {
-        return  ";\n";
+        return ";\n";
     }
 
 
@@ -214,7 +247,7 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#returnRule.
     visitReturnRule(ctx) {
-        return ctx.getText()+" ";
+        return ctx.getText() + " ";
     }
 
 
@@ -328,7 +361,6 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#rbraceRule.
     visitRbraceRule(ctx) {
-        console.log(ctx.parentCtx.constructor.name);
         return ctx.getText();
     }
 

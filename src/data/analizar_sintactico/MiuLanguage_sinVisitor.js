@@ -108,6 +108,12 @@ export default class MiuLanguage_sinVisitor extends antlr4.tree.ParseTreeVisitor
 	}
 
 
+	// Visit a parse tree produced by MiuLanguage_sinParser#elseStatement.
+	visitElseStatement(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by MiuLanguage_sinParser#elseIfStatement.
 	visitElseIfStatement(ctx) {
 	  return this.visitChildren(ctx);

@@ -70,7 +70,8 @@ statement : assignment | functionCall | functionCallVar | controlStructure ;
 assignment : letRule idRule equalRule exprRule pcRule;
 controlStructure : ifStatement | forStatement ;
 
-ifStatement : ifRule comparisonExprADDRule bodyRule (elseIfStatement)* (elseRule bodyRule)? ;
+ifStatement : ifRule comparisonExprADDRule bodyRule (elseIfStatement)*  (elseStatement)?;
+elseStatement : elseRule bodyRule ;
 elseIfStatement : elseRule ifRule comparisonExprADDRule bodyRule ;
 
 forStatement : forRule idRule inRule intRule doubleDotRule intRule bodyRule ;

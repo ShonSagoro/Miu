@@ -158,6 +158,15 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
+	// Enter a parse tree produced by MiuLanguage_sinParser#elseStatement.
+	enterElseStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#elseStatement.
+	exitElseStatement(ctx) {
+	}
+
+
 	// Enter a parse tree produced by MiuLanguage_sinParser#elseIfStatement.
 	enterElseIfStatement(ctx) {
 	}
