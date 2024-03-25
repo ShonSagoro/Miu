@@ -10,21 +10,25 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
     }
 
     visitFunctionDeclaration(ctx) {
-        return this.visitChildren(ctx).join(' ');
+        let function_name = this.visit(ctx.children[1]);
+        if (function_name == "Main") {
+            return `${this.visitChildren(ctx).join(' ')}\nMain();\n`;
+        } else {
+            return this.visitChildren(ctx).join(' ');
+        }
     }
 
     visitModuleDeclaration(ctx) {
-        console.log(ctx.children);
         let children = ctx.children.map(child => this.visit(child));
         let dir_name = children.slice(1, -2).join('');
         dir_name = dir_name.slice(0, -1);
-
         let package_name = children[children.length - 2] || '';
+        if (package_name == 'fmt') {
+            return ""
+        } else {
+            return `${this.visit(ctx.children[0])} ${package_name} from "${dir_name}";\n`;
+        }
 
-        console.log(dir_name);
-        console.log(package_name);
-
-        return `${this.visit(ctx.children[0])} ${package_name} from "${dir_name}";\n`;
     }
 
 
@@ -77,7 +81,12 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#functionCallVar.
     visitFunctionCallVar(ctx) {
-        return this.visitChildren(ctx).join('');
+        let var_name = this.visit(ctx.children[0]);
+        if (var_name == "fmt") {
+            return `console.log(${this.visit(ctx.children[4])});\n`
+        } else {
+            return this.visitChildren(ctx).join('');
+        }
     }
 
 
@@ -138,7 +147,7 @@ class MiuVisitor extends MiuLanguage_sinVisitor {
     // Visit a parse tree produced by MiuLanguage_sinParser#elseIfStatement.
     visitElseIfStatement(ctx) {
         let else_if_structure = "";
-        else_if_structure += this.visit(ctx.children[0]) +" "+ this.visit(ctx.children[1]);
+        else_if_structure += this.visit(ctx.children[0]) + " " + this.visit(ctx.children[1]);
         let compare = `(${this.visit(ctx.children[2])})`;
         let lbrace = this.visit(ctx.children[3].children[0]);
         let body = this.visit(ctx.children[3].children[1]);

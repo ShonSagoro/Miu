@@ -145,8 +145,8 @@ const CheckProvider = ({ children }) => {
       await addErrorMessage(`${e}`);
       return false;
     }
-  };
-
+  };//TODO: pedir una funcion main si o si, y exigir variables definidas.
+//TODO: hacer que fmt.print sea automaticamente un console.log
   const checkSintactic = async (code, messageQueue, tokenCounts) => {
     await addMessage("Iniciando análisis sintactico...");
     const chars = new antlr4.InputStream(code);
