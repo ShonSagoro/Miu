@@ -32,12 +32,12 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#checkreturnFunction.
-	enterCheckreturnFunction(ctx) {
+	// Enter a parse tree produced by MiuLanguage_sinParser#checkreturnFunctionRule.
+	enterCheckreturnFunctionRule(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguage_sinParser#checkreturnFunction.
-	exitCheckreturnFunction(ctx) {
+	// Exit a parse tree produced by MiuLanguage_sinParser#checkreturnFunctionRule.
+	exitCheckreturnFunctionRule(ctx) {
 	}
 
 
@@ -50,6 +50,15 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
+	// Enter a parse tree produced by MiuLanguage_sinParser#invalidRule.
+	enterInvalidRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#invalidRule.
+	exitInvalidRule(ctx) {
+	}
+
+
 	// Enter a parse tree produced by MiuLanguage_sinParser#param.
 	enterParam(ctx) {
 	}
@@ -59,30 +68,30 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#body.
-	enterBody(ctx) {
+	// Enter a parse tree produced by MiuLanguage_sinParser#bodyRule.
+	enterBodyRule(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguage_sinParser#body.
-	exitBody(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguage_sinParser#bodyR.
-	enterBodyR(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguage_sinParser#bodyR.
-	exitBodyR(ctx) {
+	// Exit a parse tree produced by MiuLanguage_sinParser#bodyRule.
+	exitBodyRule(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#statementR.
-	enterStatementR(ctx) {
+	// Enter a parse tree produced by MiuLanguage_sinParser#bodyRRule.
+	enterBodyRRule(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguage_sinParser#statementR.
-	exitStatementR(ctx) {
+	// Exit a parse tree produced by MiuLanguage_sinParser#bodyRRule.
+	exitBodyRRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#statementRRule.
+	enterStatementRRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#statementRRule.
+	exitStatementRRule(ctx) {
 	}
 
 
@@ -167,39 +176,309 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#comparisonExprADD.
-	enterComparisonExprADD(ctx) {
+	// Enter a parse tree produced by MiuLanguage_sinParser#comparisonExprADDRule.
+	enterComparisonExprADDRule(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguage_sinParser#comparisonExprADD.
-	exitComparisonExprADD(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguage_sinParser#comparisonExpr.
-	enterComparisonExpr(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguage_sinParser#comparisonExpr.
-	exitComparisonExpr(ctx) {
+	// Exit a parse tree produced by MiuLanguage_sinParser#comparisonExprADDRule.
+	exitComparisonExprADDRule(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#exprReturn.
-	enterExprReturn(ctx) {
+	// Enter a parse tree produced by MiuLanguage_sinParser#comparisonExprRule.
+	enterComparisonExprRule(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguage_sinParser#exprReturn.
-	exitExprReturn(ctx) {
+	// Exit a parse tree produced by MiuLanguage_sinParser#comparisonExprRule.
+	exitComparisonExprRule(ctx) {
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#expr.
-	enterExpr(ctx) {
+	// Enter a parse tree produced by MiuLanguage_sinParser#exprReturnRule.
+	enterExprReturnRule(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguage_sinParser#expr.
-	exitExpr(ctx) {
+	// Exit a parse tree produced by MiuLanguage_sinParser#exprReturnRule.
+	exitExprReturnRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#exprRule.
+	enterExprRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#exprRule.
+	exitExprRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#fnRule.
+	enterFnRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#fnRule.
+	exitFnRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#idfRule.
+	enterIdfRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#idfRule.
+	exitIdfRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#useRule.
+	enterUseRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#useRule.
+	exitUseRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#idRule.
+	enterIdRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#idRule.
+	exitIdRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#ppRule.
+	enterPpRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#ppRule.
+	exitPpRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#pcRule.
+	enterPcRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#pcRule.
+	exitPcRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#arrowRule.
+	enterArrowRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#arrowRule.
+	exitArrowRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#typeRule.
+	enterTypeRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#typeRule.
+	exitTypeRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#commaRule.
+	enterCommaRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#commaRule.
+	exitCommaRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#returnRule.
+	enterReturnRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#returnRule.
+	exitReturnRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#letRule.
+	enterLetRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#letRule.
+	exitLetRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#equalRule.
+	enterEqualRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#equalRule.
+	exitEqualRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#ifRule.
+	enterIfRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#ifRule.
+	exitIfRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#elseRule.
+	enterElseRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#elseRule.
+	exitElseRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#forRule.
+	enterForRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#forRule.
+	exitForRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#inRule.
+	enterInRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#inRule.
+	exitInRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#doubleDotRule.
+	enterDoubleDotRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#doubleDotRule.
+	exitDoubleDotRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#addOperatorRule.
+	enterAddOperatorRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#addOperatorRule.
+	exitAddOperatorRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#comparisonOperatorRule.
+	enterComparisonOperatorRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#comparisonOperatorRule.
+	exitComparisonOperatorRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#stringRule.
+	enterStringRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#stringRule.
+	exitStringRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#charRule.
+	enterCharRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#charRule.
+	exitCharRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#intRule.
+	enterIntRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#intRule.
+	exitIntRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#floatRule.
+	enterFloatRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#floatRule.
+	exitFloatRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#boolRule.
+	enterBoolRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#boolRule.
+	exitBoolRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#dotRule.
+	enterDotRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#dotRule.
+	exitDotRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#lparenRule.
+	enterLparenRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#lparenRule.
+	exitLparenRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#rparenRule.
+	enterRparenRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#rparenRule.
+	exitRparenRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#lbraceRule.
+	enterLbraceRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#lbraceRule.
+	exitLbraceRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#rbraceRule.
+	enterRbraceRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#rbraceRule.
+	exitRbraceRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#pRule.
+	enterPRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#pRule.
+	exitPRule(ctx) {
 	}
 
 

@@ -46,38 +46,68 @@ fragment IDN: [a-zA-Z0-9];
 WS : [ \t\r\n]+ -> skip ;
 
 // Parser rules
-functionDeclaration : FN IDF '(' paramList? ')' checkreturnFunction ;
-moduleDeclaration : USE ID (PP ID)* PC;
-checkreturnFunction : ARROW TYPE bodyR | body ;
+functionDeclaration : fnRule idfRule lparenRule paramList? rparenRule checkreturnFunctionRule ;
+moduleDeclaration : useRule idRule (ppRule idRule)* pcRule;
+checkreturnFunctionRule : (arrowRule typeRule bodyRRule) | bodyRule ;
 
-
-paramList : param (COMMA param)* ;
+paramList : param (commaRule param)* ;
 INVALID : . ;
+invalidRule : INVALID;
 
-param : ID ':' TYPE ;
+param : idRule pRule typeRule ;
 
-body : '{' (statement)* '}' ;
-bodyR: '{' (statement)* statementR '}' ;
+bodyRule : lbraceRule (statement)* rbraceRule ;
+bodyRRule: lbraceRule (statement)* statementRRule rbraceRule ;
 
-statementR : RETURN exprReturn PC ;
+statementRRule : returnRule exprReturnRule pcRule ;
 
-functionCall : IDF LPAREN argList? RPAREN PC;
-functionCallVar: ID DOT IDF LPAREN argList? RPAREN PC;
-argList : (ID | STRING | CHAR | INT | FLOAT | BOOL) (COMMA (ID | STRING | CHAR | INT | FLOAT | BOOL))* ;
+functionCall : idfRule lparenRule argList? rparenRule pcRule;
+functionCallVar: idRule dotRule idfRule lparenRule argList? rparenRule pcRule;
+argList : (idRule | stringRule | charRule | intRule | floatRule | boolRule) (commaRule (idRule | stringRule | charRule | intRule | floatRule | boolRule))* ;
 
 statement : assignment | functionCall | functionCallVar | controlStructure ;
 
-assignment : LET ID EQUAL expr PC;
+assignment : letRule idRule equalRule exprRule pcRule;
 controlStructure : ifStatement | forStatement ;
 
-ifStatement : IF comparisonExprADD body (elseIfStatement)* (ELSE body)? ;
-elseIfStatement : ELSE IF comparisonExprADD body ;
+ifStatement : ifRule comparisonExprADDRule bodyRule (elseIfStatement)* (elseRule bodyRule)? ;
+elseIfStatement : elseRule ifRule comparisonExprADDRule bodyRule ;
 
-forStatement : FOR ID IN INT DOUBLE_DOT INT body ;
+forStatement : forRule idRule inRule intRule doubleDotRule intRule bodyRule ;
 
-comparisonExprADD : comparisonExpr (ADD_OPERATOR comparisonExpr)* ;
-comparisonExpr : expr COMPARISON_OPERATOR expr ;
-exprReturn: expr | comparisonExprADD;
-expr : ID | STRING | CHAR | INT | FLOAT | BOOL ;
- 
- 
+comparisonExprADDRule : comparisonExprRule (addOperatorRule comparisonExprRule)* ;
+comparisonExprRule : exprRule comparisonOperatorRule exprRule ;
+exprReturnRule: exprRule | comparisonExprADDRule;
+exprRule : idRule | stringRule | charRule | intRule | floatRule | boolRule ;
+
+// Terminal rules transformed to parser rules
+fnRule : FN ;
+idfRule : IDF ;
+useRule : USE ;
+idRule : ID ;
+ppRule : PP ;
+pcRule : PC ;
+arrowRule : ARROW ;
+typeRule : TYPE ;
+commaRule : COMMA ;
+returnRule : RETURN ;
+letRule : LET ;
+equalRule : EQUAL ;
+ifRule : IF ;
+elseRule : ELSE ;
+forRule : FOR ;
+inRule : IN ;
+doubleDotRule : DOUBLE_DOT ;
+addOperatorRule : ADD_OPERATOR ;
+comparisonOperatorRule : COMPARISON_OPERATOR ;
+stringRule : STRING ;
+charRule : CHAR ;
+intRule : INT ;
+floatRule : FLOAT ;
+boolRule : BOOL ;
+dotRule : DOT ;
+lparenRule : LPAREN ;
+rparenRule : RPAREN ;
+lbraceRule : LBRACE ;
+rbraceRule : RBRACE ;
+pRule : P ;

@@ -1,107 +1,339 @@
+/* eslint-disable no-unused-vars */
 import MiuLanguage_sinVisitor from '../analizar_sintactico/MiuLanguage_sinVisitor.js'; // Import the missing class
-
-class MiuVisitor extends MiuLanguage_sinVisitor  {
+class MiuVisitor extends MiuLanguage_sinVisitor {
 
     visitProgram(ctx) {
-        let result = '';
-        console.log('Visiting program');
-        for (let child of ctx.children) {
-            result += this.visit(child);
-        }
-        return result;
+        return ctx.children
+            .filter(child => child.getText() !== '<EOF>')
+            .map(child => this.visit(child))
+            .join('');
     }
 
     visitFunctionDeclaration(ctx) {
-        const functionName = ctx.IDF().getText();
-        const parameters = ctx.paramList() ? this.visit(ctx.paramList()) : '';
-        const returnType = this.visit(ctx.checkreturnFunction());
-        console.log('condition', ctx);
-        const body = this.visit(ctx.body());
-        return `function ${functionName}(${parameters})${returnType ? `: ${returnType}` : ''} {\n${body}\n}\n`;
+        return this.visitChildren(ctx).join(' ');
     }
 
     visitModuleDeclaration(ctx) {
-        const moduleName = ctx.ID().map(id => id.getText()).join('.');
-        return `import ${moduleName};\n`;
+        console.log(ctx.children);
+        let children = ctx.children.map(child => this.visit(child));
+        let dir_name = children.slice(1, -2).join('');
+        dir_name = dir_name.slice(0, -1);
+        
+        let package_name = children[children.length - 2] || '';
+
+        console.log(dir_name);
+        console.log(package_name);
+
+        return `${this.visit(ctx.children[0])} ${package_name} from "${dir_name}";\n`;
     }
 
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#checkreturnFunctionRule.
+    visitCheckreturnFunctionRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#paramList.
     visitParamList(ctx) {
-        return ctx.param().map(param => this.visit(param)).join(', ');
+        return this.visitChildren(ctx).join('');
     }
 
+    // Visit a parse tree produced by MiuLanguage_sinParser#invalidRule.
+    visitInvalidRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#param.
     visitParam(ctx) {
-        const paramName = ctx.ID().getText();
-        const paramType = ctx.TYPE().getText();
-        return `${paramName}: ${paramType}`;
+        return this.visitChildren(ctx).join('');
     }
 
-    visitBody(ctx) {
-        let result = '';
-        for (let child of ctx.children) {
-            result += this.visit(child);
-        }
-        return result;
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#bodyRule.
+    visitBodyRule(ctx) {
+        return this.visitChildren(ctx).join('')+ "\n";
     }
 
-    visitBodyR(ctx) {
-        let result = '';
-        for (let child of ctx.children) {
-            result += this.visit(child);
-        }
-        return result;
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#bodyRRule.
+    visitBodyRRule(ctx) {
+        return this.visitChildren(ctx).join('');
     }
 
-    visitStatementR(ctx) {
-        return `return ${this.visit(ctx.exprReturn())};\n`;
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#statementRRule.
+    visitStatementRRule(ctx) {
+        return "\t" + this.visitChildren(ctx).join('');
     }
 
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#functionCall.
+    visitFunctionCall(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#functionCallVar.
+    visitFunctionCallVar(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#argList.
+    visitArgList(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#statement.
+    visitStatement(ctx) {
+        return "\t" + this.visitChildren(ctx).join(' ');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#assignment.
     visitAssignment(ctx) {
-        const variableName = ctx.ID().getText();
-        const value = this.visit(ctx.expr());
-        return `let ${variableName} = ${value};\n`;
+        return this.visitChildren(ctx).join(' ');
     }
 
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#controlStructure.
+    visitControlStructure(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#ifStatement.
     visitIfStatement(ctx) {
-        const condition = this.visit(ctx.comparisonExprADD());
-        console.log('condition', ctx.body);
-        const thenBranch = this.visit(ctx.body(0));
-        const elseIfBranches = ctx.elseIfStatement().map(elseIf => this.visit(elseIf)).join('\n');
-        const elseBranch = ctx.ELSE() ? this.visit(ctx.body(1)) : '';
-        return `if (${condition}) {\n${thenBranch}\n} ${elseIfBranches}${elseBranch ? `else {\n${elseBranch}\n}` : ''}\n`;
+        return this.visitChildren(ctx).join('');
     }
 
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#elseIfStatement.
     visitElseIfStatement(ctx) {
-        const condition = this.visit(ctx.comparisonExprADD());
-        const body = this.visit(ctx.body());
-        return `else if (${condition}) {\n${body}\n}`;
+        return this.visitChildren(ctx).join('');
     }
 
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#forStatement.
     visitForStatement(ctx) {
-        const variable = ctx.ID().getText();
-        const start = ctx.INT(0).getText();
-        const end = ctx.INT(1).getText();
-        const body = this.visit(ctx.body());
-        return `for (let ${variable} = ${start}; ${variable} < ${end}; ${variable}++) {\n${body}\n}\n`;
+        let for_structure =''
+        for_structure += this.visit(ctx.children[0]);
+
+        let variable = this.visit(ctx.children[1]);
+        let initial_value = this.visit(ctx.children[3]);
+        let range = this.visit(ctx.children[5]);
+        let lbrace = this.visit(ctx.children[6].children[0]);
+        let body = this.visit(ctx.children[6].children[1])
+        let rbrace = this.visit(ctx.children[6].children[2]);
+
+        for_structure += ` (let ${variable} = ${initial_value} ; ${variable} <= ${range}; ${variable}++) ${lbrace} \t${body} \t${rbrace}\n`;
+        return for_structure;
     }
 
-    visitComparisonExprADD(ctx) {
-        let result = this.visit(ctx.expr(0));
-        for (let i = 1; i < ctx.expr().length; i++) {
-            result += ctx.ADD_OPERATOR(i - 1).getText() + this.visit(ctx.expr(i));
-        }
-        return result;
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#comparisonExprADDRule.
+    visitComparisonExprADDRule(ctx) {
+        return this.visitChildren(ctx).join(' ');
     }
 
-    visitComparisonExpr(ctx) {
-        return `${this.visit(ctx.expr(0))} ${ctx.COMPARISON_OPERATOR().getText()} ${this.visit(ctx.expr(1))}`;
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#comparisonExprRule.
+    visitComparisonExprRule(ctx) {
+        return this.visitChildren(ctx).join('');
     }
 
-    visitExprReturn(ctx) {
-        return this.visit(ctx.expr());
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#exprReturnRule.
+    visitExprReturnRule(ctx) {
+        return this.visitChildren(ctx).join(' ');
     }
 
-    visitExpr(ctx) {
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#exprRule.
+    visitExprRule(ctx) {
+        return this.visitChildren(ctx).join(' ');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#fnRule.
+    visitFnRule(ctx) {
+        return "function";
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#idfRule.
+    visitIdfRule(ctx) {
         return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#useRule.
+    visitUseRule(ctx) {
+        return "import";
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#idRule.
+    visitIdRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#ppRule.
+    visitPpRule(ctx) {
+        return "/";
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#pcRule.
+    visitPcRule(ctx) {
+        return  ";\n";
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#arrowRule.
+    visitArrowRule(ctx) {
+        return "";
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#typeRule.
+    visitTypeRule(ctx) {
+        return "";
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#commaRule.
+    visitCommaRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#returnRule.
+    visitReturnRule(ctx) {
+        return ctx.getText()+" ";
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#letRule.
+    visitLetRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#equalRule.
+    visitEqualRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#ifRule.
+    visitIfRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#elseRule.
+    visitElseRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#forRule.
+    visitForRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#inRule.
+    visitInRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#doubleDotRule.
+    visitDoubleDotRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#addOperatorRule.
+    visitAddOperatorRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#comparisonOperatorRule.
+    visitComparisonOperatorRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#stringRule.
+    visitStringRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#charRule.
+    visitCharRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#intRule.
+    visitIntRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#floatRule.
+    visitFloatRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#boolRule.
+    visitBoolRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#dotRule.
+    visitDotRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#lparenRule.
+    visitLparenRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#rparenRule.
+    visitRparenRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#lbraceRule.
+    visitLbraceRule(ctx) {
+        return ctx.getText() + "\n";
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#rbraceRule.
+    visitRbraceRule(ctx) {
+        console.log(ctx.parentCtx.constructor.name);
+        return ctx.getText();
+    }
+
+    visitPRule(ctx) {
+        return "";
     }
 }
 

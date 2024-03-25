@@ -2,18 +2,13 @@
 import React, { useMemo, useState } from "react";
 import MiuLexer from "../data/analizar_lexico/MiuLanguage_lexLexer.js";
 import MiuParser from "../data/analizar_lexico/MiuLanguage_lexParser.js"
-import MiuLexer_sin  from "../data/analizar_sintactico/MiuLanguage_sinLexer.js"
-import MiuParser_sin  from "../data/analizar_sintactico/MiuLanguage_sinParser.js"
-//import MiuLanguageVisitor from "../data/analizar_sintactico/MiuLanguage_sinVisitor.java";
+import MiuLexer_sin from "../data/analizar_sintactico/MiuLanguage_sinLexer.js"
+import MiuParser_sin from "../data/analizar_sintactico/MiuLanguage_sinParser.js"
 import antlr4 from "antlr4";
 import fs from 'fs';
+import MiuVisitor from '../data/interprete/MiuVisitor';
 
 import CheckContext from "./CheckContext";
-import MiuLanguage_lexParser from "../data/analizar_lexico/MiuLanguage_lexParser.js";
-import MiuLanguage_sinParser from "../data/analizar_sintactico/MiuLanguage_sinParser.js";
-
-const outputPathL = "../data/CodeLGenerator.js"
-const outputPathS = "../data/CodeSGenerator.js"
 
 // eslint-disable-next-line react/prop-types
 const CheckProvider = ({ children }) => {
@@ -137,10 +132,14 @@ const CheckProvider = ({ children }) => {
   const checkGrammar = async (code) => {
     let tokenCounts = {};
     let messageQueue = [];
-
+    let tree = null;
+    let js_code = "";
     try {
       await checkLexical(code, messageQueue, tokenCounts);
-      await checkSintactic(code, messageQueue, tokenCounts);
+      tree = await checkSintactic(code, messageQueue, tokenCounts);
+      js_code = await generatedCode(tree);
+      await addQuickMessage(js_code);
+
       return true;
     } catch (e) {
       await addErrorMessage(`${e}`);
@@ -189,49 +188,50 @@ const CheckProvider = ({ children }) => {
     parser.buildParseTrees = true;
 
     await addMessageTree(tree);
+    return tree;
   }
 
   const checkLexical = async (code, messageQueue, tokenCounts) => {
     await addMessage("Iniciando análisis lexico...");
-      const chars = new antlr4.InputStream(code);
-      const lexer = new MiuLexer(chars);
-      const tokens = new antlr4.CommonTokenStream(lexer);
-      const parser = new MiuParser(tokens);
-      parser.addErrorListener({
-        syntaxError: function (
-          recognizer,
-          offendingSymbol,
-          line,
-          column,
-          msg,
-          e
-        ) {
-          let line_str = line.toString();
-          let column_str = column.toString();
-          let msg_str = msg.toString();
-          messageQueue.push(
-            `En la línea ${line_str}:${column_str}: ${msg_str}`
-          );
-        },
-      });
-      let tree = parser.program();
-
-      if (messageQueue.length > 0) {
-        for (const message of messageQueue) {
-          await addErrorMessage(message);
-        }
-        return false;
-      }
-
-      tokenCounts = await countTokens(tokens.tokens);
-      for (const lexema in tokenCounts) {
-        await addDebugMessage(
-          `Token: Token= ${tokenCounts[lexema].token}, Lexema= ${lexema}, Count: ${tokenCounts[lexema].count}`
+    const chars = new antlr4.InputStream(code);
+    const lexer = new MiuLexer(chars);
+    const tokens = new antlr4.CommonTokenStream(lexer);
+    const parser = new MiuParser(tokens);
+    parser.addErrorListener({
+      syntaxError: function (
+        recognizer,
+        offendingSymbol,
+        line,
+        column,
+        msg,
+        e
+      ) {
+        let line_str = line.toString();
+        let column_str = column.toString();
+        let msg_str = msg.toString();
+        messageQueue.push(
+          `En la línea ${line_str}:${column_str}: ${msg_str}`
         );
-      }
-      parser.buildParseTrees = true;
+      },
+    });
+    let tree = parser.program();
 
-      await addMessageTree(tree);
+    if (messageQueue.length > 0) {
+      for (const message of messageQueue) {
+        await addErrorMessage(message);
+      }
+      return false;
+    }
+
+    tokenCounts = await countTokens(tokens.tokens);
+    for (const lexema in tokenCounts) {
+      await addDebugMessage(
+        `Token: Token= ${tokenCounts[lexema].token}, Lexema= ${lexema}, Count: ${tokenCounts[lexema].count}`
+      );
+    }
+    parser.buildParseTrees = true;
+
+    await addMessageTree(tree);
   }
 
   const countTokens = async (tokens) => {
@@ -249,37 +249,15 @@ const CheckProvider = ({ children }) => {
     return tokenCounts;
   };
 
-  //Generar el codigo 
-  const generateCode = async (code, outputPathL, outputPathS) => {
-    try {
-      const chars = new antlr4.InputStream(code);
-      const lexer = new MiuLexer_sin(chars);
-      const tokens = new antlr4.CommonTokenStream(lexer);
-      const parser = new MiuParser_sin(tokens);
-      parser.buildParseTrees = true;
-      const tree = parser.program();
-  
-      const visitorl = new MiuLanguage_lexParser();
-      const generatedCodel = visitorl.visit(tree);
-  
-      const visitors = new MiuLanguage_sinParser();
-      const generatedCodes = visitors.visit(tree);
-  
-      fs.writeFileSync(outputPathL + "_lex", generatedCodel, 'utf8');
-      fs.writeFileSync(outputPathS + "_sin", generatedCodes, 'utf8');
-  
-      console.log(`Códigos generados exitosamente en ${outputPathL}_lex y ${outputPathS}_sin`);
-  
-      return { lexCode: generatedCodel, sinCode: generatedCodes };
-    } catch (error) {
-      console.error("Error al generar el código:", error);
-      return null;
-    }
-  };
-  
-  
-  
 
+  const generatedCode = async (tree) => {
+    let code = "";
+    if (tree) {
+      code = tree.accept(new MiuVisitor());
+    }
+    console.log(code);
+    return code;
+  }
 
   const value = useMemo(() => {
     return {
@@ -288,8 +266,7 @@ const CheckProvider = ({ children }) => {
       isDebugEnable,
       setIsDebugEnable,
       isQuickEnable,
-      setIsQuickEnable,
-      generateCode,
+      setIsQuickEnable
     };
   }, [consoleMessage, isDebugEnable, isQuickEnable, checkGrammar]);
 
