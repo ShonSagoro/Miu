@@ -1,30 +1,30 @@
 grammar MiuLanguage_sin;
 
-program : (moduleDeclaration | functionDeclaration)* INVALID? EOF ;
+program: (moduleDeclaration | functionDeclaration)* INVALID? EOF;
 
 //lexer rules
 COMPARISON_OPERATOR: EQ | NEQ | GT | LT | GTEQ | LTEQ;
 ADD_OPERATOR: AND | OR;
-fragment EQ : '==';
-fragment AND : '&&';
-fragment OR : '||';
-fragment NEQ : '!=';
-fragment GT : '>';
-fragment LT : '<';
-fragment GTEQ : '>=';
-fragment LTEQ : '<=';
-EQUAL : '=';
-FN:'fn';
-USE:'use';
-LET:'let';
-IN:'in';
-IF:'if';
-ELSE:'else';
-FOR:'for';
-RETURN:'return';
-ARROW:'->';
-DOT:'.';
-DOUBLE_DOT:'..';
+fragment EQ: '==';
+fragment AND: '&&';
+fragment OR: '||';
+fragment NEQ: '!=';
+fragment GT: '>';
+fragment LT: '<';
+fragment GTEQ: '>=';
+fragment LTEQ: '<=';
+EQUAL: '=';
+FN: 'fn';
+USE: 'use';
+LET: 'let';
+IN: 'in';
+IF: 'if';
+ELSE: 'else';
+FOR: 'for';
+RETURN: 'return';
+ARROW: '->';
+DOT: '.';
+DOUBLE_DOT: '..';
 PP: '::';
 COMMA: ',';
 PC: ';';
@@ -33,82 +33,122 @@ LPAREN: '(';
 RPAREN: ')';
 LBRACE: '{';
 RBRACE: '}';
-TYPE : 'int' | 'float' | 'bool' | 'string' | 'char' ;
-BOOL : 'true' | 'false' ;
+TYPE: 'int' | 'float' | 'bool' | 'string' | 'char';
+BOOL: 'true' | 'false';
 
-STRING : '"' (~["])* '"' ;
-CHAR : '\'' ~'\'' '\'' ;
-FLOAT : [0-9]+ DOT [0-9]+ ;
-INT : [0-9]+ ;
-IDF : [A-Z] IDN* ;
-ID: [a-zA-Z] IDN* ;
+STRING: '"' (~["])* '"';
+CHAR: '\'' ~'\'' '\'';
+FLOAT: [0-9]+ DOT [0-9]+;
+INT: [0-9]+;
+IDF: [A-Z] IDN*;
+ID: [a-zA-Z] IDN*;
 fragment IDN: [a-zA-Z0-9];
-WS : [ \t\r\n]+ -> skip ;
+WS: [ \t\r\n]+ -> skip;
 
 // Parser rules
-functionDeclaration : fnRule idfRule lparenRule paramList? rparenRule checkreturnFunctionRule ;
-moduleDeclaration : useRule idRule (ppRule idRule)* pcRule;
-checkreturnFunctionRule : (arrowRule typeRule bodyRRule) | bodyRule ;
+functionDeclaration:
+	fnRule idfRule lparenRule paramList? rparenRule checkreturnFunctionRule;
+moduleDeclaration: useRule idRule (ppRule idRule)* pcRule;
+checkreturnFunctionRule: (arrowRule typeRule bodyRRule)
+	| bodyRule;
 
-paramList : param (commaRule param)* ;
-INVALID : . ;
-invalidRule : INVALID;
+paramList: param (commaRule param)*;
+INVALID: .;
+invalidRule: INVALID;
 
-param : idRule pRule typeRule ;
+param:
+	idRule pRule typeRule;
 
-bodyRule : lbraceRule (statement)* rbraceRule ;
-bodyRRule: lbraceRule (statement)* statementRRule rbraceRule ;
+bodyRule: lbraceRule (statement)* rbraceRule;
+bodyRRule: lbraceRule (statement)* statementRRule rbraceRule;
 
-statementRRule : returnRule exprReturnRule pcRule ;
+statementRRule: returnRule exprReturnRule pcRule;
 
-functionCall : idfRule lparenRule argList? rparenRule pcRule;
-functionCallVar: idRule dotRule idfRule lparenRule argList? rparenRule pcRule;
-argList : (idRule | stringRule | charRule | intRule | floatRule | boolRule) (commaRule (idRule | stringRule | charRule | intRule | floatRule | boolRule))* ;
+functionCall: idfRule lparenRule argList? rparenRule pcRule;
+varStatement: idRule (functionCallVar | assignametnVar);
+functionCallVar:
+	dotRule idfRule lparenRule argList? rparenRule pcRule;
 
-statement : assignment | functionCall | functionCallVar | controlStructure ;
+argList: (
+		idRule
+		| stringRule
+		| charRule
+		| intRule
+		| floatRule
+		| boolRule
+	) (
+		commaRule (
+			idRule
+			| stringRule
+			| charRule
+			| intRule
+			| floatRule
+			| boolRule
+		)
+	)*;
 
-assignment : letRule idRule equalRule exprRule pcRule;
-controlStructure : ifStatement | forStatement ;
+statement:
+	assignametnVar
+	| assignment
+	| functionCall
+	| varStatement
+	| controlStructure;
 
-ifStatement : ifRule comparisonExprADDRule bodyRule (elseIfStatement)*  (elseStatement)?;
-elseStatement : elseRule bodyRule ;
-elseIfStatement : elseRule ifRule comparisonExprADDRule bodyRule ;
+assignametnVar: equalRule exprRule pcRule;
+assignment:
+	letRule idRule equalRule exprRule pcRule;
+controlStructure: ifStatement | forStatement;
 
-forStatement : forRule idRule inRule intRule doubleDotRule intRule bodyRule ;
+ifStatement:
+	ifRule comparisonExprADDRule bodyRule (elseIfStatement)* (
+		elseStatement
+	)?;
+elseStatement: elseRule bodyRule;
+elseIfStatement: elseRule ifRule comparisonExprADDRule bodyRule;
 
-comparisonExprADDRule : comparisonExprRule (addOperatorRule comparisonExprRule)* ;
-comparisonExprRule : exprRule comparisonOperatorRule exprRule ;
+forStatement:
+	forRule idRule inRule intRule doubleDotRule intRule bodyRule;
+
+comparisonExprADDRule:
+	comparisonExprRule (addOperatorRule comparisonExprRule)*;
+comparisonExprRule: exprRule comparisonOperatorRule exprRule;
 exprReturnRule: exprRule | comparisonExprADDRule;
-exprRule : idRule | stringRule | charRule | intRule | floatRule | boolRule ;
+exprRule:
+	idRule
+	| stringRule
+	| charRule
+	| intRule
+	| floatRule
+	| boolRule;
 
 // Terminal rules transformed to parser rules
-fnRule : FN ;
-idfRule : IDF ;
-useRule : USE ;
-idRule : ID ;
-ppRule : PP ;
-pcRule : PC ;
-arrowRule : ARROW ;
-typeRule : TYPE ;
-commaRule : COMMA ;
-returnRule : RETURN ;
-letRule : LET ;
-equalRule : EQUAL ;
-ifRule : IF ;
-elseRule : ELSE ;
-forRule : FOR ;
-inRule : IN ;
-doubleDotRule : DOUBLE_DOT ;
-addOperatorRule : ADD_OPERATOR ;
-comparisonOperatorRule : COMPARISON_OPERATOR ;
-stringRule : STRING ;
-charRule : CHAR ;
-intRule : INT ;
-floatRule : FLOAT ;
-boolRule : BOOL ;
-dotRule : DOT ;
-lparenRule : LPAREN ;
-rparenRule : RPAREN ;
-lbraceRule : LBRACE ;
-rbraceRule : RBRACE ;
-pRule : P ;
+fnRule: FN;
+idfRule: IDF;
+useRule: USE;
+idRule: ID;
+ppRule: PP;
+pcRule: PC;
+arrowRule: ARROW;
+typeRule: TYPE;
+commaRule: COMMA;
+returnRule: RETURN;
+letRule: LET;
+equalRule: EQUAL;
+ifRule: IF;
+elseRule: ELSE;
+forRule: FOR;
+inRule: IN;
+doubleDotRule: DOUBLE_DOT;
+addOperatorRule: ADD_OPERATOR;
+comparisonOperatorRule: COMPARISON_OPERATOR;
+stringRule: STRING;
+charRule: CHAR;
+intRule: INT;
+floatRule: FLOAT;
+boolRule: BOOL;
+dotRule: DOT;
+lparenRule: LPAREN;
+rparenRule: RPAREN;
+lbraceRule: LBRACE;
+rbraceRule: RBRACE;
+pRule: P;

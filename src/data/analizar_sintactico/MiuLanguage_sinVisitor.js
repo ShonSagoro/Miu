@@ -72,6 +72,12 @@ export default class MiuLanguage_sinVisitor extends antlr4.tree.ParseTreeVisitor
 	}
 
 
+	// Visit a parse tree produced by MiuLanguage_sinParser#varStatement.
+	visitVarStatement(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by MiuLanguage_sinParser#functionCallVar.
 	visitFunctionCallVar(ctx) {
 	  return this.visitChildren(ctx);
@@ -86,6 +92,12 @@ export default class MiuLanguage_sinVisitor extends antlr4.tree.ParseTreeVisitor
 
 	// Visit a parse tree produced by MiuLanguage_sinParser#statement.
 	visitStatement(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
+	visitAssignametnVar(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

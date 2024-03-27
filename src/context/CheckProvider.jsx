@@ -6,9 +6,10 @@ import MiuLexer_sin from "../data/analizar_sintactico/MiuLanguage_sinLexer.js"
 import MiuParser_sin from "../data/analizar_sintactico/MiuLanguage_sinParser.js"
 import antlr4 from "antlr4";
 import fs from 'fs';
-import MiuVisitor from '../data/interprete/MiuVisitor';
+import MiuInterpreteVisitor from '../data/interprete/MiuInterpreteVisitor.js';
 
 import CheckContext from "./CheckContext";
+import MiuSemanticVisitor from "../data/analizador_semantico/MiuSemanticVisitor.js";
 
 // eslint-disable-next-line react/prop-types
 const CheckProvider = ({ children }) => {
@@ -18,6 +19,7 @@ const CheckProvider = ({ children }) => {
   const [consoleMessage, setConsoleMessage] = useState("");
   const [isDebugEnable, setIsDebugEnable] = useState(false);
   const [isQuickEnable, setIsQuickEnable] = useState(false);
+  const [treeSin, setTreeSin] = useState(false);
 
   const TOKEN_NAMES = {
     [MiuLexer.COMPARISON_OPERATOR]: "Comparison Operator",
@@ -76,6 +78,10 @@ const CheckProvider = ({ children }) => {
     message = `[ERROR] >> ${message} \n`;
     await executeWithDelay(setConsoleMessage, message);
   };
+  const addWarningMessage = async (message) => {
+    message = `[WARN] >> ${message} \n`;
+    await executeWithDelay(setConsoleMessage, message);
+  };
 
   // eslint-disable-next-line no-unused-vars
   const addMessage = async (message) => {
@@ -132,21 +138,56 @@ const CheckProvider = ({ children }) => {
   const checkGrammar = async (code) => {
     let tokenCounts = {};
     let messageQueue = [];
-    let tree = null;
     let js_code = "";
     try {
-      await checkLexical(code, messageQueue, tokenCounts);
-      tree = await checkSintactic(code, messageQueue, tokenCounts);
-      js_code = await generatedCode(tree);
-      await addQuickMessage(js_code);
+      let res_lex = await checkLexical(code, messageQueue, tokenCounts);
+      let res_sin = await checkSintactic(code, messageQueue, tokenCounts);
+      let res_sem = await checkSematic();
 
-      return true;
+      if(res_lex && res_sin && res_sem){
+        js_code = await generatedCode();
+        await addQuickMessage(js_code);
+        await code_ejecuction(js_code);
+        return true;
+      }
+      
     } catch (e) {
       await addErrorMessage(`${e}`);
       return false;
     }
   };//TODO: pedir una funcion main si o si, y exigir variables definidas.
-//TODO: hacer que fmt.print sea automaticamente un console.log
+
+  const code_ejecuction = async (code) => {
+    await addMessage("Ejecutando código...");
+    try{
+      await addQuickMessage("resultado: ");
+      let result = eval(code);
+      await addQuickMessage(result);
+      return result;
+    }catch(e){
+      return e;
+    }
+  }
+  const checkSematic = async () => {
+    await addMessage("Iniciando análisis semantico...");
+    const visitor = new MiuSemanticVisitor();
+    treeSin.accept(visitor);
+    if (visitor.errors.length > 0) {
+      for (const error of visitor.errors) {
+        await addErrorMessage(error);
+      }
+      return false;
+    }
+    if (visitor.warnings.length > 0) {
+      for (const warning of visitor.warnings) {
+        await addWarningMessage(warning);
+      }
+    }
+    return true;
+  }
+
+ 
+
   const checkSintactic = async (code, messageQueue, tokenCounts) => {
     await addMessage("Iniciando análisis sintactico...");
     const chars = new antlr4.InputStream(code);
@@ -188,7 +229,8 @@ const CheckProvider = ({ children }) => {
     parser.buildParseTrees = true;
 
     await addMessageTree(tree);
-    return tree;
+    setTreeSin(tree);
+    return true;
   }
 
   const checkLexical = async (code, messageQueue, tokenCounts) => {
@@ -232,6 +274,7 @@ const CheckProvider = ({ children }) => {
     parser.buildParseTrees = true;
 
     await addMessageTree(tree);
+    return true;
   }
 
   const countTokens = async (tokens) => {
@@ -249,14 +292,20 @@ const CheckProvider = ({ children }) => {
     return tokenCounts;
   };
 
+  const getTree = async (code) => {
+    const chars = new antlr4.InputStream(code);
+    const lexer = new MiuLexer_sin(chars);
+    const tokens = new antlr4.CommonTokenStream(lexer);
+    const parser = new MiuParser_sin(tokens);
+    let tree = parser.program();
+    parser.buildParseTrees = true;
+    console.log(tree);
+    return tree;
+  }
 
-  const generatedCode = async (tree) => {
-    let code = "";
-    if (tree) {
-      code = tree.accept(new MiuVisitor());
-    }
-    console.log(code);
-    return code;
+
+  const generatedCode = async () => {
+    return treeSin.accept(new MiuInterpreteVisitor());
   }
 
   const value = useMemo(() => {

@@ -104,6 +104,15 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
+	// Enter a parse tree produced by MiuLanguage_sinParser#varStatement.
+	enterVarStatement(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#varStatement.
+	exitVarStatement(ctx) {
+	}
+
+
 	// Enter a parse tree produced by MiuLanguage_sinParser#functionCallVar.
 	enterFunctionCallVar(ctx) {
 	}
@@ -128,6 +137,15 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 
 	// Exit a parse tree produced by MiuLanguage_sinParser#statement.
 	exitStatement(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#assignametnVar.
+	enterAssignametnVar(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
+	exitAssignametnVar(ctx) {
 	}
 
 
