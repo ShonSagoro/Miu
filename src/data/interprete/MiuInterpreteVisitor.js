@@ -121,7 +121,6 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#elseStatement.
     visitElseStatement(ctx) {
-        console.log(ctx.children);
         let else_structure = "";
         else_structure += this.visit(ctx.children[0]);
         let lbrace = this.visit(ctx.children[1].children[0]);
@@ -148,7 +147,6 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#forStatement.
     visitForStatement(ctx) {
-        console.log(ctx.children);
         let for_structure = ''
         for_structure += this.visit(ctx.children[0]);
 
@@ -366,12 +364,11 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
     }
 
     visitVarStatement(ctx) {
-        console.log(ctx.children);
         let var_name = this.visit(ctx.children[0]);
         let child = ctx.children[1];
         if (var_name == "fmt" && child.constructor.name == "FunctionCallVarContext") {
             return `console.log(${this.visit(child.children[3])});\n`
-        } 
+        }
         return this.visitChildren(ctx).join('');
     }
 
@@ -383,6 +380,64 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
     visitAssignametnVar(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallRule.
+    visitExprFunctionCallRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#exprVarStatementRule.
+    visitExprVarStatementRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallVar.
+    visitExprFunctionCallVar(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#arithmeticExprRule.
+    visitArithmeticExprRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#term.
+    visitTerm(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#mulOperatorRule.
+    visitMulOperatorRule(ctx) {
+        return ctx.getText();
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#multRule.
+    visitMultRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#divRule.
+    visitDivRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#sumRule.
+    visitSumRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
+
+
+    // Visit a parse tree produced by MiuLanguage_sinParser#subRule.
+    visitSubRule(ctx) {
         return this.visitChildren(ctx).join('');
     }
 }

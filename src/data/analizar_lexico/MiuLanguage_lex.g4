@@ -1,6 +1,6 @@
 grammar MiuLanguage_lex;
 
-program : (COMPARISON_OPERATOR | ADD_OPERATOR | EQUAL | FN | USE | LET | IN | IF | ELSE | FOR | RETURN | ARROW | DOT | DOUBLE_DOT | PP | COMMA | PC | P | LPAREN | RPAREN | LBRACE | RBRACE | TYPE | BOOL | STRING | CHAR | FLOAT | INT | IDF | ID)* EOF ;
+program : (COMPARISON_OPERATOR | ADD_OPERATOR | EQUAL | FN | USE | LET | IN | IF | ELSE | FOR | RETURN | ARROW | DOT | DOUBLE_DOT | PP | COMMA | PC | P | LPAREN | RPAREN | LBRACE | RBRACE | TYPE | BOOL | STRING | CHAR | FLOAT | INT | IDF | ID| SUB | SUM | DIV| MULT)* EOF ;
 
 //lexer rules
 COMPARISON_OPERATOR: EQ | NEQ | GT | LT | GTEQ | LTEQ;
@@ -29,6 +29,10 @@ PP: '::';
 COMMA: ',';
 PC: ';';
 P: ':';
+MULT: '*';
+DIV: '/';
+SUM: '+';
+SUB: '-';
 LPAREN: '(';
 RPAREN: ')';
 LBRACE: '{';

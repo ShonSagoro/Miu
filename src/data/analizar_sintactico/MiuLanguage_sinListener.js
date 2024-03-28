@@ -239,6 +239,96 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
+	// Enter a parse tree produced by MiuLanguage_sinParser#exprFunctionCallRule.
+	enterExprFunctionCallRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallRule.
+	exitExprFunctionCallRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#exprVarStatementRule.
+	enterExprVarStatementRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#exprVarStatementRule.
+	exitExprVarStatementRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#exprFunctionCallVar.
+	enterExprFunctionCallVar(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallVar.
+	exitExprFunctionCallVar(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#arithmeticExprRule.
+	enterArithmeticExprRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#arithmeticExprRule.
+	exitArithmeticExprRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#term.
+	enterTerm(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#term.
+	exitTerm(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#mulOperatorRule.
+	enterMulOperatorRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#mulOperatorRule.
+	exitMulOperatorRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#multRule.
+	enterMultRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#multRule.
+	exitMultRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#divRule.
+	enterDivRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#divRule.
+	exitDivRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#sumRule.
+	enterSumRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#sumRule.
+	exitSumRule(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#subRule.
+	enterSubRule(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#subRule.
+	exitSubRule(ctx) {
+	}
+
+
 	// Enter a parse tree produced by MiuLanguage_sinParser#fnRule.
 	enterFnRule(ctx) {
 	}

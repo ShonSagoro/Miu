@@ -29,6 +29,10 @@ PP: '::';
 COMMA: ',';
 PC: ';';
 P: ':';
+MULT: '*';
+DIV: '/';
+SUM: '+';
+SUB: '-';
 LPAREN: '(';
 RPAREN: ')';
 LBRACE: '{';
@@ -56,8 +60,7 @@ paramList: param (commaRule param)*;
 INVALID: .;
 invalidRule: INVALID;
 
-param:
-	idRule pRule typeRule;
+param: idRule pRule typeRule;
 
 bodyRule: lbraceRule (statement)* rbraceRule;
 bodyRRule: lbraceRule (statement)* statementRRule rbraceRule;
@@ -65,12 +68,12 @@ bodyRRule: lbraceRule (statement)* statementRRule rbraceRule;
 statementRRule: returnRule exprReturnRule pcRule;
 
 functionCall: idfRule lparenRule argList? rparenRule pcRule;
-varStatement: idRule (functionCallVar | assignametnVar);
+varStatement: idRule (functionCallVar | assignametnVar)*;
 functionCallVar:
 	dotRule idfRule lparenRule argList? rparenRule pcRule;
 
 argList: (
-		idRule
+		varStatement
 		| stringRule
 		| charRule
 		| intRule
@@ -78,7 +81,7 @@ argList: (
 		| boolRule
 	) (
 		commaRule (
-			idRule
+			varStatement
 			| stringRule
 			| charRule
 			| intRule
@@ -88,15 +91,13 @@ argList: (
 	)*;
 
 statement:
-	assignametnVar
-	| assignment
+	assignment
 	| functionCall
 	| varStatement
 	| controlStructure;
 
 assignametnVar: equalRule exprRule pcRule;
-assignment:
-	letRule idRule equalRule exprRule pcRule;
+assignment: letRule idRule equalRule exprRule pcRule;
 controlStructure: ifStatement | forStatement;
 
 ifStatement:
@@ -113,15 +114,34 @@ comparisonExprADDRule:
 	comparisonExprRule (addOperatorRule comparisonExprRule)*;
 comparisonExprRule: exprRule comparisonOperatorRule exprRule;
 exprReturnRule: exprRule | comparisonExprADDRule;
+
 exprRule:
-	idRule
+	exprFunctionCallRule
+	| exprVarStatementRule
+	| arithmeticExprRule
 	| stringRule
 	| charRule
 	| intRule
 	| floatRule
 	| boolRule;
 
+exprFunctionCallRule: idfRule lparenRule argList? rparenRule;
+exprVarStatementRule: idRule (exprFunctionCallVar)*;
+exprFunctionCallVar:
+	dotRule idfRule lparenRule argList? rparenRule;
+
+arithmeticExprRule: term (addOperatorRule term)*;
+
+term:
+	exprVarStatementRule (mulOperatorRule exprVarStatementRule)*;
+
+mulOperatorRule: | multRule | divRule | subRule | sumRule;
+
 // Terminal rules transformed to parser rules
+multRule: MULT;
+divRule: DIV;
+sumRule: SUM;
+subRule: SUB;
 fnRule: FN;
 idfRule: IDF;
 useRule: USE;

@@ -12,6 +12,7 @@ function MiuCode() {
     setIsDebugEnable,
     isQuickEnable,
     setIsQuickEnable,
+    codeEjecuction
   } = UseCheck();
 
   const [messages, setMessages] = useState(["Write and check your miu Code"]);
@@ -80,6 +81,10 @@ function MiuCode() {
     setMessages((prevMessages) => [...prevMessages, `>> Quick Mode ${isQuickEnable ? "Disable" : "Enable"} \n`]);
   };
 
+  const handleEjecution = async () => {
+    let validate = await codeEjecuction(code);
+  };
+
   useEffect(() => {
     setMessages((prevMessages) => [...prevMessages, consoleMessage]);
   }, [consoleMessage]);
@@ -103,6 +108,12 @@ function MiuCode() {
             onClick={handleCLick}
           >
             Check code
+          </button>
+          <button
+            className="border border-slate-700 text-slate-700 hover:border-slate-400 hover:text-slate-400 rounded-md px-3 ml-2"
+            onClick={handleEjecution}
+          >
+            Run code
           </button>
           <button
             onClick={handleDebug}

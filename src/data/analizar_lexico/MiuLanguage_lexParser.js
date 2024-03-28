@@ -1,9 +1,11 @@
-// Generated from MiuLanguage_lex.g4 by ANTLR 4.13.1
+// Generated from ./MiuLanguage_lex.g4 by ANTLR 4.13.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import MiuLanguage_lexListener from './MiuLanguage_lexListener.js';
-const serializedATN = [4,1,31,11,2,0,7,0,1,0,5,0,4,8,0,10,0,12,0,7,9,0,1,
-0,1,0,1,0,0,0,1,0,0,1,1,0,1,30,10,0,5,1,0,0,0,2,4,7,0,0,0,3,2,1,0,0,0,4,
+import MiuLanguage_lexVisitor from './MiuLanguage_lexVisitor.js';
+
+const serializedATN = [4,1,35,11,2,0,7,0,1,0,5,0,4,8,0,10,0,12,0,7,9,0,1,
+0,1,0,1,0,0,0,1,0,0,1,1,0,1,34,10,0,5,1,0,0,0,2,4,7,0,0,0,3,2,1,0,0,0,4,
 7,1,0,0,0,5,3,1,0,0,0,5,6,1,0,0,0,6,8,1,0,0,0,7,5,1,0,0,0,8,9,5,0,0,1,9,
 1,1,0,0,0,1,5];
 
@@ -20,13 +22,15 @@ export default class MiuLanguage_lexParser extends antlr4.Parser {
     static literalNames = [ null, null, null, "'='", "'fn'", "'use'", "'let'", 
                             "'in'", "'if'", "'else'", "'for'", "'return'", 
                             "'->'", "'.'", "'..'", "'::'", "','", "';'", 
-                            "':'", "'('", "')'", "'{'", "'}'" ];
+                            "':'", "'*'", "'/'", "'+'", "'-'", "'('", "')'", 
+                            "'{'", "'}'" ];
     static symbolicNames = [ null, "COMPARISON_OPERATOR", "ADD_OPERATOR", 
                              "EQUAL", "FN", "USE", "LET", "IN", "IF", "ELSE", 
                              "FOR", "RETURN", "ARROW", "DOT", "DOUBLE_DOT", 
-                             "PP", "COMMA", "PC", "P", "LPAREN", "RPAREN", 
-                             "LBRACE", "RBRACE", "TYPE", "BOOL", "STRING", 
-                             "CHAR", "FLOAT", "INT", "IDF", "ID", "WS" ];
+                             "PP", "COMMA", "PC", "P", "MULT", "DIV", "SUM", 
+                             "SUB", "LPAREN", "RPAREN", "LBRACE", "RBRACE", 
+                             "TYPE", "BOOL", "STRING", "CHAR", "FLOAT", 
+                             "INT", "IDF", "ID", "WS" ];
     static ruleNames = [ "program" ];
 
     constructor(input) {
@@ -48,10 +52,10 @@ export default class MiuLanguage_lexParser extends antlr4.Parser {
 	        this.state = 5;
 	        this._errHandler.sync(this);
 	        _la = this._input.LA(1);
-	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 2147483646) !== 0)) {
+	        while((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0)) {
 	            this.state = 2;
 	            _la = this._input.LA(1);
-	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 2147483646) !== 0))) {
+	            if(!((((_la) & ~0x1f) === 0 && ((1 << _la) & 4294967294) !== 0) || ((((_la - 32)) & ~0x1f) === 0 && ((1 << (_la - 32)) & 7) !== 0))) {
 	            this._errHandler.recoverInline(this);
 	            }
 	            else {
@@ -100,19 +104,23 @@ MiuLanguage_lexParser.PP = 15;
 MiuLanguage_lexParser.COMMA = 16;
 MiuLanguage_lexParser.PC = 17;
 MiuLanguage_lexParser.P = 18;
-MiuLanguage_lexParser.LPAREN = 19;
-MiuLanguage_lexParser.RPAREN = 20;
-MiuLanguage_lexParser.LBRACE = 21;
-MiuLanguage_lexParser.RBRACE = 22;
-MiuLanguage_lexParser.TYPE = 23;
-MiuLanguage_lexParser.BOOL = 24;
-MiuLanguage_lexParser.STRING = 25;
-MiuLanguage_lexParser.CHAR = 26;
-MiuLanguage_lexParser.FLOAT = 27;
-MiuLanguage_lexParser.INT = 28;
-MiuLanguage_lexParser.IDF = 29;
-MiuLanguage_lexParser.ID = 30;
-MiuLanguage_lexParser.WS = 31;
+MiuLanguage_lexParser.MULT = 19;
+MiuLanguage_lexParser.DIV = 20;
+MiuLanguage_lexParser.SUM = 21;
+MiuLanguage_lexParser.SUB = 22;
+MiuLanguage_lexParser.LPAREN = 23;
+MiuLanguage_lexParser.RPAREN = 24;
+MiuLanguage_lexParser.LBRACE = 25;
+MiuLanguage_lexParser.RBRACE = 26;
+MiuLanguage_lexParser.TYPE = 27;
+MiuLanguage_lexParser.BOOL = 28;
+MiuLanguage_lexParser.STRING = 29;
+MiuLanguage_lexParser.CHAR = 30;
+MiuLanguage_lexParser.FLOAT = 31;
+MiuLanguage_lexParser.INT = 32;
+MiuLanguage_lexParser.IDF = 33;
+MiuLanguage_lexParser.ID = 34;
+MiuLanguage_lexParser.WS = 35;
 
 MiuLanguage_lexParser.RULE_program = 0;
 
@@ -494,6 +502,54 @@ class ProgramContext extends antlr4.ParserRuleContext {
 	};
 
 
+	SUB = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(MiuLanguage_lexParser.SUB);
+	    } else {
+	        return this.getToken(MiuLanguage_lexParser.SUB, i);
+	    }
+	};
+
+
+	SUM = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(MiuLanguage_lexParser.SUM);
+	    } else {
+	        return this.getToken(MiuLanguage_lexParser.SUM, i);
+	    }
+	};
+
+
+	DIV = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(MiuLanguage_lexParser.DIV);
+	    } else {
+	        return this.getToken(MiuLanguage_lexParser.DIV, i);
+	    }
+	};
+
+
+	MULT = function(i) {
+		if(i===undefined) {
+			i = null;
+		}
+	    if(i===null) {
+	        return this.getTokens(MiuLanguage_lexParser.MULT);
+	    } else {
+	        return this.getToken(MiuLanguage_lexParser.MULT, i);
+	    }
+	};
+
+
 	enterRule(listener) {
 	    if(listener instanceof MiuLanguage_lexListener ) {
 	        listener.enterProgram(this);
@@ -504,6 +560,14 @@ class ProgramContext extends antlr4.ParserRuleContext {
 	    if(listener instanceof MiuLanguage_lexListener ) {
 	        listener.exitProgram(this);
 		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_lexVisitor ) {
+	        return visitor.visitProgram(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
 	}
 
 

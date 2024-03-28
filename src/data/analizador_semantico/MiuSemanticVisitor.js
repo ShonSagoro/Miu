@@ -24,6 +24,7 @@ export default class MiuSemanticVisitor extends MiuLanguage_sinVisitor {
     visitFunctionDeclaration(ctx) {
         let function_name = this.visit(ctx.children[1]);
         if (!this.functions.has(function_name)) {
+            console.log(function_name);
             this.functions.add(function_name);
         }
         return this.visitChildren(ctx);
@@ -201,7 +202,7 @@ export default class MiuSemanticVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#idfRule.
     visitIdfRule(ctx) {
-        return this.visitChildren(ctx);
+        return ctx.getText();
     }
 
 

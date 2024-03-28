@@ -1,4 +1,4 @@
-// Generated from c:/Users/ramos/Documents/Vite_project/Miu/src/data/analizar_lexico/MiuLanguage_lex.g4 by ANTLR 4.13.1
+// Generated from c:/Users/ramos/OneDrive/Documentos/code_work/vite_projects/Miu/src/data/analizar_lexico/MiuLanguage_lex.g4 by ANTLR 4.13.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -18,8 +18,9 @@ public class MiuLanguage_lexParser extends Parser {
 	public static final int
 		COMPARISON_OPERATOR=1, ADD_OPERATOR=2, EQUAL=3, FN=4, USE=5, LET=6, IN=7, 
 		IF=8, ELSE=9, FOR=10, RETURN=11, ARROW=12, DOT=13, DOUBLE_DOT=14, PP=15, 
-		COMMA=16, PC=17, P=18, LPAREN=19, RPAREN=20, LBRACE=21, RBRACE=22, TYPE=23, 
-		BOOL=24, STRING=25, CHAR=26, FLOAT=27, INT=28, IDF=29, ID=30, WS=31;
+		COMMA=16, PC=17, P=18, MULT=19, DIV=20, SUM=21, SUB=22, LPAREN=23, RPAREN=24, 
+		LBRACE=25, RBRACE=26, TYPE=27, BOOL=28, STRING=29, CHAR=30, FLOAT=31, 
+		INT=32, IDF=33, ID=34, WS=35;
 	public static final int
 		RULE_program = 0;
 	private static String[] makeRuleNames() {
@@ -33,7 +34,7 @@ public class MiuLanguage_lexParser extends Parser {
 		return new String[] {
 			null, null, null, "'='", "'fn'", "'use'", "'let'", "'in'", "'if'", "'else'", 
 			"'for'", "'return'", "'->'", "'.'", "'..'", "'::'", "','", "';'", "':'", 
-			"'('", "')'", "'{'", "'}'"
+			"'*'", "'/'", "'+'", "'-'", "'('", "')'", "'{'", "'}'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -41,8 +42,9 @@ public class MiuLanguage_lexParser extends Parser {
 		return new String[] {
 			null, "COMPARISON_OPERATOR", "ADD_OPERATOR", "EQUAL", "FN", "USE", "LET", 
 			"IN", "IF", "ELSE", "FOR", "RETURN", "ARROW", "DOT", "DOUBLE_DOT", "PP", 
-			"COMMA", "PC", "P", "LPAREN", "RPAREN", "LBRACE", "RBRACE", "TYPE", "BOOL", 
-			"STRING", "CHAR", "FLOAT", "INT", "IDF", "ID", "WS"
+			"COMMA", "PC", "P", "MULT", "DIV", "SUM", "SUB", "LPAREN", "RPAREN", 
+			"LBRACE", "RBRACE", "TYPE", "BOOL", "STRING", "CHAR", "FLOAT", "INT", 
+			"IDF", "ID", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -219,6 +221,22 @@ public class MiuLanguage_lexParser extends Parser {
 		public TerminalNode ID(int i) {
 			return getToken(MiuLanguage_lexParser.ID, i);
 		}
+		public List<TerminalNode> SUB() { return getTokens(MiuLanguage_lexParser.SUB); }
+		public TerminalNode SUB(int i) {
+			return getToken(MiuLanguage_lexParser.SUB, i);
+		}
+		public List<TerminalNode> SUM() { return getTokens(MiuLanguage_lexParser.SUM); }
+		public TerminalNode SUM(int i) {
+			return getToken(MiuLanguage_lexParser.SUM, i);
+		}
+		public List<TerminalNode> DIV() { return getTokens(MiuLanguage_lexParser.DIV); }
+		public TerminalNode DIV(int i) {
+			return getToken(MiuLanguage_lexParser.DIV, i);
+		}
+		public List<TerminalNode> MULT() { return getTokens(MiuLanguage_lexParser.MULT); }
+		public TerminalNode MULT(int i) {
+			return getToken(MiuLanguage_lexParser.MULT, i);
+		}
 		public ProgramContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -235,12 +253,12 @@ public class MiuLanguage_lexParser extends Parser {
 			setState(5);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 2147483646L) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & 34359738366L) != 0)) {
 				{
 				{
 				setState(2);
 				_la = _input.LA(1);
-				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 2147483646L) != 0)) ) {
+				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & 34359738366L) != 0)) ) {
 				_errHandler.recoverInline(this);
 				}
 				else {
@@ -270,14 +288,14 @@ public class MiuLanguage_lexParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u001f\u000b\u0002\u0000\u0007\u0000\u0001\u0000\u0005\u0000"+
-		"\u0004\b\u0000\n\u0000\f\u0000\u0007\t\u0000\u0001\u0000\u0001\u0000\u0001"+
-		"\u0000\u0000\u0000\u0001\u0000\u0000\u0001\u0001\u0000\u0001\u001e\n\u0000"+
-		"\u0005\u0001\u0000\u0000\u0000\u0002\u0004\u0007\u0000\u0000\u0000\u0003"+
-		"\u0002\u0001\u0000\u0000\u0000\u0004\u0007\u0001\u0000\u0000\u0000\u0005"+
-		"\u0003\u0001\u0000\u0000\u0000\u0005\u0006\u0001\u0000\u0000\u0000\u0006"+
-		"\b\u0001\u0000\u0000\u0000\u0007\u0005\u0001\u0000\u0000\u0000\b\t\u0005"+
-		"\u0000\u0000\u0001\t\u0001\u0001\u0000\u0000\u0000\u0001\u0005";
+		"\u0004\u0001#\u000b\u0002\u0000\u0007\u0000\u0001\u0000\u0005\u0000\u0004"+
+		"\b\u0000\n\u0000\f\u0000\u0007\t\u0000\u0001\u0000\u0001\u0000\u0001\u0000"+
+		"\u0000\u0000\u0001\u0000\u0000\u0001\u0001\u0000\u0001\"\n\u0000\u0005"+
+		"\u0001\u0000\u0000\u0000\u0002\u0004\u0007\u0000\u0000\u0000\u0003\u0002"+
+		"\u0001\u0000\u0000\u0000\u0004\u0007\u0001\u0000\u0000\u0000\u0005\u0003"+
+		"\u0001\u0000\u0000\u0000\u0005\u0006\u0001\u0000\u0000\u0000\u0006\b\u0001"+
+		"\u0000\u0000\u0000\u0007\u0005\u0001\u0000\u0000\u0000\b\t\u0005\u0000"+
+		"\u0000\u0001\t\u0001\u0001\u0000\u0000\u0000\u0001\u0005";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

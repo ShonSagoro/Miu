@@ -162,6 +162,66 @@ export default class MiuLanguage_sinVisitor extends antlr4.tree.ParseTreeVisitor
 	}
 
 
+	// Visit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallRule.
+	visitExprFunctionCallRule(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#exprVarStatementRule.
+	visitExprVarStatementRule(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallVar.
+	visitExprFunctionCallVar(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#arithmeticExprRule.
+	visitArithmeticExprRule(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#term.
+	visitTerm(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#mulOperatorRule.
+	visitMulOperatorRule(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#multRule.
+	visitMultRule(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#divRule.
+	visitDivRule(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#sumRule.
+	visitSumRule(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
+	// Visit a parse tree produced by MiuLanguage_sinParser#subRule.
+	visitSubRule(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by MiuLanguage_sinParser#fnRule.
 	visitFnRule(ctx) {
 	  return this.visitChildren(ctx);

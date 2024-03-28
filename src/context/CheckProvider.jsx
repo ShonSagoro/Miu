@@ -5,7 +5,6 @@ import MiuParser from "../data/analizar_lexico/MiuLanguage_lexParser.js"
 import MiuLexer_sin from "../data/analizar_sintactico/MiuLanguage_sinLexer.js"
 import MiuParser_sin from "../data/analizar_sintactico/MiuLanguage_sinParser.js"
 import antlr4 from "antlr4";
-import fs from 'fs';
 import MiuInterpreteVisitor from '../data/interprete/MiuInterpreteVisitor.js';
 
 import CheckContext from "./CheckContext";
@@ -13,13 +12,11 @@ import MiuSemanticVisitor from "../data/analizador_semantico/MiuSemanticVisitor.
 
 // eslint-disable-next-line react/prop-types
 const CheckProvider = ({ children }) => {
-  // let stack = [];
-
   // eslint-disable-next-line no-unused-vars
   const [consoleMessage, setConsoleMessage] = useState("");
   const [isDebugEnable, setIsDebugEnable] = useState(false);
   const [isQuickEnable, setIsQuickEnable] = useState(false);
-  const [treeSin, setTreeSin] = useState(false);
+  const [codeJS, setCodeJS] = useState(null);
 
   const TOKEN_NAMES = {
     [MiuLexer.COMPARISON_OPERATOR]: "Comparison Operator",
@@ -141,37 +138,51 @@ const CheckProvider = ({ children }) => {
     let js_code = "";
     try {
       let res_lex = await checkLexical(code, messageQueue, tokenCounts);
-      let res_sin = await checkSintactic(code, messageQueue, tokenCounts);
-      let res_sem = await checkSematic();
+      let tree = await checkSintactic(code, messageQueue, tokenCounts);
+      let res_sem = await checkSematic(tree);
 
-      if(res_lex && res_sin && res_sem){
-        js_code = await generatedCode();
-        await addQuickMessage(js_code);
-        await code_ejecuction(js_code);
+      if (res_lex && tree && res_sem) {
+        js_code = await generatedCode(tree);
+        setCodeJS(js_code);
         return true;
       }
-      
+      await addErrorMessage(`Algun error en el código, no se puede ejecutar`);
+      return false;
     } catch (e) {
       await addErrorMessage(`${e}`);
       return false;
     }
-  };//TODO: pedir una funcion main si o si, y exigir variables definidas.
+  };
 
-  const code_ejecuction = async (code) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const codeEjecuction = async () => {
     await addMessage("Ejecutando código...");
-    try{
-      await addQuickMessage("resultado: ");
-      let result = eval(code);
-      await addQuickMessage(result);
-      return result;
-    }catch(e){
+    const originalLog = console.log;
+    let messages = [];
+    console.log = function (message) {
+      messages.push(message);
+      originalLog.apply(console, arguments);
+    };
+
+    try {
+      if (codeJS) {
+        let result = eval(codeJS);
+        console.log = originalLog;
+        let messagesAsString = messages.join('\n');
+        await addQuickMessage(">> " + messagesAsString);
+        return result;
+      }else{
+        return "No hay código para ejecutar, dale a Check code primero";
+      }
+    } catch (e) {
       return e;
     }
   }
-  const checkSematic = async () => {
+
+  const checkSematic = async (tree) => {
     await addMessage("Iniciando análisis semantico...");
     const visitor = new MiuSemanticVisitor();
-    treeSin.accept(visitor);
+    tree.accept(visitor);
     if (visitor.errors.length > 0) {
       for (const error of visitor.errors) {
         await addErrorMessage(error);
@@ -185,8 +196,6 @@ const CheckProvider = ({ children }) => {
     }
     return true;
   }
-
- 
 
   const checkSintactic = async (code, messageQueue, tokenCounts) => {
     await addMessage("Iniciando análisis sintactico...");
@@ -217,7 +226,8 @@ const CheckProvider = ({ children }) => {
       for (const message of messageQueue) {
         await addErrorMessage(message);
       }
-      return false;
+      await addMessageTree(tree);
+      return tree;
     }
 
     tokenCounts = await countTokens(tokens.tokens);
@@ -229,8 +239,7 @@ const CheckProvider = ({ children }) => {
     parser.buildParseTrees = true;
 
     await addMessageTree(tree);
-    setTreeSin(tree);
-    return true;
+    return tree;
   }
 
   const checkLexical = async (code, messageQueue, tokenCounts) => {
@@ -292,20 +301,19 @@ const CheckProvider = ({ children }) => {
     return tokenCounts;
   };
 
-  const getTree = async (code) => {
+  const getTree = (code) => {
     const chars = new antlr4.InputStream(code);
     const lexer = new MiuLexer_sin(chars);
     const tokens = new antlr4.CommonTokenStream(lexer);
     const parser = new MiuParser_sin(tokens);
     let tree = parser.program();
     parser.buildParseTrees = true;
-    console.log(tree);
     return tree;
   }
 
 
-  const generatedCode = async () => {
-    return treeSin.accept(new MiuInterpreteVisitor());
+  const generatedCode = async (tree) => {
+    return tree.accept(new MiuInterpreteVisitor());
   }
 
   const value = useMemo(() => {
@@ -315,9 +323,10 @@ const CheckProvider = ({ children }) => {
       isDebugEnable,
       setIsDebugEnable,
       isQuickEnable,
-      setIsQuickEnable
+      setIsQuickEnable,
+      codeEjecuction
     };
-  }, [consoleMessage, isDebugEnable, isQuickEnable, checkGrammar]);
+  }, [consoleMessage, isDebugEnable, isQuickEnable, checkGrammar, codeEjecuction]);
 
   return (
     <CheckContext.Provider value={value}>{children}</CheckContext.Provider>
