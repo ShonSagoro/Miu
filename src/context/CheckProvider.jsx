@@ -143,7 +143,9 @@ const CheckProvider = ({ children }) => {
 
       if (res_lex && tree && res_sem) {
         js_code = await generatedCode(tree);
+        await addQuickMessage("Código generado correctamente");
         setCodeJS(js_code);
+        await addDebugMessage("Code: \n"+js_code);
         return true;
       }
       await addErrorMessage(`Algun error en el código, no se puede ejecutar`);
