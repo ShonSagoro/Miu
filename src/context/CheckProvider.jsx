@@ -268,6 +268,8 @@ const CheckProvider = ({ children }) => {
       },
     });
     let tree = parser.program();
+    await addMessageTree(tree);
+
 
     if (messageQueue.length > 0) {
       for (const message of messageQueue) {

@@ -18,7 +18,7 @@ function MiuCode() {
   const [messages, setMessages] = useState(["Write and check your miu Code"]);
   const editorRef = useRef(null);
   const [code, setCode] = useState(
-    `use std::fmt;\n\nfn Module() {\n\tfmt.Print("Hola, mundo!");\n}`
+    `use std::fmt;\n\nfn Main() {\n\tfmt.Print("Hola, mundo!");\n}`
   );
 
   const [isDisabled, setIsDisabled] = useState(false);

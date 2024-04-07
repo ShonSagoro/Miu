@@ -14,7 +14,7 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
         if (function_name == "Main") {
             return `${this.visitChildren(ctx).join(' ')}\nMain();\n`;
         } else {
-            return this.visitChildren(ctx).join(' ');
+            return this.visitChildren(ctx).join(' ') + "\n";
         }
     }
 
@@ -30,13 +30,18 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
         }
 
     }
-
+	visitBodyRRRule(ctx) {
+        return this.visitChildren(ctx).join('');
+    }
 
     // Visit a parse tree produced by MiuLanguage_sinParser#checkreturnFunctionRule.
     visitCheckreturnFunctionRule(ctx) {
         return this.visitChildren(ctx).join('');
     }
 
+    visitExprExtraRule(ctx) {
+        return this.visitChildren(ctx).join('');
+      }
 
     // Visit a parse tree produced by MiuLanguage_sinParser#paramList.
     visitParamList(ctx) {

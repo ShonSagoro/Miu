@@ -103,6 +103,10 @@ export default class MiuSemanticVisitor extends MiuLanguage_sinVisitor {
         }
     }
 
+    visitExprExtraRule(ctx) {
+        return this.visitChildren(ctx);
+      }
+
 
     // Visit a parse tree produced by MiuLanguage_sinParser#functionCallVar.
     visitFunctionCallVar(ctx) {

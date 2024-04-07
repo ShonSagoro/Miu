@@ -140,21 +140,21 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#assignment.
-	enterAssignment(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguage_sinParser#assignment.
-	exitAssignment(ctx) {
-	}
-
-
 	// Enter a parse tree produced by MiuLanguage_sinParser#assignametnVar.
 	enterAssignametnVar(ctx) {
 	}
 
 	// Exit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
 	exitAssignametnVar(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#assignment.
+	enterAssignment(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#assignment.
+	exitAssignment(ctx) {
 	}
 
 
@@ -239,48 +239,12 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#exprFunctionCallRule.
-	enterExprFunctionCallRule(ctx) {
+	// Enter a parse tree produced by MiuLanguage_sinParser#exprExtraRule.
+	enterExprExtraRule(ctx) {
 	}
 
-	// Exit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallRule.
-	exitExprFunctionCallRule(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguage_sinParser#exprVarStatementRule.
-	enterExprVarStatementRule(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguage_sinParser#exprVarStatementRule.
-	exitExprVarStatementRule(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguage_sinParser#exprFunctionCallVar.
-	enterExprFunctionCallVar(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallVar.
-	exitExprFunctionCallVar(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguage_sinParser#arithmeticExprRule.
-	enterArithmeticExprRule(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguage_sinParser#arithmeticExprRule.
-	exitArithmeticExprRule(ctx) {
-	}
-
-
-	// Enter a parse tree produced by MiuLanguage_sinParser#term.
-	enterTerm(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguage_sinParser#term.
-	exitTerm(ctx) {
+	// Exit a parse tree produced by MiuLanguage_sinParser#exprExtraRule.
+	exitExprExtraRule(ctx) {
 	}
 
 

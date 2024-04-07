@@ -96,14 +96,14 @@ export default class MiuLanguage_sinVisitor extends antlr4.tree.ParseTreeVisitor
 	}
 
 
-	// Visit a parse tree produced by MiuLanguage_sinParser#assignment.
-	visitAssignment(ctx) {
+	// Visit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
+	visitAssignametnVar(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
 
-	// Visit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
-	visitAssignametnVar(ctx) {
+	// Visit a parse tree produced by MiuLanguage_sinParser#assignment.
+	visitAssignment(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
@@ -162,32 +162,8 @@ export default class MiuLanguage_sinVisitor extends antlr4.tree.ParseTreeVisitor
 	}
 
 
-	// Visit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallRule.
-	visitExprFunctionCallRule(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MiuLanguage_sinParser#exprVarStatementRule.
-	visitExprVarStatementRule(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MiuLanguage_sinParser#exprFunctionCallVar.
-	visitExprFunctionCallVar(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MiuLanguage_sinParser#arithmeticExprRule.
-	visitArithmeticExprRule(ctx) {
-	  return this.visitChildren(ctx);
-	}
-
-
-	// Visit a parse tree produced by MiuLanguage_sinParser#term.
-	visitTerm(ctx) {
+	// Visit a parse tree produced by MiuLanguage_sinParser#exprExtraRule.
+	visitExprExtraRule(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

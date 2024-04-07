@@ -96,8 +96,8 @@ statement:
 	| varStatement
 	| controlStructure;
 
-assignment: letRule idRule pRule typeRule assignametnVar;
-assignametnVar: equalRule exprRule pcRule;
+assignametnVar: equalRule exprRule (exprExtraRule exprRule)* pcRule;
+assignment: letRule idRule (pRule typeRule)* equalRule exprRule  (exprExtraRule exprRule)*pcRule;
 controlStructure: ifStatement | forStatement;
 
 ifStatement:
@@ -113,31 +113,13 @@ forStatement:
 comparisonExprADDRule:
 	comparisonExprRule (addOperatorRule comparisonExprRule)*;
 comparisonExprRule: exprRule comparisonOperatorRule exprRule;
-exprReturnRule: exprRule | comparisonExprADDRule;
+exprReturnRule: exprRule (exprExtraRule exprRule)*;
+exprRule : idRule| stringRule | charRule | intRule | floatRule | boolRule ;
 
-exprRule:
-	exprFunctionCallRule
-	| exprVarStatementRule
-	| arithmeticExprRule
-	| stringRule
-	| charRule
-	| intRule
-	| floatRule
-	| boolRule;
-
-exprFunctionCallRule: idfRule lparenRule argList? rparenRule;
-exprVarStatementRule: idRule (exprFunctionCallVar)*;
-exprFunctionCallVar:
-	dotRule idfRule lparenRule argList? rparenRule;
-
-arithmeticExprRule: term (addOperatorRule term)*;
-
-term:
-	exprVarStatementRule (mulOperatorRule exprVarStatementRule)*;
+exprExtraRule: mulOperatorRule |  addOperatorRule;
 
 mulOperatorRule: | multRule | divRule | subRule | sumRule;
 
-// Terminal rules transformed to parser rules
 multRule: MULT;
 divRule: DIV;
 sumRule: SUM;
