@@ -13,7 +13,7 @@ export default class MiuSemanticVisitor extends MiuLanguage_sinVisitor {
     // Visit a parse tree produced by MiuLanguage_sinParser#program.
     visitProgram(ctx) {
         this.visitChildren(ctx);
-        if (this.functions.has('Main') === false){
+        if (this.functions.has('Main') === false) {
             this.warnings.push('No main function declared');
         }
         return "";
@@ -60,9 +60,12 @@ export default class MiuSemanticVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#param.
     visitParam(ctx) {
+        console.log(this.visit(ctx.children[0]));
         let var_name = this.visit(ctx.children[0]);
-        if (this.visitChildren(var_name)) {
+        if (!this.variables.has(var_name)) {
             this.variables.add(var_name);
+            console.log("variables: ");
+            console.log(this.variables);
         }
         return this.visitChildren(ctx);
     }
@@ -105,7 +108,7 @@ export default class MiuSemanticVisitor extends MiuLanguage_sinVisitor {
 
     visitExprExtraRule(ctx) {
         return this.visitChildren(ctx);
-      }
+    }
 
 
     // Visit a parse tree produced by MiuLanguage_sinParser#functionCallVar.
