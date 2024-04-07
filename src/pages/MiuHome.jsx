@@ -11,4 +11,4 @@ function MiuHome() {
   )
 }
 
-export default MiuHome
+export default MiuHome 

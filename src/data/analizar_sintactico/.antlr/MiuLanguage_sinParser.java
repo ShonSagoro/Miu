@@ -26,7 +26,7 @@ public class MiuLanguage_sinParser extends Parser {
 		RULE_checkreturnFunctionRule = 3, RULE_paramList = 4, RULE_invalidRule = 5, 
 		RULE_param = 6, RULE_bodyRule = 7, RULE_bodyRRule = 8, RULE_statementRRule = 9, 
 		RULE_functionCall = 10, RULE_varStatement = 11, RULE_functionCallVar = 12, 
-		RULE_argList = 13, RULE_statement = 14, RULE_assignametnVar = 15, RULE_assignment = 16, 
+		RULE_argList = 13, RULE_statement = 14, RULE_assignment = 15, RULE_assignametnVar = 16, 
 		RULE_controlStructure = 17, RULE_ifStatement = 18, RULE_elseStatement = 19, 
 		RULE_elseIfStatement = 20, RULE_forStatement = 21, RULE_comparisonExprADDRule = 22, 
 		RULE_comparisonExprRule = 23, RULE_exprReturnRule = 24, RULE_exprRule = 25, 
@@ -46,7 +46,7 @@ public class MiuLanguage_sinParser extends Parser {
 			"program", "functionDeclaration", "moduleDeclaration", "checkreturnFunctionRule", 
 			"paramList", "invalidRule", "param", "bodyRule", "bodyRRule", "statementRRule", 
 			"functionCall", "varStatement", "functionCallVar", "argList", "statement", 
-			"assignametnVar", "assignment", "controlStructure", "ifStatement", "elseStatement", 
+			"assignment", "assignametnVar", "controlStructure", "ifStatement", "elseStatement", 
 			"elseIfStatement", "forStatement", "comparisonExprADDRule", "comparisonExprRule", 
 			"exprReturnRule", "exprRule", "exprFunctionCallRule", "exprVarStatementRule", 
 			"exprFunctionCallVar", "arithmeticExprRule", "term", "mulOperatorRule", 
@@ -1139,6 +1139,58 @@ public class MiuLanguage_sinParser extends Parser {
 	}
 
 	@SuppressWarnings("CheckReturnValue")
+	public static class AssignmentContext extends ParserRuleContext {
+		public LetRuleContext letRule() {
+			return getRuleContext(LetRuleContext.class,0);
+		}
+		public IdRuleContext idRule() {
+			return getRuleContext(IdRuleContext.class,0);
+		}
+		public PRuleContext pRule() {
+			return getRuleContext(PRuleContext.class,0);
+		}
+		public TypeRuleContext typeRule() {
+			return getRuleContext(TypeRuleContext.class,0);
+		}
+		public AssignametnVarContext assignametnVar() {
+			return getRuleContext(AssignametnVarContext.class,0);
+		}
+		public AssignmentContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_assignment; }
+	}
+
+	public final AssignmentContext assignment() throws RecognitionException {
+		AssignmentContext _localctx = new AssignmentContext(_ctx, getState());
+		enterRule(_localctx, 30, RULE_assignment);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(263);
+			letRule();
+			setState(264);
+			idRule();
+			setState(265);
+			pRule();
+			setState(266);
+			typeRule();
+			setState(267);
+			assignametnVar();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	@SuppressWarnings("CheckReturnValue")
 	public static class AssignametnVarContext extends ParserRuleContext {
 		public EqualRuleContext equalRule() {
 			return getRuleContext(EqualRuleContext.class,0);
@@ -1157,62 +1209,10 @@ public class MiuLanguage_sinParser extends Parser {
 
 	public final AssignametnVarContext assignametnVar() throws RecognitionException {
 		AssignametnVarContext _localctx = new AssignametnVarContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_assignametnVar);
+		enterRule(_localctx, 32, RULE_assignametnVar);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(263);
-			equalRule();
-			setState(264);
-			exprRule();
-			setState(265);
-			pcRule();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	@SuppressWarnings("CheckReturnValue")
-	public static class AssignmentContext extends ParserRuleContext {
-		public LetRuleContext letRule() {
-			return getRuleContext(LetRuleContext.class,0);
-		}
-		public IdRuleContext idRule() {
-			return getRuleContext(IdRuleContext.class,0);
-		}
-		public EqualRuleContext equalRule() {
-			return getRuleContext(EqualRuleContext.class,0);
-		}
-		public ExprRuleContext exprRule() {
-			return getRuleContext(ExprRuleContext.class,0);
-		}
-		public PcRuleContext pcRule() {
-			return getRuleContext(PcRuleContext.class,0);
-		}
-		public AssignmentContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_assignment; }
-	}
-
-	public final AssignmentContext assignment() throws RecognitionException {
-		AssignmentContext _localctx = new AssignmentContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_assignment);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(267);
-			letRule();
-			setState(268);
-			idRule();
 			setState(269);
 			equalRule();
 			setState(270);
@@ -3183,7 +3183,7 @@ public class MiuLanguage_sinParser extends Parser {
 		"\r\u00f2\b\r\u0001\r\u0001\r\u0001\r\u0001\r\u0001\r\u0001\r\u0001\r\u0003"+
 		"\r\u00fb\b\r\u0005\r\u00fd\b\r\n\r\f\r\u0100\t\r\u0001\u000e\u0001\u000e"+
 		"\u0001\u000e\u0001\u000e\u0003\u000e\u0106\b\u000e\u0001\u000f\u0001\u000f"+
-		"\u0001\u000f\u0001\u000f\u0001\u0010\u0001\u0010\u0001\u0010\u0001\u0010"+
+		"\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u000f\u0001\u0010\u0001\u0010"+
 		"\u0001\u0010\u0001\u0010\u0001\u0011\u0001\u0011\u0003\u0011\u0114\b\u0011"+
 		"\u0001\u0012\u0001\u0012\u0001\u0012\u0001\u0012\u0005\u0012\u011a\b\u0012"+
 		"\n\u0012\f\u0012\u011d\t\u0012\u0001\u0012\u0003\u0012\u0120\b\u0012\u0001"+
@@ -3218,7 +3218,7 @@ public class MiuLanguage_sinParser extends Parser {
 		"\u00c4\u0001\u0000\u0000\u0000\u0012\u00ce\u0001\u0000\u0000\u0000\u0014"+
 		"\u00d2\u0001\u0000\u0000\u0000\u0016\u00da\u0001\u0000\u0000\u0000\u0018"+
 		"\u00e2\u0001\u0000\u0000\u0000\u001a\u00f1\u0001\u0000\u0000\u0000\u001c"+
-		"\u0105\u0001\u0000\u0000\u0000\u001e\u0107\u0001\u0000\u0000\u0000 \u010b"+
+		"\u0105\u0001\u0000\u0000\u0000\u001e\u0107\u0001\u0000\u0000\u0000 \u010d"+
 		"\u0001\u0000\u0000\u0000\"\u0113\u0001\u0000\u0000\u0000$\u0115\u0001"+
 		"\u0000\u0000\u0000&\u0121\u0001\u0000\u0000\u0000(\u0124\u0001\u0000\u0000"+
 		"\u0000*\u0129\u0001\u0000\u0000\u0000,\u0131\u0001\u0000\u0000\u0000."+
@@ -3285,7 +3285,7 @@ public class MiuLanguage_sinParser extends Parser {
 		"\u00d4\u0001\u0000\u0000\u0000\u00d5\u00d6\u0001\u0000\u0000\u0000\u00d6"+
 		"\u00d7\u0001\u0000\u0000\u0000\u00d7\u00d8\u0003|>\u0000\u00d8\u00d9\u0003"+
 		"R)\u0000\u00d9\u0015\u0001\u0000\u0000\u0000\u00da\u00df\u0003N\'\u0000"+
-		"\u00db\u00de\u0003\u0018\f\u0000\u00dc\u00de\u0003\u001e\u000f\u0000\u00dd"+
+		"\u00db\u00de\u0003\u0018\f\u0000\u00dc\u00de\u0003 \u0010\u0000\u00dd"+
 		"\u00db\u0001\u0000\u0000\u0000\u00dd\u00dc\u0001\u0000\u0000\u0000\u00de"+
 		"\u00e1\u0001\u0000\u0000\u0000\u00df\u00dd\u0001\u0000\u0000\u0000\u00df"+
 		"\u00e0\u0001\u0000\u0000\u0000\u00e0\u0017\u0001\u0000\u0000\u0000\u00e1"+
@@ -3308,38 +3308,38 @@ public class MiuLanguage_sinParser extends Parser {
 		"\u0000\u00fb\u00fd\u0001\u0000\u0000\u0000\u00fc\u00f3\u0001\u0000\u0000"+
 		"\u0000\u00fd\u0100\u0001\u0000\u0000\u0000\u00fe\u00fc\u0001\u0000\u0000"+
 		"\u0000\u00fe\u00ff\u0001\u0000\u0000\u0000\u00ff\u001b\u0001\u0000\u0000"+
-		"\u0000\u0100\u00fe\u0001\u0000\u0000\u0000\u0101\u0106\u0003 \u0010\u0000"+
-		"\u0102\u0106\u0003\u0014\n\u0000\u0103\u0106\u0003\u0016\u000b\u0000\u0104"+
-		"\u0106\u0003\"\u0011\u0000\u0105\u0101\u0001\u0000\u0000\u0000\u0105\u0102"+
-		"\u0001\u0000\u0000\u0000\u0105\u0103\u0001\u0000\u0000\u0000\u0105\u0104"+
-		"\u0001\u0000\u0000\u0000\u0106\u001d\u0001\u0000\u0000\u0000\u0107\u0108"+
-		"\u0003^/\u0000\u0108\u0109\u00032\u0019\u0000\u0109\u010a\u0003R)\u0000"+
-		"\u010a\u001f\u0001\u0000\u0000\u0000\u010b\u010c\u0003\\.\u0000\u010c"+
-		"\u010d\u0003N\'\u0000\u010d\u010e\u0003^/\u0000\u010e\u010f\u00032\u0019"+
-		"\u0000\u010f\u0110\u0003R)\u0000\u0110!\u0001\u0000\u0000\u0000\u0111"+
-		"\u0114\u0003$\u0012\u0000\u0112\u0114\u0003*\u0015\u0000\u0113\u0111\u0001"+
-		"\u0000\u0000\u0000\u0113\u0112\u0001\u0000\u0000\u0000\u0114#\u0001\u0000"+
-		"\u0000\u0000\u0115\u0116\u0003`0\u0000\u0116\u0117\u0003,\u0016\u0000"+
-		"\u0117\u011b\u0003\u000e\u0007\u0000\u0118\u011a\u0003(\u0014\u0000\u0119"+
-		"\u0118\u0001\u0000\u0000\u0000\u011a\u011d\u0001\u0000\u0000\u0000\u011b"+
-		"\u0119\u0001\u0000\u0000\u0000\u011b\u011c\u0001\u0000\u0000\u0000\u011c"+
-		"\u011f\u0001\u0000\u0000\u0000\u011d\u011b\u0001\u0000\u0000\u0000\u011e"+
-		"\u0120\u0003&\u0013\u0000\u011f\u011e\u0001\u0000\u0000\u0000\u011f\u0120"+
-		"\u0001\u0000\u0000\u0000\u0120%\u0001\u0000\u0000\u0000\u0121\u0122\u0003"+
-		"b1\u0000\u0122\u0123\u0003\u000e\u0007\u0000\u0123\'\u0001\u0000\u0000"+
-		"\u0000\u0124\u0125\u0003b1\u0000\u0125\u0126\u0003`0\u0000\u0126\u0127"+
-		"\u0003,\u0016\u0000\u0127\u0128\u0003\u000e\u0007\u0000\u0128)\u0001\u0000"+
-		"\u0000\u0000\u0129\u012a\u0003d2\u0000\u012a\u012b\u0003N\'\u0000\u012b"+
-		"\u012c\u0003f3\u0000\u012c\u012d\u0003r9\u0000\u012d\u012e\u0003h4\u0000"+
-		"\u012e\u012f\u0003r9\u0000\u012f\u0130\u0003\u000e\u0007\u0000\u0130+"+
-		"\u0001\u0000\u0000\u0000\u0131\u0137\u0003.\u0017\u0000\u0132\u0133\u0003"+
-		"j5\u0000\u0133\u0134\u0003.\u0017\u0000\u0134\u0136\u0001\u0000\u0000"+
-		"\u0000\u0135\u0132\u0001\u0000\u0000\u0000\u0136\u0139\u0001\u0000\u0000"+
-		"\u0000\u0137\u0135\u0001\u0000\u0000\u0000\u0137\u0138\u0001\u0000\u0000"+
-		"\u0000\u0138-\u0001\u0000\u0000\u0000\u0139\u0137\u0001\u0000\u0000\u0000"+
-		"\u013a\u013b\u00032\u0019\u0000\u013b\u013c\u0003l6\u0000\u013c\u013d"+
-		"\u00032\u0019\u0000\u013d/\u0001\u0000\u0000\u0000\u013e\u0141\u00032"+
-		"\u0019\u0000\u013f\u0141\u0003,\u0016\u0000\u0140\u013e\u0001\u0000\u0000"+
+		"\u0000\u0100\u00fe\u0001\u0000\u0000\u0000\u0101\u0106\u0003\u001e\u000f"+
+		"\u0000\u0102\u0106\u0003\u0014\n\u0000\u0103\u0106\u0003\u0016\u000b\u0000"+
+		"\u0104\u0106\u0003\"\u0011\u0000\u0105\u0101\u0001\u0000\u0000\u0000\u0105"+
+		"\u0102\u0001\u0000\u0000\u0000\u0105\u0103\u0001\u0000\u0000\u0000\u0105"+
+		"\u0104\u0001\u0000\u0000\u0000\u0106\u001d\u0001\u0000\u0000\u0000\u0107"+
+		"\u0108\u0003\\.\u0000\u0108\u0109\u0003N\'\u0000\u0109\u010a\u0003\u0082"+
+		"A\u0000\u010a\u010b\u0003V+\u0000\u010b\u010c\u0003 \u0010\u0000\u010c"+
+		"\u001f\u0001\u0000\u0000\u0000\u010d\u010e\u0003^/\u0000\u010e\u010f\u0003"+
+		"2\u0019\u0000\u010f\u0110\u0003R)\u0000\u0110!\u0001\u0000\u0000\u0000"+
+		"\u0111\u0114\u0003$\u0012\u0000\u0112\u0114\u0003*\u0015\u0000\u0113\u0111"+
+		"\u0001\u0000\u0000\u0000\u0113\u0112\u0001\u0000\u0000\u0000\u0114#\u0001"+
+		"\u0000\u0000\u0000\u0115\u0116\u0003`0\u0000\u0116\u0117\u0003,\u0016"+
+		"\u0000\u0117\u011b\u0003\u000e\u0007\u0000\u0118\u011a\u0003(\u0014\u0000"+
+		"\u0119\u0118\u0001\u0000\u0000\u0000\u011a\u011d\u0001\u0000\u0000\u0000"+
+		"\u011b\u0119\u0001\u0000\u0000\u0000\u011b\u011c\u0001\u0000\u0000\u0000"+
+		"\u011c\u011f\u0001\u0000\u0000\u0000\u011d\u011b\u0001\u0000\u0000\u0000"+
+		"\u011e\u0120\u0003&\u0013\u0000\u011f\u011e\u0001\u0000\u0000\u0000\u011f"+
+		"\u0120\u0001\u0000\u0000\u0000\u0120%\u0001\u0000\u0000\u0000\u0121\u0122"+
+		"\u0003b1\u0000\u0122\u0123\u0003\u000e\u0007\u0000\u0123\'\u0001\u0000"+
+		"\u0000\u0000\u0124\u0125\u0003b1\u0000\u0125\u0126\u0003`0\u0000\u0126"+
+		"\u0127\u0003,\u0016\u0000\u0127\u0128\u0003\u000e\u0007\u0000\u0128)\u0001"+
+		"\u0000\u0000\u0000\u0129\u012a\u0003d2\u0000\u012a\u012b\u0003N\'\u0000"+
+		"\u012b\u012c\u0003f3\u0000\u012c\u012d\u0003r9\u0000\u012d\u012e\u0003"+
+		"h4\u0000\u012e\u012f\u0003r9\u0000\u012f\u0130\u0003\u000e\u0007\u0000"+
+		"\u0130+\u0001\u0000\u0000\u0000\u0131\u0137\u0003.\u0017\u0000\u0132\u0133"+
+		"\u0003j5\u0000\u0133\u0134\u0003.\u0017\u0000\u0134\u0136\u0001\u0000"+
+		"\u0000\u0000\u0135\u0132\u0001\u0000\u0000\u0000\u0136\u0139\u0001\u0000"+
+		"\u0000\u0000\u0137\u0135\u0001\u0000\u0000\u0000\u0137\u0138\u0001\u0000"+
+		"\u0000\u0000\u0138-\u0001\u0000\u0000\u0000\u0139\u0137\u0001\u0000\u0000"+
+		"\u0000\u013a\u013b\u00032\u0019\u0000\u013b\u013c\u0003l6\u0000\u013c"+
+		"\u013d\u00032\u0019\u0000\u013d/\u0001\u0000\u0000\u0000\u013e\u0141\u0003"+
+		"2\u0019\u0000\u013f\u0141\u0003,\u0016\u0000\u0140\u013e\u0001\u0000\u0000"+
 		"\u0000\u0140\u013f\u0001\u0000\u0000\u0000\u01411\u0001\u0000\u0000\u0000"+
 		"\u0142\u014b\u00034\u001a\u0000\u0143\u014b\u00036\u001b\u0000\u0144\u014b"+
 		"\u0003:\u001d\u0000\u0145\u014b\u0003n7\u0000\u0146\u014b\u0003p8\u0000"+

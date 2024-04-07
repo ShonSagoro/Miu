@@ -182,6 +182,7 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#exprRule.
     visitExprRule(ctx) {
+        console.log(ctx.children);
         return this.visitChildren(ctx).join(' ');
     }
 
@@ -284,7 +285,7 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
 
     // Visit a parse tree produced by MiuLanguage_sinParser#doubleDotRule.
     visitDoubleDotRule(ctx) {
-        return ctx.getText();
+        return "";
     }
 
 

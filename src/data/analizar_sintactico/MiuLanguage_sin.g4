@@ -96,8 +96,8 @@ statement:
 	| varStatement
 	| controlStructure;
 
+assignment: letRule idRule pRule typeRule assignametnVar;
 assignametnVar: equalRule exprRule pcRule;
-assignment: letRule idRule equalRule exprRule pcRule;
 controlStructure: ifStatement | forStatement;
 
 ifStatement:

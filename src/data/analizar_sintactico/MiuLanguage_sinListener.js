@@ -1,4 +1,4 @@
-// Generated from MiuLanguage_sin.g4 by ANTLR 4.13.1
+// Generated from ./MiuLanguage_sin.g4 by ANTLR 4.13.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -140,21 +140,21 @@ export default class MiuLanguage_sinListener extends antlr4.tree.ParseTreeListen
 	}
 
 
-	// Enter a parse tree produced by MiuLanguage_sinParser#assignametnVar.
-	enterAssignametnVar(ctx) {
-	}
-
-	// Exit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
-	exitAssignametnVar(ctx) {
-	}
-
-
 	// Enter a parse tree produced by MiuLanguage_sinParser#assignment.
 	enterAssignment(ctx) {
 	}
 
 	// Exit a parse tree produced by MiuLanguage_sinParser#assignment.
 	exitAssignment(ctx) {
+	}
+
+
+	// Enter a parse tree produced by MiuLanguage_sinParser#assignametnVar.
+	enterAssignametnVar(ctx) {
+	}
+
+	// Exit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
+	exitAssignametnVar(ctx) {
 	}
 
 

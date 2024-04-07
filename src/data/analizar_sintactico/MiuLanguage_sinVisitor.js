@@ -1,4 +1,4 @@
-// Generated from MiuLanguage_sin.g4 by ANTLR 4.13.1
+// Generated from ./MiuLanguage_sin.g4 by ANTLR 4.13.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -96,14 +96,14 @@ export default class MiuLanguage_sinVisitor extends antlr4.tree.ParseTreeVisitor
 	}
 
 
-	// Visit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
-	visitAssignametnVar(ctx) {
+	// Visit a parse tree produced by MiuLanguage_sinParser#assignment.
+	visitAssignment(ctx) {
 	  return this.visitChildren(ctx);
 	}
 
 
-	// Visit a parse tree produced by MiuLanguage_sinParser#assignment.
-	visitAssignment(ctx) {
+	// Visit a parse tree produced by MiuLanguage_sinParser#assignametnVar.
+	visitAssignametnVar(ctx) {
 	  return this.visitChildren(ctx);
 	}
 

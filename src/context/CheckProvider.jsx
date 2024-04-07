@@ -95,7 +95,7 @@ const CheckProvider = ({ children }) => {
     if (node.constructor.name != "Me" || node.constructor.name != ")") {
       indentation = " ".repeat(indent * 4);
     }
-    if (node.constructor.name === "Me") {
+    if (node.constructor.name === "Me"  || node.constructor.name === "Ue") {
       result += `${indentation}(Token: "${node.getText()}"$`;
     } else {
       result += `${indentation}(${node.constructor.name}: \n`;

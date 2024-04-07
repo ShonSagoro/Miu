@@ -1,4 +1,4 @@
-// Generated from MiuLanguage_sin.g4 by ANTLR 4.13.1
+// Generated from ./MiuLanguage_sin.g4 by ANTLR 4.13.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 import MiuLanguage_sinListener from './MiuLanguage_sinListener.js';
@@ -22,8 +22,8 @@ const serializedATN = [4,1,36,448,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 10,1,10,1,11,1,11,1,11,5,11,222,8,11,10,11,12,11,225,9,11,1,12,1,12,1,12,
 1,12,3,12,231,8,12,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,1,13,3,13,242,
 8,13,1,13,1,13,1,13,1,13,1,13,1,13,1,13,3,13,251,8,13,5,13,253,8,13,10,13,
-12,13,256,9,13,1,14,1,14,1,14,1,14,3,14,262,8,14,1,15,1,15,1,15,1,15,1,16,
-1,16,1,16,1,16,1,16,1,16,1,17,1,17,3,17,276,8,17,1,18,1,18,1,18,1,18,5,18,
+12,13,256,9,13,1,14,1,14,1,14,1,14,3,14,262,8,14,1,15,1,15,1,15,1,15,1,15,
+1,15,1,16,1,16,1,16,1,16,1,17,1,17,3,17,276,8,17,1,18,1,18,1,18,1,18,5,18,
 282,8,18,10,18,12,18,285,9,18,1,18,3,18,288,8,18,1,19,1,19,1,19,1,20,1,20,
 1,20,1,20,1,20,1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,21,1,22,1,22,1,22,1,
 22,5,22,310,8,22,10,22,12,22,313,9,22,1,23,1,23,1,23,1,23,1,24,1,24,3,24,
@@ -42,7 +42,7 @@ const serializedATN = [4,1,36,448,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 118,120,122,124,126,128,130,0,0,429,0,136,1,0,0,0,2,144,1,0,0,0,4,153,1,
 0,0,0,6,170,1,0,0,0,8,172,1,0,0,0,10,181,1,0,0,0,12,183,1,0,0,0,14,187,1,
 0,0,0,16,196,1,0,0,0,18,206,1,0,0,0,20,210,1,0,0,0,22,218,1,0,0,0,24,226,
-1,0,0,0,26,241,1,0,0,0,28,261,1,0,0,0,30,263,1,0,0,0,32,267,1,0,0,0,34,275,
+1,0,0,0,26,241,1,0,0,0,28,261,1,0,0,0,30,263,1,0,0,0,32,269,1,0,0,0,34,275,
 1,0,0,0,36,277,1,0,0,0,38,289,1,0,0,0,40,292,1,0,0,0,42,297,1,0,0,0,44,305,
 1,0,0,0,46,314,1,0,0,0,48,320,1,0,0,0,50,330,1,0,0,0,52,332,1,0,0,0,54,339,
 1,0,0,0,56,346,1,0,0,0,58,354,1,0,0,0,60,363,1,0,0,0,62,377,1,0,0,0,64,379,
@@ -75,7 +75,7 @@ const serializedATN = [4,1,36,448,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 90,45,0,207,208,3,48,24,0,208,209,3,82,41,0,209,19,1,0,0,0,210,211,3,74,
 37,0,211,213,3,122,61,0,212,214,3,26,13,0,213,212,1,0,0,0,213,214,1,0,0,
 0,214,215,1,0,0,0,215,216,3,124,62,0,216,217,3,82,41,0,217,21,1,0,0,0,218,
-223,3,78,39,0,219,222,3,24,12,0,220,222,3,30,15,0,221,219,1,0,0,0,221,220,
+223,3,78,39,0,219,222,3,24,12,0,220,222,3,32,16,0,221,219,1,0,0,0,221,220,
 1,0,0,0,222,225,1,0,0,0,223,221,1,0,0,0,223,224,1,0,0,0,224,23,1,0,0,0,225,
 223,1,0,0,0,226,227,3,120,60,0,227,228,3,74,37,0,228,230,3,122,61,0,229,
 231,3,26,13,0,230,229,1,0,0,0,230,231,1,0,0,0,231,232,1,0,0,0,232,233,3,
@@ -87,10 +87,10 @@ const serializedATN = [4,1,36,448,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,
 3,116,58,0,249,251,3,118,59,0,250,244,1,0,0,0,250,245,1,0,0,0,250,246,1,
 0,0,0,250,247,1,0,0,0,250,248,1,0,0,0,250,249,1,0,0,0,251,253,1,0,0,0,252,
 243,1,0,0,0,253,256,1,0,0,0,254,252,1,0,0,0,254,255,1,0,0,0,255,27,1,0,0,
-0,256,254,1,0,0,0,257,262,3,32,16,0,258,262,3,20,10,0,259,262,3,22,11,0,
+0,256,254,1,0,0,0,257,262,3,30,15,0,258,262,3,20,10,0,259,262,3,22,11,0,
 260,262,3,34,17,0,261,257,1,0,0,0,261,258,1,0,0,0,261,259,1,0,0,0,261,260,
-1,0,0,0,262,29,1,0,0,0,263,264,3,94,47,0,264,265,3,50,25,0,265,266,3,82,
-41,0,266,31,1,0,0,0,267,268,3,92,46,0,268,269,3,78,39,0,269,270,3,94,47,
+1,0,0,0,262,29,1,0,0,0,263,264,3,92,46,0,264,265,3,78,39,0,265,266,3,130,
+65,0,266,267,3,86,43,0,267,268,3,32,16,0,268,31,1,0,0,0,269,270,3,94,47,
 0,270,271,3,50,25,0,271,272,3,82,41,0,272,33,1,0,0,0,273,276,3,36,18,0,274,
 276,3,42,21,0,275,273,1,0,0,0,275,274,1,0,0,0,276,35,1,0,0,0,277,278,3,96,
 48,0,278,279,3,44,22,0,279,283,3,14,7,0,280,282,3,40,20,0,281,280,1,0,0,
@@ -165,7 +165,7 @@ export default class MiuLanguage_sinParser extends antlr4.Parser {
                          "checkreturnFunctionRule", "paramList", "invalidRule", 
                          "param", "bodyRule", "bodyRRule", "statementRRule", 
                          "functionCall", "varStatement", "functionCallVar", 
-                         "argList", "statement", "assignametnVar", "assignment", 
+                         "argList", "statement", "assignment", "assignametnVar", 
                          "controlStructure", "ifStatement", "elseStatement", 
                          "elseIfStatement", "forStatement", "comparisonExprADDRule", 
                          "comparisonExprRule", "exprReturnRule", "exprRule", 
@@ -815,17 +815,21 @@ export default class MiuLanguage_sinParser extends antlr4.Parser {
 
 
 
-	assignametnVar() {
-	    let localctx = new AssignametnVarContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 30, MiuLanguage_sinParser.RULE_assignametnVar);
+	assignment() {
+	    let localctx = new AssignmentContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 30, MiuLanguage_sinParser.RULE_assignment);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
 	        this.state = 263;
-	        this.equalRule();
+	        this.letRule();
 	        this.state = 264;
-	        this.exprRule();
+	        this.idRule();
 	        this.state = 265;
-	        this.pcRule();
+	        this.pRule();
+	        this.state = 266;
+	        this.typeRule();
+	        this.state = 267;
+	        this.assignametnVar();
 	    } catch (re) {
 	    	if(re instanceof antlr4.error.RecognitionException) {
 		        localctx.exception = re;
@@ -842,15 +846,11 @@ export default class MiuLanguage_sinParser extends antlr4.Parser {
 
 
 
-	assignment() {
-	    let localctx = new AssignmentContext(this, this._ctx, this.state);
-	    this.enterRule(localctx, 32, MiuLanguage_sinParser.RULE_assignment);
+	assignametnVar() {
+	    let localctx = new AssignametnVarContext(this, this._ctx, this.state);
+	    this.enterRule(localctx, 32, MiuLanguage_sinParser.RULE_assignametnVar);
 	    try {
 	        this.enterOuterAlt(localctx, 1);
-	        this.state = 267;
-	        this.letRule();
-	        this.state = 268;
-	        this.idRule();
 	        this.state = 269;
 	        this.equalRule();
 	        this.state = 270;
@@ -2288,8 +2288,8 @@ MiuLanguage_sinParser.RULE_varStatement = 11;
 MiuLanguage_sinParser.RULE_functionCallVar = 12;
 MiuLanguage_sinParser.RULE_argList = 13;
 MiuLanguage_sinParser.RULE_statement = 14;
-MiuLanguage_sinParser.RULE_assignametnVar = 15;
-MiuLanguage_sinParser.RULE_assignment = 16;
+MiuLanguage_sinParser.RULE_assignment = 15;
+MiuLanguage_sinParser.RULE_assignametnVar = 16;
 MiuLanguage_sinParser.RULE_controlStructure = 17;
 MiuLanguage_sinParser.RULE_ifStatement = 18;
 MiuLanguage_sinParser.RULE_elseStatement = 19;
@@ -3280,6 +3280,65 @@ class StatementContext extends antlr4.ParserRuleContext {
 
 
 
+class AssignmentContext extends antlr4.ParserRuleContext {
+
+    constructor(parser, parent, invokingState) {
+        if(parent===undefined) {
+            parent = null;
+        }
+        if(invokingState===undefined || invokingState===null) {
+            invokingState = -1;
+        }
+        super(parent, invokingState);
+        this.parser = parser;
+        this.ruleIndex = MiuLanguage_sinParser.RULE_assignment;
+    }
+
+	letRule() {
+	    return this.getTypedRuleContext(LetRuleContext,0);
+	};
+
+	idRule() {
+	    return this.getTypedRuleContext(IdRuleContext,0);
+	};
+
+	pRule() {
+	    return this.getTypedRuleContext(PRuleContext,0);
+	};
+
+	typeRule() {
+	    return this.getTypedRuleContext(TypeRuleContext,0);
+	};
+
+	assignametnVar() {
+	    return this.getTypedRuleContext(AssignametnVarContext,0);
+	};
+
+	enterRule(listener) {
+	    if(listener instanceof MiuLanguage_sinListener ) {
+	        listener.enterAssignment(this);
+		}
+	}
+
+	exitRule(listener) {
+	    if(listener instanceof MiuLanguage_sinListener ) {
+	        listener.exitAssignment(this);
+		}
+	}
+
+	accept(visitor) {
+	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
+	        return visitor.visitAssignment(this);
+	    } else {
+	        return visitor.visitChildren(this);
+	    }
+	}
+
+
+}
+
+
+
 class AssignametnVarContext extends antlr4.ParserRuleContext {
 
     constructor(parser, parent, invokingState) {
@@ -3321,65 +3380,6 @@ class AssignametnVarContext extends antlr4.ParserRuleContext {
 	accept(visitor) {
 	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
 	        return visitor.visitAssignametnVar(this);
-	    } else {
-	        return visitor.visitChildren(this);
-	    }
-	}
-
-
-}
-
-
-
-class AssignmentContext extends antlr4.ParserRuleContext {
-
-    constructor(parser, parent, invokingState) {
-        if(parent===undefined) {
-            parent = null;
-        }
-        if(invokingState===undefined || invokingState===null) {
-            invokingState = -1;
-        }
-        super(parent, invokingState);
-        this.parser = parser;
-        this.ruleIndex = MiuLanguage_sinParser.RULE_assignment;
-    }
-
-	letRule() {
-	    return this.getTypedRuleContext(LetRuleContext,0);
-	};
-
-	idRule() {
-	    return this.getTypedRuleContext(IdRuleContext,0);
-	};
-
-	equalRule() {
-	    return this.getTypedRuleContext(EqualRuleContext,0);
-	};
-
-	exprRule() {
-	    return this.getTypedRuleContext(ExprRuleContext,0);
-	};
-
-	pcRule() {
-	    return this.getTypedRuleContext(PcRuleContext,0);
-	};
-
-	enterRule(listener) {
-	    if(listener instanceof MiuLanguage_sinListener ) {
-	        listener.enterAssignment(this);
-		}
-	}
-
-	exitRule(listener) {
-	    if(listener instanceof MiuLanguage_sinListener ) {
-	        listener.exitAssignment(this);
-		}
-	}
-
-	accept(visitor) {
-	    if ( visitor instanceof MiuLanguage_sinVisitor ) {
-	        return visitor.visitAssignment(this);
 	    } else {
 	        return visitor.visitChildren(this);
 	    }
@@ -5731,8 +5731,8 @@ MiuLanguage_sinParser.VarStatementContext = VarStatementContext;
 MiuLanguage_sinParser.FunctionCallVarContext = FunctionCallVarContext; 
 MiuLanguage_sinParser.ArgListContext = ArgListContext; 
 MiuLanguage_sinParser.StatementContext = StatementContext; 
-MiuLanguage_sinParser.AssignametnVarContext = AssignametnVarContext; 
 MiuLanguage_sinParser.AssignmentContext = AssignmentContext; 
+MiuLanguage_sinParser.AssignametnVarContext = AssignametnVarContext; 
 MiuLanguage_sinParser.ControlStructureContext = ControlStructureContext; 
 MiuLanguage_sinParser.IfStatementContext = IfStatementContext; 
 MiuLanguage_sinParser.ElseStatementContext = ElseStatementContext; 
