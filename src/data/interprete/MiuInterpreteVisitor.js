@@ -373,7 +373,7 @@ class MiuInterpreteVisitor extends MiuLanguage_sinVisitor {
         let var_name = this.visit(ctx.children[0]);
         let child = ctx.children[1];
         if (var_name == "fmt" && child.constructor.name == "FunctionCallVarContext") {
-            return `console.log(${this.visit(child.children[3])});\n`
+            return `console.log(${this.visit(child.children[3])})`
         }
         return this.visitChildren(ctx).join('');
     }

@@ -65,12 +65,12 @@ param: idRule pRule typeRule;
 bodyRule: lbraceRule (statement)* rbraceRule;
 bodyRRule: lbraceRule (statement)* statementRRule rbraceRule;
 
-statementRRule: returnRule exprReturnRule pcRule;
+statementRRule: returnRule exprReturnRule (pcRule)*;
 
-functionCall: idfRule lparenRule argList? rparenRule pcRule;
+functionCall: idfRule lparenRule argList? rparenRule;
 varStatement: idRule (functionCallVar | assignametnVar)*;
 functionCallVar:
-	dotRule idfRule lparenRule argList? rparenRule pcRule;
+	dotRule idfRule lparenRule argList? rparenRule;
 
 argList: (
 		varStatement
@@ -92,8 +92,8 @@ argList: (
 
 statement:
 	assignment
-	| functionCall
-	| varStatement
+	| functionCall pcRule
+	| varStatement pcRule
 	| controlStructure;
 
 assignametnVar: equalRule exprRule (exprExtraRule exprRule)* pcRule;
@@ -114,7 +114,7 @@ comparisonExprADDRule:
 	comparisonExprRule (addOperatorRule comparisonExprRule)*;
 comparisonExprRule: exprRule comparisonOperatorRule exprRule;
 exprReturnRule: exprRule (exprExtraRule exprRule)*;
-exprRule : idRule| stringRule | charRule | intRule | floatRule | boolRule ;
+exprRule :varStatement | functionCall | stringRule | charRule | intRule | floatRule | boolRule;
 
 exprExtraRule: mulOperatorRule |  addOperatorRule;
 
